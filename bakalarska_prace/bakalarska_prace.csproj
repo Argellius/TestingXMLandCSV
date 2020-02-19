@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>bakalarska_prace</RootNamespace>
     <AssemblyName>bakalarska_prace</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -61,13 +62,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArrayInteger\CSV_ArrayIntegerFile.cs" />
-    <Compile Include="ArrayInteger\CSV_ArrayIntegerNuget.cs" />
-    <Compile Include="ArrayInteger\CSV_ArrayIntegerString.cs" />
-    <Compile Include="ArrayInteger\XML_ArrayIntegerFile.cs" />
-    <Compile Include="ArrayInteger\XML_ArrayIntegerNuget.cs" />
-    <Compile Include="ArrayInteger\XML_ArrayIntegerString.cs" />
+    <Compile Include="Integer\ArrayArrayInteger\CSV_ArrayArrayIntegerNuget.cs" />
+    <Compile Include="Integer\ArrayArrayInteger\CSV_ArrayArrayIntegerString.cs" />
+    <Compile Include="Integer\ArrayArrayInteger\CSV_ArrayArraylistIntegerFile.cs" />
+    <Compile Include="Integer\ArrayArrayInteger\XML_ArrayArrayIntegerFile.cs" />
+    <Compile Include="Integer\ArrayArrayInteger\XML_ArrayArrayIntegerNuget.cs" />
+    <Compile Include="Integer\ArrayArrayInteger\XML_ArrayArrayIntegerString.cs" />
+    <Compile Include="Integer\ArrayInteger\CSV_ArrayIntegerFile.cs" />
+    <Compile Include="Integer\ArrayInteger\CSV_ArrayIntegerNuget.cs" />
+    <Compile Include="Integer\ArrayInteger\CSV_ArrayIntegerString.cs" />
+    <Compile Include="Integer\ArrayInteger\XML_ArrayIntegerFile.cs" />
+    <Compile Include="Integer\ArrayInteger\XML_ArrayIntegerNuget.cs" />
+    <Compile Include="Integer\ArrayInteger\XML_ArrayIntegerString.cs" />
+    <Compile Include="Integer\ArraylistInteger\CSV_ArraylistIntegerFile.cs" />
+    <Compile Include="Integer\ArraylistInteger\CSV_ArraylistIntegerNuget.cs" />
+    <Compile Include="Integer\ArraylistInteger\CSV_ArraylistIntegerString.cs" />
+    <Compile Include="Integer\ArraylistInteger\XML_ArraylistIntegerFile.cs" />
+    <Compile Include="Integer\ArraylistInteger\XML_ArraylistIntegerNuget.cs" />
+    <Compile Include="Integer\ArraylistInteger\XML_ArraylistIntegerString.cs" />
+    <Compile Include="Integer\ListInteger\CSV_ListIntegerFile.cs" />
+    <Compile Include="Integer\ListInteger\CSV_ListIntegerNuget.cs" />
+    <Compile Include="Integer\ListInteger\CSV_ListIntegerString.cs" />
+    <Compile Include="Integer\ListInteger\XML_ListIntegerFile.cs" />
+    <Compile Include="Integer\ListInteger\XML_ListIntegerNuget.cs" />
+    <Compile Include="Integer\ListInteger\XML_ListIntegerString.cs" />
+    <Compile Include="Integer\ListListInteger\CSV_ListListIntegerFile.cs" />
+    <Compile Include="Integer\ListListInteger\CSV_ListListIntegerNuget.cs" />
+    <Compile Include="Integer\ListListInteger\CSV_ListListIntegerString.cs" />
+    <Compile Include="Integer\ListListInteger\XML_ListListIntegerFile.cs" />
+    <Compile Include="Integer\ListListInteger\XML_ListListIntegerNuget.cs" />
+    <Compile Include="Integer\ListListInteger\XML_ListListIntegerString.cs" />
     <Compile Include="ITester.cs" />
+    <Compile Include="Object\ArrayArrayObject\CSV_ArrayArraylistObjectFile.cs" />
+    <Compile Include="Object\ArrayArrayObject\CSV_ArrayArrayObjectNuget.cs" />
+    <Compile Include="Object\ArrayArrayObject\CSV_ArrayArrayObjectString.cs" />
+    <Compile Include="Object\ArrayArrayObject\XML_ArrayArrayObjectFile.cs" />
+    <Compile Include="Object\ArrayArrayObject\XML_ArrayArrayObjectNuget.cs" />
+    <Compile Include="Object\ArrayArrayObject\XML_ArrayArrayObjectString.cs" />
+    <Compile Include="Object\ArraylistObject\CSV_ArraylistObjectFile.cs" />
+    <Compile Include="Object\ArraylistObject\CSV_ArraylistObjectNuget.cs" />
+    <Compile Include="Object\ArraylistObject\CSV_ArraylistObjectString.cs" />
+    <Compile Include="Object\ArraylistObject\XML_ArraylistObjectFile.cs" />
+    <Compile Include="Object\ArraylistObject\XML_ArraylistObjectNuget.cs" />
+    <Compile Include="Object\ArraylistObject\XML_ArraylistObjectString.cs" />
+    <Compile Include="Object\ArrayObject\CSV_ArrayObjectFile.cs" />
+    <Compile Include="Object\ArrayObject\CSV_ArrayObjectNuget.cs" />
+    <Compile Include="Object\ArrayObject\CSV_ArrayObjectString.cs" />
+    <Compile Include="Object\ArrayObject\XML_ArrayObjectFile.cs" />
+    <Compile Include="Object\ArrayObject\XML_ArrayObjectNuget.cs" />
+    <Compile Include="Object\ArrayObject\XML_ArrayObjectString.cs" />
+    <Compile Include="Object\ListListObject\CSV_ListListObjectFile.cs" />
+    <Compile Include="Object\ListListObject\CSV_ListListObjectNuget.cs" />
+    <Compile Include="Object\ListListObject\CSV_ListListObjectString.cs" />
+    <Compile Include="Object\ListListObject\XML_ListListObjectFile.cs" />
+    <Compile Include="Object\ListListObject\XML_ListListObjectNuget.cs" />
+    <Compile Include="Object\ListListObject\XML_ListListObjectString.cs" />
+    <Compile Include="Object\ListObject\CSV_ListObjectFile.cs" />
+    <Compile Include="Object\ListObject\CSV_ListObjectNuget.cs" />
+    <Compile Include="Object\ListObject\CSV_ListObjectString.cs" />
+    <Compile Include="Object\ListObject\XML_ListObjectFile.cs" />
+    <Compile Include="Object\ListObject\XML_ListObjectNuget.cs" />
+    <Compile Include="Object\ListObject\XML_ListObjectString.cs" />
     <Compile Include="RecordOfEmployee.cs" />
     <Compile Include="TestingXMLCSV.cs">
       <SubType>Form</SubType>
@@ -86,6 +141,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TestingXMLCSV.resx">
       <DependentUpon>TestingXMLCSV.cs</DependentUpon>

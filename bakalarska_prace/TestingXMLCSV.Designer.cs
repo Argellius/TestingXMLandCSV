@@ -31,16 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestingXMLCSV));
             this.groupBox_testovani = new System.Windows.Forms.GroupBox();
-            this.listView_selected = new System.Windows.Forms.ListView();
+            this.treeView_Tests = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aplikaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nastaveníToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listView_unselected = new System.Windows.Forms.ListView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.listBox_selected = new System.Windows.Forms.ListBox();
             this.groupBox_testovani.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -48,34 +46,23 @@
             // 
             // groupBox_testovani
             // 
-            this.groupBox_testovani.Controls.Add(this.button3);
-            this.groupBox_testovani.Controls.Add(this.button2);
-            this.groupBox_testovani.Controls.Add(this.listView_unselected);
-            this.groupBox_testovani.Controls.Add(this.listView_selected);
+            this.groupBox_testovani.Controls.Add(this.listBox_selected);
+            this.groupBox_testovani.Controls.Add(this.treeView_Tests);
             this.groupBox_testovani.Location = new System.Drawing.Point(47, 42);
             this.groupBox_testovani.Name = "groupBox_testovani";
             this.groupBox_testovani.Size = new System.Drawing.Size(1178, 363);
             this.groupBox_testovani.TabIndex = 0;
             this.groupBox_testovani.TabStop = false;
             this.groupBox_testovani.Text = "Testování";
-            this.groupBox_testovani.Enter += new System.EventHandler(this.groupBox_testovani_Enter);
             // 
-            // listView_selected
+            // treeView_Tests
             // 
-            this.listView_selected.AutoArrange = false;
-            this.listView_selected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listView_selected.FullRowSelect = true;
-            this.listView_selected.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView_selected.HideSelection = false;
-            this.listView_selected.LabelWrap = false;
-            this.listView_selected.Location = new System.Drawing.Point(13, 26);
-            this.listView_selected.Margin = new System.Windows.Forms.Padding(10);
-            this.listView_selected.MultiSelect = false;
-            this.listView_selected.Name = "listView_selected";
-            this.listView_selected.Size = new System.Drawing.Size(266, 305);
-            this.listView_selected.TabIndex = 0;
-            this.listView_selected.UseCompatibleStateImageBehavior = false;
-            this.listView_selected.View = System.Windows.Forms.View.SmallIcon;
+            this.treeView_Tests.CheckBoxes = true;
+            this.treeView_Tests.Location = new System.Drawing.Point(17, 26);
+            this.treeView_Tests.Name = "treeView_Tests";
+            this.treeView_Tests.Size = new System.Drawing.Size(403, 305);
+            this.treeView_Tests.TabIndex = 2;
+            this.treeView_Tests.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_Tests_AfterCheck_1);
             // 
             // button1
             // 
@@ -122,41 +109,13 @@
             this.nastaveníToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.nastaveníToolStripMenuItem.Text = "Nastavení";
             // 
-            // listView_unselected
+            // listBox_selected
             // 
-            this.listView_unselected.AutoArrange = false;
-            this.listView_unselected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listView_unselected.FullRowSelect = true;
-            this.listView_unselected.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView_unselected.HideSelection = false;
-            this.listView_unselected.LabelWrap = false;
-            this.listView_unselected.Location = new System.Drawing.Point(485, 26);
-            this.listView_unselected.Margin = new System.Windows.Forms.Padding(10);
-            this.listView_unselected.MultiSelect = false;
-            this.listView_unselected.Name = "listView_unselected";
-            this.listView_unselected.Size = new System.Drawing.Size(266, 305);
-            this.listView_unselected.TabIndex = 1;
-            this.listView_unselected.UseCompatibleStateImageBehavior = false;
-            this.listView_unselected.View = System.Windows.Forms.View.SmallIcon;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(324, 87);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = ">>";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(324, 148);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "<<";
-            this.button3.UseVisualStyleBackColor = true;
+            this.listBox_selected.FormattingEnabled = true;
+            this.listBox_selected.Location = new System.Drawing.Point(484, 26);
+            this.listBox_selected.Name = "listBox_selected";
+            this.listBox_selected.Size = new System.Drawing.Size(332, 303);
+            this.listBox_selected.TabIndex = 3;
             // 
             // TestingXMLCSV
             // 
@@ -190,9 +149,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem aplikaceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nastaveníToolStripMenuItem;
-        private System.Windows.Forms.ListView listView_selected;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListView listView_unselected;
+        private System.Windows.Forms.TreeView treeView_Tests;
+        private System.Windows.Forms.ListBox listBox_selected;
     }
 }
