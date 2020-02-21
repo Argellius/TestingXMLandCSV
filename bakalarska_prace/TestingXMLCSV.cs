@@ -24,7 +24,7 @@ namespace bakalarska_prace
             TreeNode node2 = new TreeNode(name_second_node);
             tests.ForEach(item =>
             {
-                node2.Nodes.Add(item.GetType().Name);
+                node2.Nodes.Add(new TreeNode() { Text = item.GetType().Name, Name = item.GetType().Name, Tag = item, });
             });
 
             foreach (TreeNode node in tree.Nodes)
@@ -44,6 +44,7 @@ namespace bakalarska_prace
 
         private void TestingXMLCSV_Load(object sender, EventArgs e)
         {
+
             int pocet_prvku = 500;
             TreeView_AddItems(treeView_Tests, "Array", "Integer", new List<ITester> {
                     new ArrayInteger.XML_ArrayIntegerFile(pocet_prvku),
@@ -137,76 +138,81 @@ namespace bakalarska_prace
                     new ArrayArrayObject.XML_ArrayArrayObjectNuget(pocet_prvku),
             });
 
-
+            treeView_Tests.SelectedNode = null;
+            treeView_Tests.Nodes[0].Checked = false;
         }
 
         private async void treeView_Tests_AfterCheck_1(object sender, TreeViewEventArgs e)
         {
             e.Node.TreeView.Enabled = false;
-            await Task.Delay(300);
+            await Task.Delay(200);
             e.Node.TreeView.Enabled = true;
 
-            if (e.Node.Level == 0)
+
+            if (e.Node.Nodes.Count > 0)
+                CheckAllChildNodes(e.Node, e.Node.Checked);
+
+            if (e.Node.Parent != null && e.Node.Parent.Checked == false)
             {
-                if (e.Node.Checked)
-                    foreach (TreeNode node in e.Node.Nodes)
+                if (AllChildChecked(e.Node.Parent))
+                    e.Node.Parent.Checked = true;
+            }
+
+            if (e.Node.Level == 2 && e.Node.Checked)
+                listBox_selected.Items.Add(new TreeViewItem(e.Node));
+            else if (e.Node.Level == 2 && e.Node.Checked == false)
+            {
+                foreach (TreeViewItem item in listBox_selected.Items)
+                {
+                    if (item.Text == e.Node.Text)
                     {
-                        if (node.Checked == false)
-                            CheckAllChildNodes(e.Node, e.Node.Checked);
+                        listBox_selected.Items.Remove(item);
+                        break;
                     }
-                else
-                    CheckAllChildNodes(e.Node, e.Node.Checked);
-
-            }
-            else if (e.Node.Level == 1)
-                if (e.Node.Checked)
-                {
-                    e.Node.Parent.Checked = true;
-                    foreach (TreeNode node in e.Node.Nodes)
-                        if (node.Checked)
-                            return;
-                    CheckAllChildNodes(e.Node, e.Node.Checked);
-
-                }
-                else
-                {
-                    CheckAllChildNodes(e.Node, e.Node.Checked);
-                    e.Node.Parent.Checked = false;
-                }
-
-            else if (e.Node.Level == 2)
-            {
-
-
-                if (e.Node.Checked)
-                {
-                    e.Node.Parent.Checked = true;
-                    listBox_selected.Items.Add(e.Node.Text);
-
-                }
-                else
-                {
-                    bool min_one_Checked = false;
-                    listBox_selected.Items.Remove(e.Node.Text);
-                    foreach (TreeNode node in e.Node.Parent.Nodes)
-                        if (node.Checked)
-                            min_one_Checked = true;
-                    if (min_one_Checked == false)
-                        e.Node.Parent.Checked = false;
-
-
                 }
             }
+
         }
+
+        private bool AllChildChecked(TreeNode currentNode)
+        {
+            bool res = true;
+
+            foreach (TreeNode node in currentNode.Nodes)
+            {
+                res = node.Checked;
+                if (!res) break;
+
+                res = this.AllChildChecked(node);
+                if (!res) break;
+            }
+
+            return res;
+        }
+
         private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)
         {
-            if (treeNode.Checked == true)
+
+            foreach (TreeNode tn in treeNode.Nodes)
             {
-                foreach (TreeNode tn in treeNode.Nodes)
-                {
-                    tn.Checked = true;
-                }
+                if (tn.Checked != nodeChecked)
+                    tn.Checked = nodeChecked;
             }
+
+        }
+
+
+        private void treeView_Tests_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            e.Node.TreeView.SelectedNode = null;
+        }
+
+        private void treeView_Tests_AfterSelect_1(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Checked)
+                e.Node.Checked = false;
+            else
+                e.Node.Checked = true;
         }
     }
 }
