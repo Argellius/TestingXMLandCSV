@@ -18,7 +18,7 @@ namespace bakalarska_prace
     {
         protected string StringData;
 
-        protected string path = @"..\..\..\Testing_Files\";
+        protected string path = @"..\..\..\TestResults\";
         protected RecordOfEmployee _Zamestnanci_With_Data;
 
         protected XmlSerializer XmlSerializer;

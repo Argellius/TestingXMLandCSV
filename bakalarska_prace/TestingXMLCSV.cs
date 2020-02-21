@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,11 @@ namespace bakalarska_prace
 {
     public partial class TestingXMLCSV : Form
     {
+        private Tools_Vysledky tools_Vysledky;
         public TestingXMLCSV()
         {
             InitializeComponent();
-
+            tools_Vysledky = new Tools_Vysledky();
 
         }
 
@@ -214,5 +216,39 @@ namespace bakalarska_prace
             else
                 e.Node.Checked = true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tools_Vysledky.pocetPrvku = 0;
+            tools_Vysledky.pocetTestu = 0;
+
+            foreach (TreeViewItem node in listBox_selected.Items)
+            {
+                (node.Tag as ITester).SetupWriteStart();
+                TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
+                (node.Tag as ITester).SetupWriteEnd();
+                tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE TEST", test, (node.Tag as ITester).GetSize());
+                test = new TimeSpan(0);
+
+
+                (node.Tag as ITester).SetupReadStart();
+                test = OtestujZmer((node.Tag as ITester).TestRead);
+                (node.Tag as ITester).SetupReadEnd();
+                tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ TEST", test, (node.Tag as ITester).GetSize());
+                test = new TimeSpan(0);
+            }
+            ;
+        }
+
+        private static TimeSpan OtestujZmer(Action method)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            method();
+            sw.Stop();
+            return sw.Elapsed;
+
+        }
+
     }
 }
