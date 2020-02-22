@@ -15,11 +15,11 @@ namespace bakalarska_prace.ListListInteger
         private int pocetPrvkuVKolekci;
         private int pocetPrvkuVPosledniKolekci;
 
-        public XML_ListListIntegerString(int NumberOfElements)
+        public XML_ListListIntegerString()
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.pocetKolekci = 0;
+            this.pocetPrvkuVKolekci = 0;
+            this.pocetPrvkuVPosledniKolekci = 0;
         }
 
         private void Inicialize(bool Write)
@@ -86,6 +86,12 @@ namespace bakalarska_prace.ListListInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
+            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
+            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
         }
     }
 }

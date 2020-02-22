@@ -21,9 +21,10 @@ namespace bakalarska_prace.ListListInteger
 
         public XML_ListListIntegerNuget(int NumberOfElements)
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.pocetKolekci = 0;
+            this.pocetPrvkuVKolekci = 0;
+            this.pocetPrvkuVPosledniKolekci = 0;
+            XML_SharpSerializer = new SharpSerializer(false);
         }
 
         private void Inicialize(bool Write)
@@ -57,12 +58,11 @@ namespace bakalarska_prace.ListListInteger
         public void XML_DeSerializeListListIntegerNuget()
         {
             ListListInteger = (List<List<Int32>>)XML_SharpSerializer.Deserialize(FileStr);
-
         }
 
         void ITester.SetupWriteStart()
         {
-            XML_SharpSerializer = new SharpSerializer(false);
+            
             Inicialize(true);
             FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
 
@@ -94,5 +94,12 @@ namespace bakalarska_prace.ListListInteger
         {
             return ToolsGetSizeOfFile(this.GetType());
         }
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
+            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
+            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+        }
+
     }
 }

@@ -16,11 +16,11 @@ namespace bakalarska_prace.ListListObject
         private int pocetPrvkuVPosledniKolekci;
 
 
-        public CSV_ListListObjectNuget(int NumberOfElements)
+        public CSV_ListListObjectNuget()
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.pocetKolekci = 0;
+            this.pocetPrvkuVKolekci = 0;
+            this.pocetPrvkuVPosledniKolekci = 0;
         }
 
         private void Inicialize(bool Write)
@@ -102,6 +102,13 @@ namespace bakalarska_prace.ListListObject
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
+            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
+            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
         }
     }
 }

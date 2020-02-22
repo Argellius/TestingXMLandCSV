@@ -12,9 +12,9 @@ namespace bakalarska_prace.ListObject
         private int NumberOfElements;
 
 
-        public CSV_ListObjectString(int Number)
+        public CSV_ListObjectString()
         {
-            this.NumberOfElements = Number;
+            this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool Write)
@@ -115,6 +115,10 @@ namespace bakalarska_prace.ListObject
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

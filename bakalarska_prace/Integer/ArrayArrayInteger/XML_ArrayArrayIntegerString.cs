@@ -15,11 +15,11 @@ namespace bakalarska_prace.ArrayArrayInteger
         private int pocetPrvkuVKolekci;
         private int pocetPrvkuVPosledniKolekci;
 
-        public XML_ArrayArrayIntegerString(int NumberOfElements)
+        public XML_ArrayArrayIntegerString()
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            pocetKolekci = 0;
+            pocetPrvkuVKolekci = 0;
+            pocetPrvkuVPosledniKolekci = 0;
         }
 
         private void Inicialize(bool Write)
@@ -93,6 +93,13 @@ namespace bakalarska_prace.ArrayArrayInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
+            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
+            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
         }
     }
 }

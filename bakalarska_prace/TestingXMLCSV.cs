@@ -46,98 +46,96 @@ namespace bakalarska_prace
 
         private void TestingXMLCSV_Load(object sender, EventArgs e)
         {
-
-            int pocet_prvku = 500;
             TreeView_AddItems(treeView_Tests, "Array", "Integer", new List<ITester> {
-                    new ArrayInteger.XML_ArrayIntegerFile(pocet_prvku),
-                    new ArrayInteger.XML_ArrayIntegerString(pocet_prvku),
-                    new ArrayInteger.XML_ArrayIntegerNuget(pocet_prvku),
-                    new ArrayInteger.CSV_ArrayIntegerFile(pocet_prvku),
-                    new ArrayInteger.CSV_ArrayIntegerNuget(pocet_prvku),
-                    new ArrayInteger.CSV_ArrayIntegerString(pocet_prvku),
+                    new ArrayInteger.XML_ArrayIntegerFile(),
+                    new ArrayInteger.XML_ArrayIntegerString(),
+                    new ArrayInteger.XML_ArrayIntegerNuget(),
+                    new ArrayInteger.CSV_ArrayIntegerFile(),
+                    new ArrayInteger.CSV_ArrayIntegerNuget(),
+                    new ArrayInteger.CSV_ArrayIntegerString(),
             });
 
             TreeView_AddItems(treeView_Tests, "List", "Integer", new List<ITester> {
-                    new ListInteger.CSV_ListIntegerFile(pocet_prvku),
-                    new ListInteger.CSV_ListIntegerNuget(pocet_prvku),
-                    new ListInteger.CSV_ListIntegerString(pocet_prvku),
-                    new ListInteger.XML_ListIntegerFile(pocet_prvku),
-                    new ListInteger.XML_ListIntegerNuget(pocet_prvku),
-                    new ListInteger.XML_ListIntegerString(pocet_prvku),
+                    new ListInteger.CSV_ListIntegerFile(),
+                    new ListInteger.CSV_ListIntegerNuget(),
+                    new ListInteger.CSV_ListIntegerString(),
+                    new ListInteger.XML_ListIntegerFile(),
+                    new ListInteger.XML_ListIntegerNuget(),
+                    new ListInteger.XML_ListIntegerString(),
             });
 
             TreeView_AddItems(treeView_Tests, "ArrayList", "Integer", new List<ITester> {
-                    new ArrayListInteger.CSV_ArrayListIntegerFile(pocet_prvku),
-                    new ArrayListInteger.CSV_ArrayListIntegerNuget(pocet_prvku),
-                    new ArrayListInteger.CSV_ArrayListIntegerString(pocet_prvku),
-                    new ArrayListInteger.XML_ArrayListIntegerFile(pocet_prvku),
-                    new ArrayListInteger.XML_ArrayListIntegerNuget(pocet_prvku),
-                    new ArrayListInteger.XML_ArrayListIntegerString(pocet_prvku),
+                    new ArrayListInteger.CSV_ArrayListIntegerFile(),
+                    new ArrayListInteger.CSV_ArrayListIntegerNuget(),
+                    new ArrayListInteger.CSV_ArrayListIntegerString(),
+                    new ArrayListInteger.XML_ArrayListIntegerFile(),
+                    new ArrayListInteger.XML_ArrayListIntegerNuget(),
+                    new ArrayListInteger.XML_ArrayListIntegerString(),
             });
 
             TreeView_AddItems(treeView_Tests, "ArrayArray", "Integer", new List<ITester> {
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerFile(pocet_prvku),
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerString(pocet_prvku),
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerNuget(pocet_prvku),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerFile(pocet_prvku),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerString(pocet_prvku),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerNuget(pocet_prvku),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerFile(),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerString(),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerNuget(),
+                    new ArrayArrayInteger.XML_ArrayArrayIntegerFile(),
+                    new ArrayArrayInteger.XML_ArrayArrayIntegerString(),
+                    new ArrayArrayInteger.XML_ArrayArrayIntegerNuget(),
             });
 
             TreeView_AddItems(treeView_Tests, "ListList", "Integer", new List<ITester> {
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerFile(pocet_prvku),
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerString(pocet_prvku),
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerNuget(pocet_prvku),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerFile(pocet_prvku),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerString(pocet_prvku),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerNuget(pocet_prvku),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerFile(),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerString(),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerNuget(),
+                    new ArrayArrayInteger.XML_ArrayArrayIntegerFile(),
+                    new ArrayArrayInteger.XML_ArrayArrayIntegerString(),
+                    new ArrayArrayInteger.XML_ArrayArrayIntegerNuget(),
             });
 
             //---
 
             TreeView_AddItems(treeView_Tests, "Array", "Object", new List<ITester> {
-                    new ArrayObject.XML_ArrayObjectFile(pocet_prvku),
-                    new ArrayObject.XML_ArrayObjectString(pocet_prvku),
-                    new ArrayObject.XML_ArrayObjectNuget(pocet_prvku),
-                    new ArrayObject.CSV_ArrayObjectFile(pocet_prvku),
-                    new ArrayObject.CSV_ArrayObjectNuget(pocet_prvku),
-                    new ArrayObject.CSV_ArrayObjectString(pocet_prvku),
+                    new ArrayObject.XML_ArrayObjectFile(),
+                    new ArrayObject.XML_ArrayObjectString(),
+                    new ArrayObject.XML_ArrayObjectNuget(),
+                    new ArrayObject.CSV_ArrayObjectFile(),
+                    new ArrayObject.CSV_ArrayObjectNuget(),
+                    new ArrayObject.CSV_ArrayObjectString(),
             });
 
             TreeView_AddItems(treeView_Tests, "List", "Object", new List<ITester> {
-                    new ListObject.CSV_ListObjectFile(pocet_prvku),
-                    new ListObject.CSV_ListObjectNuget(pocet_prvku),
-                    new ListObject.CSV_ListObjectString(pocet_prvku),
-                    new ListObject.XML_ListObjectFile(pocet_prvku),
-                    new ListObject.XML_ListObjectNuget(pocet_prvku),
-                    new ListObject.XML_ListObjectString(pocet_prvku),
+                    new ListObject.CSV_ListObjectFile(),
+                    new ListObject.CSV_ListObjectNuget(),
+                    new ListObject.CSV_ListObjectString(),
+                    new ListObject.XML_ListObjectFile(),
+                    new ListObject.XML_ListObjectNuget(),
+                    new ListObject.XML_ListObjectString(),
             });
 
             TreeView_AddItems(treeView_Tests, "ArrayList", "Object", new List<ITester> {
-                    new ArrayListObject.CSV_ArrayListObjectFile(pocet_prvku),
-                    new ArrayListObject.CSV_ArrayListObjectNuget(pocet_prvku),
-                    new ArrayListObject.CSV_ArrayListObjectString(pocet_prvku),
-                    new ArrayListObject.XML_ArrayListObjectFile(pocet_prvku),
-                    new ArrayListObject.XML_ArrayListObjectNuget(pocet_prvku),
-                    new ArrayListObject.XML_ArrayListObjectString(pocet_prvku),
+                    new ArrayListObject.CSV_ArrayListObjectFile(),
+                    new ArrayListObject.CSV_ArrayListObjectNuget(),
+                    new ArrayListObject.CSV_ArrayListObjectString(),
+                    new ArrayListObject.XML_ArrayListObjectFile(),
+                    new ArrayListObject.XML_ArrayListObjectNuget(),
+                    new ArrayListObject.XML_ArrayListObjectString(),
             });
 
             TreeView_AddItems(treeView_Tests, "ArrayArray", "Object", new List<ITester> {
-                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(pocet_prvku),
-                    new ArrayArrayObject.CSV_ArrayArrayObjectString(pocet_prvku),
-                    new ArrayArrayObject.CSV_ArrayArrayObjectNuget(pocet_prvku),
-                    new ArrayArrayObject.XML_ArrayArrayObjectFile(pocet_prvku),
-                    new ArrayArrayObject.XML_ArrayArrayObjectString(pocet_prvku),
-                    new ArrayArrayObject.XML_ArrayArrayObjectNuget(pocet_prvku),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectString(),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectNuget(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectFile(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectString(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectNuget(),
             });
 
             TreeView_AddItems(treeView_Tests, "ListList", "Object", new List<ITester> {
-                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(pocet_prvku),
-                    new ArrayArrayObject.CSV_ArrayArrayObjectString(pocet_prvku),
-                    new ArrayArrayObject.CSV_ArrayArrayObjectNuget(pocet_prvku),
-                    new ArrayArrayObject.XML_ArrayArrayObjectFile(pocet_prvku),
-                    new ArrayArrayObject.XML_ArrayArrayObjectString(pocet_prvku),
-                    new ArrayArrayObject.XML_ArrayArrayObjectNuget(pocet_prvku),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectString(),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectNuget(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectFile(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectString(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectNuget(),
             });
 
             treeView_Tests.SelectedNode = null;
@@ -217,9 +215,15 @@ namespace bakalarska_prace
                 e.Node.Checked = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tools_Vysledky.pocetPrvku = 0;
+        private void button_Start_Click(object sender, EventArgs e)
+        {           
+
+            foreach (TreeViewItem node in listBox_selected.Items)
+            {
+                (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(textBox_NumberOfElements.Text));
+            }
+
+            tools_Vysledky.pocetPrvku = Convert.ToInt32(textBox_NumberOfElements.Text);
             tools_Vysledky.pocetTestu = 0;
 
             foreach (TreeViewItem node in listBox_selected.Items)
@@ -237,7 +241,8 @@ namespace bakalarska_prace
                 tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ TEST", test, (node.Tag as ITester).GetSize());
                 test = new TimeSpan(0);
             }
-            ;
+
+            MessageBox.Show("Done");
         }
 
         private static TimeSpan OtestujZmer(Action method)
@@ -250,5 +255,9 @@ namespace bakalarska_prace
 
         }
 
+        private void zavřítToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

@@ -20,10 +20,10 @@ namespace bakalarska_prace.ArrayListInteger
         private SharpSerializer XML_SharpSerializer;
 
 
-        public XML_ArrayListIntegerNuget(int Pocet_Prvku)
+        public XML_ArrayListIntegerNuget()
         {
-            this.NumberOfElements = Pocet_Prvku;
-            XML_SharpSerializer = new SharpSerializer(false);
+            this.XML_SharpSerializer = new SharpSerializer(false);
+            this.NumberOfElements = 0;
 
         }
 
@@ -78,6 +78,10 @@ namespace bakalarska_prace.ArrayListInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

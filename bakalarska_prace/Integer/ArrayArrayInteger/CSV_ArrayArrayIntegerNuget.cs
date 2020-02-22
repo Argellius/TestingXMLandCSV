@@ -16,11 +16,11 @@ namespace bakalarska_prace.ArrayArrayInteger
         private int pocetPrvkuVKolekci;
         private int pocetPrvkuVPosledniKolekci;
 
-        public CSV_ArrayArrayIntegerNuget(int NumberOfElements)
+        public CSV_ArrayArrayIntegerNuget()
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            pocetKolekci = 0;
+            pocetPrvkuVKolekci = 0;
+            pocetPrvkuVPosledniKolekci = 0;
         }
         private void Inicialize(bool Write)
         {
@@ -53,6 +53,7 @@ namespace bakalarska_prace.ArrayArrayInteger
 
             }
         }
+
         public void CSV_WriteArrayArrayIntegerNuget()
         {
             foreach (Int32[] array in ArrayArray_Integer)
@@ -61,6 +62,7 @@ namespace bakalarska_prace.ArrayArrayInteger
                 csvWriter.NextRecord();
             }
         }
+
         public void CSV_ReadArrayArrayIntegerNuget()
         {
             int index_pole = 0;
@@ -68,7 +70,7 @@ namespace bakalarska_prace.ArrayArrayInteger
 
             while (csvReader.Read())
             {
-                if (csvReader.Context.Record.Count() > 0) //------
+                if (csvReader.Context.Record.Count() == 0) //------
                 {
                     index_pole++;
                     i = 0;
@@ -76,11 +78,8 @@ namespace bakalarska_prace.ArrayArrayInteger
                 }
                 ArrayArray_Integer[index_pole][i] = csvReader.GetRecord<Int32>();
                 i++;
-            }            
+            }
         }
-
-
-
 
         void ITester.SetupWriteStart()
         {
@@ -115,6 +114,13 @@ namespace bakalarska_prace.ArrayArrayInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
+            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
+            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
         }
     }
 }

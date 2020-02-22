@@ -14,11 +14,10 @@ namespace bakalarska_prace.ArrayArrayInteger
         private int pocetPrvkuVKolekci;
         private int pocetPrvkuVPosledniKolekci;
 
-        public CSV_ArrayArrayIntegerString(int NumberOfElements)
-        {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+        public CSV_ArrayArrayIntegerString() {
+            pocetKolekci = 0;
+            pocetPrvkuVKolekci = 0;
+            pocetPrvkuVPosledniKolekci = 0;
         }
 
         private void Inicialize(bool Write)
@@ -67,14 +66,13 @@ namespace bakalarska_prace.ArrayArrayInteger
             }
             StringWriter.Write(StringBuilder);
         }
-
         public void CSV_ReadArrayArrayIntegerString()
         {
             int index_pole = 0;
             while (StringReader.Peek() > 0)
             {
                 string line = StringReader.ReadLine();
-                string[] values = line.Split(';'); 
+                string[] values = line.Split(';');
 
                 foreach (var (value, index) in values.Select((v, i) => (v, i)))
                 {
@@ -83,8 +81,6 @@ namespace bakalarska_prace.ArrayArrayInteger
                 index_pole++;
             }
         }
-
-
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
@@ -114,6 +110,13 @@ namespace bakalarska_prace.ArrayArrayInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
+            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
+            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
         }
     }
 }

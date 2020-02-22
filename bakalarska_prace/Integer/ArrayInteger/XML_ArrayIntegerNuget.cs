@@ -15,11 +15,12 @@ namespace bakalarska_prace.ArrayInteger
         private int NumberOfElements;
         private SharpSerializer XML_SharpSerializer;
 
-        public XML_ArrayIntegerNuget(int Pocet_Prvku)
+        public XML_ArrayIntegerNuget()
         {
-            this.NumberOfElements = Pocet_Prvku;
+            this.NumberOfElements = 0;
             XML_SharpSerializer = new SharpSerializer(false);
-            
+
+
         }
 
         private void Inicialize(bool Write)
@@ -72,6 +73,11 @@ namespace bakalarska_prace.ArrayInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

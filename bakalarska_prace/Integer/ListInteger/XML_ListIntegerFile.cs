@@ -12,9 +12,9 @@ namespace bakalarska_prace.ListInteger
         private List<System.Int32> ListInteger;
         private int NumberOfElements;
 
-        public XML_ListIntegerFile(int Pocet_Prvku)
+        public XML_ListIntegerFile()
         {
-            this.NumberOfElements = Pocet_Prvku;            
+            this.NumberOfElements = 0;            
         }
 
         private void Inicialize(bool Write)
@@ -66,6 +66,10 @@ namespace bakalarska_prace.ListInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

@@ -11,19 +11,19 @@ namespace bakalarska_prace.ListInteger
     class CSV_ListIntegerNuget : Tools, ITester
     {
         private List<System.Int32> ListInteger;
-        private int Number;
+        private int NumberOfElements;
 
 
-        public CSV_ListIntegerNuget(int Number)
+        public CSV_ListIntegerNuget()
         {
-            this.Number = Number;
+            this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool Write)
         {
             ListInteger = new List<Int32>();
             if (Write)
-                for (int i = 0; i < Number; i++)
+                for (int i = 0; i < NumberOfElements; i++)
                     ListInteger.Add(int.MaxValue);
 
         }
@@ -73,6 +73,11 @@ namespace bakalarska_prace.ListInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

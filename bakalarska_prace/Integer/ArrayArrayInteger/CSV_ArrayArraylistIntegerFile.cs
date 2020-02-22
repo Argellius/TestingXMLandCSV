@@ -14,11 +14,11 @@ namespace bakalarska_prace.ArrayArrayInteger
         private int pocetPrvkuVKolekci;
         private int pocetPrvkuVPosledniKolekci;
 
-        public CSV_ArrayArrayIntegerFile(int NumberOfElements)
+        public CSV_ArrayArrayIntegerFile()
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            pocetKolekci = 0;
+            pocetPrvkuVKolekci = 0;
+            pocetPrvkuVPosledniKolekci = 0;
         }
 
         private void Inicialize(bool Write)
@@ -61,7 +61,7 @@ namespace bakalarska_prace.ArrayArrayInteger
                     if (index != 0)
                         StringBuilder.Append(";");
                     StringBuilder.Append(value);
-                    
+
                 }
                 StringBuilder.AppendLine();
             }
@@ -81,7 +81,7 @@ namespace bakalarska_prace.ArrayArrayInteger
                     ArrayArray_Integer[index_pole][index] = Convert.ToInt32(value);
                 }
                 index_pole++;
-            }           
+            }
         }
 
 
@@ -114,6 +114,13 @@ namespace bakalarska_prace.ArrayArrayInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
+            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
+            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
         }
     }
 }

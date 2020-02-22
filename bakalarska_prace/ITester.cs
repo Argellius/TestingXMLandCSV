@@ -20,6 +20,8 @@ namespace bakalarska_prace
 
         void TestRead();
 
+        void SetNumberOfElements(int NumberOfElements);
+
         long GetSize();
 
 

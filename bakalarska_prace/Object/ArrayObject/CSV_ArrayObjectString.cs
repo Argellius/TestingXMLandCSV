@@ -11,9 +11,9 @@ namespace bakalarska_prace.ArrayObject
         private RecordOfEmployee[] ArrayObject;
         private int NumberOfElements;
 
-        public CSV_ArrayObjectString(int Number)
-        {           
-            this.NumberOfElements = Number;
+        public CSV_ArrayObjectString()
+        {
+            this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool Write)
@@ -121,6 +121,11 @@ namespace bakalarska_prace.ArrayObject
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

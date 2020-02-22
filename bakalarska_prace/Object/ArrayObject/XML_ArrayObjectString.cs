@@ -12,9 +12,9 @@ namespace bakalarska_prace.ArrayObject
         private RecordOfEmployee[] ArrayObject;
         private int NumberOfElements;
 
-        public XML_ArrayObjectString(int Pocet_Prvku)
+        public XML_ArrayObjectString()
         {
-            this.NumberOfElements = Pocet_Prvku;            
+            this.NumberOfElements = 0;            
         }
 
         private void Inicialize(bool Write)
@@ -66,6 +66,11 @@ namespace bakalarska_prace.ArrayObject
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

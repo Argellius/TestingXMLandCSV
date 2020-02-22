@@ -14,9 +14,9 @@ namespace bakalarska_prace.ListInteger
         private List<System.Int32> ListInteger;
         private int NumberOfElements;
         private SharpSerializer XML_SharpSerializer;
-        public XML_ListIntegerNuget(int Pocet_Prvku)
+        public XML_ListIntegerNuget()
         {
-            this.NumberOfElements = Pocet_Prvku;
+            this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool Write)
@@ -71,6 +71,11 @@ namespace bakalarska_prace.ListInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

@@ -13,9 +13,9 @@ namespace bakalarska_prace.ArrayObject
         private int NumberOfElements;
         
 
-        public XML_ArrayObjectFile(int Pocet_Prvku)
+        public XML_ArrayObjectFile()
         {
-            this.NumberOfElements = Pocet_Prvku;            
+            this.NumberOfElements = 0;            
         }
 
         private void Inicialize(bool Write)
@@ -67,6 +67,10 @@ namespace bakalarska_prace.ArrayObject
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

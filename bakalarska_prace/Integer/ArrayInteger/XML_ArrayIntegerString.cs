@@ -12,9 +12,9 @@ namespace bakalarska_prace.ArrayInteger
         private System.Int32[] ArrayInteger;
         private int NumberOfElements;
 
-        public XML_ArrayIntegerString(int Pocet_Prvku)
+        public XML_ArrayIntegerString()
         {
-            this.NumberOfElements = Pocet_Prvku;            
+            this.NumberOfElements = 0;            
         }
 
         private void Inicialize(bool Write)
@@ -65,6 +65,11 @@ namespace bakalarska_prace.ArrayInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

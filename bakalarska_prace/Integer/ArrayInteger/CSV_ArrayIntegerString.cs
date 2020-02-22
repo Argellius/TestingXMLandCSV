@@ -11,9 +11,9 @@ namespace bakalarska_prace.ArrayInteger
         private Int32[] ArrayInteger;
         private int NumberOfElements;
 
-        public CSV_ArrayIntegerString(int Number)
+        public CSV_ArrayIntegerString()
         {           
-            this.NumberOfElements = Number;
+            this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool write)
@@ -78,6 +78,11 @@ namespace bakalarska_prace.ArrayInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

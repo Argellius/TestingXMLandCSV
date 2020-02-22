@@ -12,9 +12,9 @@ namespace bakalarska_prace.ListObject
         private List<RecordOfEmployee> ListObject;
         private int NumberOfElements;
 
-        public XML_ListObjectFile(int Pocet_Prvku)
+        public XML_ListObjectFile()
         {
-            this.NumberOfElements = Pocet_Prvku;            
+            this.NumberOfElements = 0;            
         }
 
         private void Inicialize(bool Write)
@@ -65,6 +65,11 @@ namespace bakalarska_prace.ListObject
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

@@ -14,9 +14,9 @@ namespace bakalarska_prace.ArrayInteger
         private int NumberOfElements;
 
 
-        public CSV_ArrayIntegerNuget(int Number)
+        public CSV_ArrayIntegerNuget()
         {
-            this.NumberOfElements = Number;
+            this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool write)
@@ -69,6 +69,11 @@ namespace bakalarska_prace.ArrayInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
+        }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

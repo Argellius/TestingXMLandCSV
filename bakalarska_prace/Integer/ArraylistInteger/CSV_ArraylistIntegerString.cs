@@ -12,9 +12,9 @@ namespace bakalarska_prace.ArrayListInteger
         private ArrayList ArrayListInteger;
         private int NumberOfElements;
 
-        public CSV_ArrayListIntegerString(int Number)
+        public CSV_ArrayListIntegerString()
         {           
-            this.NumberOfElements = Number;
+            this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool write)
@@ -80,6 +80,10 @@ namespace bakalarska_prace.ArrayListInteger
         long ITester.GetSize()
         {
             return ToolsGetSizeOfString();
+        }
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.NumberOfElements = NumberOfElements;
         }
     }
 }

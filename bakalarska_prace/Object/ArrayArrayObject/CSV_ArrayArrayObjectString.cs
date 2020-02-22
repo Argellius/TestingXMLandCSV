@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace bakalarska_prace.ArrayArrayObject
 {
@@ -14,11 +10,11 @@ namespace bakalarska_prace.ArrayArrayObject
         private int pocetPrvkuVKolekci;
         private int pocetPrvkuVPosledniKolekci;
 
-        public CSV_ArrayArrayObjectString(int NumberOfElements)
+        public CSV_ArrayArrayObjectString()
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.pocetKolekci = 0;
+            this.pocetPrvkuVKolekci = 0;
+            this.pocetPrvkuVPosledniKolekci = 0;
         }
 
         private void Inicialize(bool Write)
@@ -55,9 +51,9 @@ namespace bakalarska_prace.ArrayArrayObject
         public void CSV_WriteArrayArrayObjectString()
         {
             StringBuilder.AppendLine("ID, Money, Age, Children, FirstName, FamilyName, PIN, Residence, Ready, License, Indisposed");
-            foreach(RecordOfEmployee[] array in ArrayArrayObject)
+            foreach (RecordOfEmployee[] array in ArrayArrayObject)
             {
-                foreach(RecordOfEmployee record in array)
+                foreach (RecordOfEmployee record in array)
                 {
 
                     StringBuilder.Append(record.ID);
@@ -82,8 +78,8 @@ namespace bakalarska_prace.ArrayArrayObject
                     StringBuilder.Append(",");
                     StringBuilder.Append(record.Indisposed);
                     StringBuilder.AppendLine();
-                }                
-                    StringBuilder.AppendLine();
+                }
+                StringBuilder.AppendLine();
             }
             StringWriter.Write(StringBuilder);
         }
@@ -160,5 +156,13 @@ namespace bakalarska_prace.ArrayArrayObject
         {
             return ToolsGetSizeOfString();
         }
+
+        void ITester.SetNumberOfElements(int NumberOfElements)
+        {
+            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
+            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
+            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+        }
+
     }
 }
