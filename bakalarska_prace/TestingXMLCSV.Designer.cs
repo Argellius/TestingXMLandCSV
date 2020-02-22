@@ -28,27 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestingXMLCSV));
             this.groupBox_testovani = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox_selected = new System.Windows.Forms.ListBox();
             this.treeView_Tests = new System.Windows.Forms.TreeView();
-            this.button_Start = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.aplikaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nastaveníToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox_NumberOfElements = new System.Windows.Forms.TextBox();
-            this.label_numberElements = new System.Windows.Forms.Label();
-            this.label_repeat = new System.Windows.Forms.Label();
-            this.textBox_repeat = new System.Windows.Forms.TextBox();
-            this.zavřítToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metroButton_Start = new MetroFramework.Controls.MetroButton();
+            this.metroLabel_numberElements = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_repeat = new MetroFramework.Controls.MetroLabel();
+            this.metroTextBox_NumberOfElements = new MetroFramework.Controls.MetroTextBox();
+            this.metroTextBox_repeat = new MetroFramework.Controls.MetroTextBox();
             this.groupBox_testovani.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_testovani
@@ -57,7 +48,7 @@
             this.groupBox_testovani.Controls.Add(this.label1);
             this.groupBox_testovani.Controls.Add(this.listBox_selected);
             this.groupBox_testovani.Controls.Add(this.treeView_Tests);
-            this.groupBox_testovani.Location = new System.Drawing.Point(47, 42);
+            this.groupBox_testovani.Location = new System.Drawing.Point(47, 62);
             this.groupBox_testovani.Name = "groupBox_testovani";
             this.groupBox_testovani.Size = new System.Drawing.Size(854, 443);
             this.groupBox_testovani.TabIndex = 0;
@@ -105,119 +96,116 @@
             this.treeView_Tests.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_Tests_AfterCheck_1);
             this.treeView_Tests.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_Tests_AfterSelect_1);
             // 
-            // button_Start
+            // metroButton_Start
             // 
-            this.button_Start.Location = new System.Drawing.Point(64, 547);
-            this.button_Start.Name = "button_Start";
-            this.button_Start.Size = new System.Drawing.Size(222, 23);
-            this.button_Start.TabIndex = 1;
-            this.button_Start.Text = "Start";
-            this.button_Start.UseVisualStyleBackColor = true;
-            this.button_Start.Click += new System.EventHandler(this.button_Start_Click);
+            this.metroButton_Start.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton_Start.Highlight = true;
+            this.metroButton_Start.Location = new System.Drawing.Point(67, 568);
+            this.metroButton_Start.Name = "metroButton_Start";
+            this.metroButton_Start.Size = new System.Drawing.Size(143, 23);
+            this.metroButton_Start.TabIndex = 8;
+            this.metroButton_Start.Text = "Spustit";
+            this.metroButton_Start.UseSelectable = true;
+            this.metroButton_Start.Click += new System.EventHandler(this.button_Start_Click);
             // 
-            // contextMenuStrip1
+            // metroLabel_numberElements
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 26);
+            this.metroLabel_numberElements.AutoSize = true;
+            this.metroLabel_numberElements.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_numberElements.Location = new System.Drawing.Point(67, 511);
+            this.metroLabel_numberElements.Name = "metroLabel_numberElements";
+            this.metroLabel_numberElements.Size = new System.Drawing.Size(91, 19);
+            this.metroLabel_numberElements.TabIndex = 9;
+            this.metroLabel_numberElements.Text = "Počet prvků";
             // 
-            // menuToolStripMenuItem
+            // metroLabel_repeat
             // 
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.menuToolStripMenuItem.Text = "Menu";
+            this.metroLabel_repeat.AutoSize = true;
+            this.metroLabel_repeat.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_repeat.Location = new System.Drawing.Point(67, 538);
+            this.metroLabel_repeat.Name = "metroLabel_repeat";
+            this.metroLabel_repeat.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel_repeat.TabIndex = 10;
+            this.metroLabel_repeat.Text = "Počet opakování";
             // 
-            // menuStrip1
+            // metroTextBox_NumberOfElements
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aplikaceToolStripMenuItem,
-            this.nastaveníToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(936, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
             // 
-            // aplikaceToolStripMenuItem
             // 
-            this.aplikaceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zavřítToolStripMenuItem});
-            this.aplikaceToolStripMenuItem.Name = "aplikaceToolStripMenuItem";
-            this.aplikaceToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.aplikaceToolStripMenuItem.Text = "Aplikace";
             // 
-            // nastaveníToolStripMenuItem
+            this.metroTextBox_NumberOfElements.CustomButton.Image = null;
+            this.metroTextBox_NumberOfElements.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.metroTextBox_NumberOfElements.CustomButton.Name = "";
+            this.metroTextBox_NumberOfElements.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox_NumberOfElements.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox_NumberOfElements.CustomButton.TabIndex = 1;
+            this.metroTextBox_NumberOfElements.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox_NumberOfElements.CustomButton.UseSelectable = true;
+            this.metroTextBox_NumberOfElements.CustomButton.Visible = false;
+            this.metroTextBox_NumberOfElements.Lines = new string[0];
+            this.metroTextBox_NumberOfElements.Location = new System.Drawing.Point(213, 511);
+            this.metroTextBox_NumberOfElements.MaxLength = 32767;
+            this.metroTextBox_NumberOfElements.Name = "metroTextBox_NumberOfElements";
+            this.metroTextBox_NumberOfElements.PasswordChar = '\0';
+            this.metroTextBox_NumberOfElements.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox_NumberOfElements.SelectedText = "";
+            this.metroTextBox_NumberOfElements.SelectionLength = 0;
+            this.metroTextBox_NumberOfElements.SelectionStart = 0;
+            this.metroTextBox_NumberOfElements.ShortcutsEnabled = true;
+            this.metroTextBox_NumberOfElements.Size = new System.Drawing.Size(100, 23);
+            this.metroTextBox_NumberOfElements.TabIndex = 11;
+            this.metroTextBox_NumberOfElements.UseSelectable = true;
+            this.metroTextBox_NumberOfElements.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox_NumberOfElements.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            this.nastaveníToolStripMenuItem.Name = "nastaveníToolStripMenuItem";
-            this.nastaveníToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.nastaveníToolStripMenuItem.Text = "Nastavení";
+            // metroTextBox_repeat
             // 
-            // textBox_NumberOfElements
             // 
-            this.textBox_NumberOfElements.Location = new System.Drawing.Point(186, 490);
-            this.textBox_NumberOfElements.Name = "textBox_NumberOfElements";
-            this.textBox_NumberOfElements.Size = new System.Drawing.Size(100, 20);
-            this.textBox_NumberOfElements.TabIndex = 4;
             // 
-            // label_numberElements
             // 
-            this.label_numberElements.AutoSize = true;
-            this.label_numberElements.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label_numberElements.Location = new System.Drawing.Point(64, 491);
-            this.label_numberElements.Name = "label_numberElements";
-            this.label_numberElements.Size = new System.Drawing.Size(84, 16);
-            this.label_numberElements.TabIndex = 5;
-            this.label_numberElements.Text = "Počet prvků";
-            // 
-            // label_repeat
-            // 
-            this.label_repeat.AutoSize = true;
-            this.label_repeat.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label_repeat.Location = new System.Drawing.Point(64, 522);
-            this.label_repeat.Name = "label_repeat";
-            this.label_repeat.Size = new System.Drawing.Size(116, 16);
-            this.label_repeat.TabIndex = 7;
-            this.label_repeat.Text = "Počet opakování";
-            // 
-            // textBox_repeat
-            // 
-            this.textBox_repeat.Location = new System.Drawing.Point(186, 518);
-            this.textBox_repeat.Name = "textBox_repeat";
-            this.textBox_repeat.Size = new System.Drawing.Size(100, 20);
-            this.textBox_repeat.TabIndex = 6;
-            // 
-            // zavřítToolStripMenuItem
-            // 
-            this.zavřítToolStripMenuItem.Name = "zavřítToolStripMenuItem";
-            this.zavřítToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.zavřítToolStripMenuItem.Text = "Zavřít";
-            this.zavřítToolStripMenuItem.Click += new System.EventHandler(this.zavřítToolStripMenuItem_Click);
+            this.metroTextBox_repeat.CustomButton.Image = null;
+            this.metroTextBox_repeat.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.metroTextBox_repeat.CustomButton.Name = "";
+            this.metroTextBox_repeat.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox_repeat.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox_repeat.CustomButton.TabIndex = 1;
+            this.metroTextBox_repeat.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox_repeat.CustomButton.UseSelectable = true;
+            this.metroTextBox_repeat.CustomButton.Visible = false;
+            this.metroTextBox_repeat.Lines = new string[0];
+            this.metroTextBox_repeat.Location = new System.Drawing.Point(213, 540);
+            this.metroTextBox_repeat.MaxLength = 32767;
+            this.metroTextBox_repeat.Name = "metroTextBox_repeat";
+            this.metroTextBox_repeat.PasswordChar = '\0';
+            this.metroTextBox_repeat.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox_repeat.SelectedText = "";
+            this.metroTextBox_repeat.SelectionLength = 0;
+            this.metroTextBox_repeat.SelectionStart = 0;
+            this.metroTextBox_repeat.ShortcutsEnabled = true;
+            this.metroTextBox_repeat.Size = new System.Drawing.Size(100, 23);
+            this.metroTextBox_repeat.TabIndex = 12;
+            this.metroTextBox_repeat.UseSelectable = true;
+            this.metroTextBox_repeat.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox_repeat.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // TestingXMLCSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 614);
-            this.Controls.Add(this.label_repeat);
-            this.Controls.Add(this.textBox_repeat);
-            this.Controls.Add(this.label_numberElements);
-            this.Controls.Add(this.textBox_NumberOfElements);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.button_Start);
+            this.ClientSize = new System.Drawing.Size(958, 614);
+            this.Controls.Add(this.metroTextBox_repeat);
+            this.Controls.Add(this.metroTextBox_NumberOfElements);
+            this.Controls.Add(this.metroLabel_repeat);
+            this.Controls.Add(this.metroLabel_numberElements);
+            this.Controls.Add(this.metroButton_Start);
             this.Controls.Add(this.groupBox_testovani);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "TestingXMLCSV";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Testing XML and CSV";
             this.Load += new System.EventHandler(this.TestingXMLCSV_Load);
             this.groupBox_testovani.ResumeLayout(false);
             this.groupBox_testovani.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,20 +214,14 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox_testovani;
-        private System.Windows.Forms.Button button_Start;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem aplikaceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nastaveníToolStripMenuItem;
         private System.Windows.Forms.TreeView treeView_Tests;
         private System.Windows.Forms.ListBox listBox_selected;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox_NumberOfElements;
-        private System.Windows.Forms.Label label_numberElements;
-        private System.Windows.Forms.Label label_repeat;
-        private System.Windows.Forms.TextBox textBox_repeat;
-        private System.Windows.Forms.ToolStripMenuItem zavřítToolStripMenuItem;
+        private MetroFramework.Controls.MetroButton metroButton_Start;
+        private MetroFramework.Controls.MetroLabel metroLabel_numberElements;
+        private MetroFramework.Controls.MetroLabel metroLabel_repeat;
+        private MetroFramework.Controls.MetroTextBox metroTextBox_NumberOfElements;
+        private MetroFramework.Controls.MetroTextBox metroTextBox_repeat;
     }
 }

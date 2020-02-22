@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace bakalarska_prace
 {
-    public partial class TestingXMLCSV : Form
+    public partial class TestingXMLCSV : MetroFramework.Forms.MetroForm
     {
         private Tools_Vysledky tools_Vysledky;
         public TestingXMLCSV()
@@ -220,10 +220,10 @@ namespace bakalarska_prace
 
             foreach (TreeViewItem node in listBox_selected.Items)
             {
-                (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(textBox_NumberOfElements.Text));
+                (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(metroLabel_numberElements.Text));
             }
 
-            tools_Vysledky.pocetPrvku = Convert.ToInt32(textBox_NumberOfElements.Text);
+            tools_Vysledky.pocetPrvku = Convert.ToInt32(metroLabel_repeat.Text);
             tools_Vysledky.pocetTestu = 0;
 
             foreach (TreeViewItem node in listBox_selected.Items)
@@ -258,6 +258,11 @@ namespace bakalarska_prace
         private void zavřítToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
