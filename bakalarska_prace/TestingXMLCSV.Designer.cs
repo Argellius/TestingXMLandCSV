@@ -39,13 +39,13 @@
             this.metroLabel_repeat = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox_NumberOfElements = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_repeat = new MetroFramework.Controls.MetroTextBox();
-            this.metroUserControl1 = new MetroFramework.Controls.MetroUserControl();
+            this.userControl_Result1 = new bakalarska_prace.UserControl_Result();
             this.groupBox_testovani.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_testovani
             // 
-            this.groupBox_testovani.Controls.Add(this.metroUserControl1);
+            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
             this.groupBox_testovani.Controls.Add(this.label2);
             this.groupBox_testovani.Controls.Add(this.label1);
             this.groupBox_testovani.Controls.Add(this.listBox_selected);
@@ -192,13 +192,14 @@
             this.metroTextBox_repeat.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_repeat.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroUserControl1
+            // userControl_Result1
             // 
-            this.metroUserControl1.Location = new System.Drawing.Point(-6, 0);
-            this.metroUserControl1.Name = "metroUserControl1";
-            this.metroUserControl1.Size = new System.Drawing.Size(854, 554);
-            this.metroUserControl1.TabIndex = 6;
-            this.metroUserControl1.UseSelectable = true;
+            this.userControl_Result1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.userControl_Result1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControl_Result1.Location = new System.Drawing.Point(3, 16);
+            this.userControl_Result1.Name = "userControl_Result1";
+            this.userControl_Result1.Size = new System.Drawing.Size(848, 424);
+            this.userControl_Result1.TabIndex = 10;
             // 
             // TestingXMLCSV
             // 
@@ -207,10 +208,10 @@
             this.ClientSize = new System.Drawing.Size(958, 614);
             this.Controls.Add(this.metroTextBox_repeat);
             this.Controls.Add(this.metroTextBox_NumberOfElements);
-            this.Controls.Add(this.metroLabel_repeat);
-            this.Controls.Add(this.metroLabel_numberElements);
             this.Controls.Add(this.metroButton_Start);
             this.Controls.Add(this.groupBox_testovani);
+            this.Controls.Add(this.metroLabel_numberElements);
+            this.Controls.Add(this.metroLabel_repeat);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TestingXMLCSV";
@@ -235,6 +236,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel_repeat;
         private MetroFramework.Controls.MetroTextBox metroTextBox_NumberOfElements;
         private MetroFramework.Controls.MetroTextBox metroTextBox_repeat;
-        private MetroFramework.Controls.MetroUserControl metroUserControl1;
+        private UserControl_Result userControl_Result1;
     }
 }

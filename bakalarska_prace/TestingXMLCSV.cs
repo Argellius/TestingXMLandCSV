@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace bakalarska_prace
 {
-    public partial class TestingXMLCSV : MetroFramework.Forms.MetroForm
+    public partial class TestingXMLCSV : Form
     {
         private Tools_Vysledky tools_Vysledky;
         public TestingXMLCSV()
@@ -209,7 +209,7 @@ namespace bakalarska_prace
         private void button_Start_Click(object sender, EventArgs e)
         {
 
-            foreach (TreeViewItem node in listBox_selected.Items)
+            /*foreach (TreeViewItem node in listBox_selected.Items)
             {
                 (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(metroLabel_numberElements.Text));
             }
@@ -231,9 +231,10 @@ namespace bakalarska_prace
                 (node.Tag as ITester).SetupReadEnd();
                 tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ TEST", test, (node.Tag as ITester).GetSize());
                 test = new TimeSpan(0);
-            }
+            }*/
 
-            MessageBox.Show("Done");
+            userControl_Result1.BringToFront();
+
         }
 
         private static TimeSpan OtestujZmer(Action method)

@@ -144,6 +144,12 @@
     <Compile Include="Tools.cs" />
     <Compile Include="Tools_Vysledky.cs" />
     <Compile Include="TreeViewItem.cs" />
+    <Compile Include="UserControl_Result.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_Result.Designer.cs">
+      <DependentUpon>UserControl_Result.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -156,6 +162,9 @@
     </Compile>
     <EmbeddedResource Include="TestingXMLCSV.resx">
       <DependentUpon>TestingXMLCSV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_Result.resx">
+      <DependentUpon>UserControl_Result.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
