@@ -194,7 +194,8 @@
             // 
             // userControl_Result1
             // 
-            this.userControl_Result1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.userControl_Result1.AutoScroll = true;
+            this.userControl_Result1.BackColor = System.Drawing.Color.LightGray;
             this.userControl_Result1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userControl_Result1.Location = new System.Drawing.Point(3, 16);
             this.userControl_Result1.Name = "userControl_Result1";
@@ -205,6 +206,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(958, 614);
             this.Controls.Add(this.metroTextBox_repeat);
             this.Controls.Add(this.metroTextBox_NumberOfElements);

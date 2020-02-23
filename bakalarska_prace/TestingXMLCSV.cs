@@ -18,6 +18,8 @@ namespace bakalarska_prace
         {
             InitializeComponent();
             tools_Vysledky = new Tools_Vysledky();
+            userControl_Result1.SendToBack();
+            userControl_Result1.Visible = false;
 
         }
 
@@ -64,7 +66,17 @@ namespace bakalarska_prace
 
         }
 
+        private void VisibleComponentsForTesting(bool visible)
+        {
+            metroLabel_numberElements.Visible = visible;
+            metroLabel_repeat.Visible = visible;
 
+            metroButton_Start.Visible = visible;
+
+            metroTextBox_NumberOfElements.Visible = visible;
+            metroTextBox_repeat.Visible = visible;
+
+        }
 
         private void TestingXMLCSV_Load(object sender, EventArgs e)
         {
@@ -232,8 +244,11 @@ namespace bakalarska_prace
                 tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ TEST", test, (node.Tag as ITester).GetSize());
                 test = new TimeSpan(0);
             }*/
-
+            this.VisibleComponentsForTesting(false);
+            userControl_Result1.SetNumberOfTests(Convert.ToInt32(metroTextBox_repeat.Text));
+            userControl_Result1.Visible = true;
             userControl_Result1.BringToFront();
+
 
         }
 
