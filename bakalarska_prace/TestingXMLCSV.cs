@@ -21,7 +21,7 @@ namespace bakalarska_prace
 
         }
 
-        private void TreeView_AddItems(TreeView tree, string name_first_node, string name_second_node, List<ITester> tests)
+        /*private void TreeView_AddItems(TreeView tree, string name_first_node, string name_second_node, List<ITester> tests)
         {
             TreeNode node2 = new TreeNode(name_second_node);
             tests.ForEach(item =>
@@ -39,102 +39,129 @@ namespace bakalarska_prace
             node1.Nodes.Add(node2);
             tree.Nodes.Add(node1);
 
-        }
+        }*/
+        private void TreeView_AddItems(TreeView tree, string name_first_node, List<ITester> tests)
+        {
+            List<TreeNode> nodes = new List<TreeNode>();
+            tests.ForEach(item =>
+            {
+                nodes.Add(new TreeNode() { Text = item.GetType().Name, Name = item.GetType().Name, Tag = item, });
+            });
 
+            foreach (TreeNode node in tree.Nodes)
+            {
+                if (node.Name == name_first_node)
+                {
+                    node.Nodes.AddRange(nodes.ToArray());
+                    return;
+                }
+            }
+
+            TreeNode node2 = new TreeNode() { Name = name_first_node, Text = name_first_node };
+            node2.Nodes.AddRange(nodes.ToArray());
+            tree.Nodes.Add(node2);
+
+
+        }
 
 
 
         private void TestingXMLCSV_Load(object sender, EventArgs e)
         {
-            TreeView_AddItems(treeView_Tests, "Array", "Integer", new List<ITester> {
-                    new ArrayInteger.XML_ArrayIntegerFile(),
+            TreeView_AddItems(treeView_Tests, "Array", new List<ITester> {
                     new ArrayInteger.XML_ArrayIntegerString(),
+                    new ArrayInteger.XML_ArrayIntegerFile(),
                     new ArrayInteger.XML_ArrayIntegerNuget(),
+                    new ArrayInteger.CSV_ArrayIntegerString(),
                     new ArrayInteger.CSV_ArrayIntegerFile(),
                     new ArrayInteger.CSV_ArrayIntegerNuget(),
-                    new ArrayInteger.CSV_ArrayIntegerString(),
+
             });
 
-            TreeView_AddItems(treeView_Tests, "List", "Integer", new List<ITester> {
+            TreeView_AddItems(treeView_Tests, "List", new List<ITester> {
+                    new ListInteger.CSV_ListIntegerString(),
                     new ListInteger.CSV_ListIntegerFile(),
                     new ListInteger.CSV_ListIntegerNuget(),
-                    new ListInteger.CSV_ListIntegerString(),
+                    new ListInteger.XML_ListIntegerString(),
                     new ListInteger.XML_ListIntegerFile(),
                     new ListInteger.XML_ListIntegerNuget(),
-                    new ListInteger.XML_ListIntegerString(),
+
             });
 
-            TreeView_AddItems(treeView_Tests, "ArrayList", "Integer", new List<ITester> {
+            TreeView_AddItems(treeView_Tests, "ArrayList", new List<ITester> {
+                new ArrayListInteger.CSV_ArrayListIntegerString(),
                     new ArrayListInteger.CSV_ArrayListIntegerFile(),
                     new ArrayListInteger.CSV_ArrayListIntegerNuget(),
-                    new ArrayListInteger.CSV_ArrayListIntegerString(),
+                    new ArrayListInteger.XML_ArrayListIntegerString(),
                     new ArrayListInteger.XML_ArrayListIntegerFile(),
                     new ArrayListInteger.XML_ArrayListIntegerNuget(),
-                    new ArrayListInteger.XML_ArrayListIntegerString(),
             });
 
-            TreeView_AddItems(treeView_Tests, "ArrayArray", "Integer", new List<ITester> {
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerFile(),
+            TreeView_AddItems(treeView_Tests, "ArrayArray", new List<ITester> {
                     new ArrayArrayInteger.CSV_ArrayArrayIntegerString(),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerFile(),
                     new ArrayArrayInteger.CSV_ArrayArrayIntegerNuget(),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerFile(),
                     new ArrayArrayInteger.XML_ArrayArrayIntegerString(),
+                    new ArrayArrayInteger.XML_ArrayArrayIntegerFile(),
                     new ArrayArrayInteger.XML_ArrayArrayIntegerNuget(),
             });
 
-            TreeView_AddItems(treeView_Tests, "ListList", "Integer", new List<ITester> {
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerFile(),
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerString(),
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerNuget(),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerFile(),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerString(),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerNuget(),
+            TreeView_AddItems(treeView_Tests, "ListList", new List<ITester> {
+                    new ListListInteger.CSV_ListListIntegerString(),
+                    new ListListInteger.CSV_ListListIntegerFile(),
+                    new ListListInteger.CSV_ListListIntegerNuget(),
+                    new ListListInteger.XML_ListListIntegerString(),
+                    new ListListInteger.XML_ListListIntegerFile(),
+                    new ListListInteger.XML_ListListIntegerNuget(),
             });
 
             //---
 
-            TreeView_AddItems(treeView_Tests, "Array", "Object", new List<ITester> {
-                    new ArrayObject.XML_ArrayObjectFile(),
+            TreeView_AddItems(treeView_Tests, "Array", new List<ITester> {
                     new ArrayObject.XML_ArrayObjectString(),
+                    new ArrayObject.XML_ArrayObjectFile(),
                     new ArrayObject.XML_ArrayObjectNuget(),
+                    new ArrayObject.CSV_ArrayObjectString(),
                     new ArrayObject.CSV_ArrayObjectFile(),
                     new ArrayObject.CSV_ArrayObjectNuget(),
-                    new ArrayObject.CSV_ArrayObjectString(),
+
             });
 
-            TreeView_AddItems(treeView_Tests, "List", "Object", new List<ITester> {
+            TreeView_AddItems(treeView_Tests, "List", new List<ITester> {
+                    new ListObject.CSV_ListObjectString(),
                     new ListObject.CSV_ListObjectFile(),
                     new ListObject.CSV_ListObjectNuget(),
-                    new ListObject.CSV_ListObjectString(),
+                    new ListObject.XML_ListObjectString(),
                     new ListObject.XML_ListObjectFile(),
                     new ListObject.XML_ListObjectNuget(),
-                    new ListObject.XML_ListObjectString(),
+
             });
 
-            TreeView_AddItems(treeView_Tests, "ArrayList", "Object", new List<ITester> {
+            TreeView_AddItems(treeView_Tests, "ArrayList", new List<ITester> {
+                    new ArrayListObject.CSV_ArrayListObjectString(),
                     new ArrayListObject.CSV_ArrayListObjectFile(),
                     new ArrayListObject.CSV_ArrayListObjectNuget(),
-                    new ArrayListObject.CSV_ArrayListObjectString(),
+                    new ArrayListObject.XML_ArrayListObjectString(),
                     new ArrayListObject.XML_ArrayListObjectFile(),
                     new ArrayListObject.XML_ArrayListObjectNuget(),
-                    new ArrayListObject.XML_ArrayListObjectString(),
+
             });
 
-            TreeView_AddItems(treeView_Tests, "ArrayArray", "Object", new List<ITester> {
-                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(),
+            TreeView_AddItems(treeView_Tests, "ArrayArray", new List<ITester> {
                     new ArrayArrayObject.CSV_ArrayArrayObjectString(),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(),
                     new ArrayArrayObject.CSV_ArrayArrayObjectNuget(),
-                    new ArrayArrayObject.XML_ArrayArrayObjectFile(),
                     new ArrayArrayObject.XML_ArrayArrayObjectString(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectFile(),
                     new ArrayArrayObject.XML_ArrayArrayObjectNuget(),
             });
 
-            TreeView_AddItems(treeView_Tests, "ListList", "Object", new List<ITester> {
-                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(),
+            TreeView_AddItems(treeView_Tests, "ListList", new List<ITester> {
                     new ArrayArrayObject.CSV_ArrayArrayObjectString(),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(),
                     new ArrayArrayObject.CSV_ArrayArrayObjectNuget(),
-                    new ArrayArrayObject.XML_ArrayArrayObjectFile(),
                     new ArrayArrayObject.XML_ArrayArrayObjectString(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectFile(),
                     new ArrayArrayObject.XML_ArrayArrayObjectNuget(),
             });
 
@@ -152,43 +179,20 @@ namespace bakalarska_prace
             if (e.Node.Nodes.Count > 0)
                 CheckAllChildNodes(e.Node, e.Node.Checked);
 
-            if (e.Node.Parent != null && e.Node.Parent.Checked == false)
+            if (e.Node.Parent != null && e.Node.Parent.Nodes.Count > 0 && e.Node.Parent.Checked == false)
             {
-                if (AllChildChecked(e.Node.Parent))
-                    e.Node.Parent.Checked = true;
+                foreach (TreeNode node in e.Node.Parent.Nodes)
+                    if (node.Checked == false)
+                        return;
+                e.Node.Parent.Checked = true;
             }
 
-            if (e.Node.Level == 2 && e.Node.Checked)
-                listBox_selected.Items.Add(new TreeViewItem(e.Node));
-            else if (e.Node.Level == 2 && e.Node.Checked == false)
-            {
-                foreach (TreeViewItem item in listBox_selected.Items)
-                {
-                    if (item.Text == e.Node.Text)
-                    {
-                        listBox_selected.Items.Remove(item);
-                        break;
-                    }
-                }
-            }
+            e.Node.TreeView.SelectedNode = null;
+
+
 
         }
 
-        private bool AllChildChecked(TreeNode currentNode)
-        {
-            bool res = true;
-
-            foreach (TreeNode node in currentNode.Nodes)
-            {
-                res = node.Checked;
-                if (!res) break;
-
-                res = this.AllChildChecked(node);
-                if (!res) break;
-            }
-
-            return res;
-        }
 
         private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)
         {
@@ -202,21 +206,8 @@ namespace bakalarska_prace
         }
 
 
-        private void treeView_Tests_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            e.Node.TreeView.SelectedNode = null;
-        }
-
-        private void treeView_Tests_AfterSelect_1(object sender, TreeViewEventArgs e)
-        {
-            if (e.Node.Checked)
-                e.Node.Checked = false;
-            else
-                e.Node.Checked = true;
-        }
-
         private void button_Start_Click(object sender, EventArgs e)
-        {           
+        {
 
             foreach (TreeViewItem node in listBox_selected.Items)
             {
@@ -255,14 +246,15 @@ namespace bakalarska_prace
 
         }
 
-        private void zavřítToolStripMenuItem_Click(object sender, EventArgs e)
+        private void treeView_Tests_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            e.Node.Checked = false;
+            e.Cancel = true;
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void treeView_Tests_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-
+            e.Node.TreeView.SelectedNode = null;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace bakalarska_prace.ListListInteger
         private int pocetPrvkuVPosledniKolekci;
         private SharpSerializer XML_SharpSerializer;
 
-        public XML_ListListIntegerNuget(int NumberOfElements)
+        public XML_ListListIntegerNuget()
         {
             this.pocetKolekci = 0;
             this.pocetPrvkuVKolekci = 0;
