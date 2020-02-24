@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestingXMLCSV));
             this.groupBox_testovani = new System.Windows.Forms.GroupBox();
+            this.metroButton_checkAll = new MetroFramework.Controls.MetroButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox_selected = new System.Windows.Forms.ListBox();
             this.treeView_Tests = new System.Windows.Forms.TreeView();
-            this.userControl_Result1 = new bakalarska_prace.UserControl_Result();
             this.metroButton_Start = new MetroFramework.Controls.MetroButton();
             this.metroLabel_numberElements = new MetroFramework.Controls.MetroLabel();
             this.metroLabel_repeat = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox_NumberOfElements = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_repeat = new MetroFramework.Controls.MetroTextBox();
-            this.metroButton_checkAll = new MetroFramework.Controls.MetroButton();
+            this.userControl_Result1 = new bakalarska_prace.UserControl_Result();
             this.groupBox_testovani.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,18 +52,28 @@
             this.groupBox_testovani.Controls.Add(this.listBox_selected);
             this.groupBox_testovani.Controls.Add(this.treeView_Tests);
             this.groupBox_testovani.Controls.Add(this.userControl_Result1);
-            this.groupBox_testovani.Location = new System.Drawing.Point(47, 51);
+            this.groupBox_testovani.Location = new System.Drawing.Point(47, 63);
             this.groupBox_testovani.Name = "groupBox_testovani";
-            this.groupBox_testovani.Size = new System.Drawing.Size(854, 443);
+            this.groupBox_testovani.Size = new System.Drawing.Size(830, 518);
             this.groupBox_testovani.TabIndex = 0;
             this.groupBox_testovani.TabStop = false;
             this.groupBox_testovani.Text = "Testování";
+            // 
+            // metroButton_checkAll
+            // 
+            this.metroButton_checkAll.Location = new System.Drawing.Point(345, 18);
+            this.metroButton_checkAll.Name = "metroButton_checkAll";
+            this.metroButton_checkAll.Size = new System.Drawing.Size(75, 23);
+            this.metroButton_checkAll.TabIndex = 11;
+            this.metroButton_checkAll.Text = "Check All";
+            this.metroButton_checkAll.UseSelectable = true;
+            this.metroButton_checkAll.Click += new System.EventHandler(this.metroButton_checkAll_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(453, 38);
+            this.label2.Location = new System.Drawing.Point(453, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(185, 16);
             this.label2.TabIndex = 5;
@@ -73,7 +83,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(14, 38);
+            this.label1.Location = new System.Drawing.Point(14, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 16);
             this.label1.TabIndex = 4;
@@ -84,9 +94,9 @@
             this.listBox_selected.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.listBox_selected.FormattingEnabled = true;
             this.listBox_selected.ItemHeight = 17;
-            this.listBox_selected.Location = new System.Drawing.Point(456, 63);
+            this.listBox_selected.Location = new System.Drawing.Point(456, 50);
             this.listBox_selected.Name = "listBox_selected";
-            this.listBox_selected.Size = new System.Drawing.Size(332, 361);
+            this.listBox_selected.Size = new System.Drawing.Size(368, 463);
             this.listBox_selected.TabIndex = 3;
             // 
             // treeView_Tests
@@ -94,29 +104,19 @@
             this.treeView_Tests.CheckBoxes = true;
             this.treeView_Tests.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView_Tests.HideSelection = false;
-            this.treeView_Tests.Location = new System.Drawing.Point(17, 60);
+            this.treeView_Tests.Location = new System.Drawing.Point(6, 47);
             this.treeView_Tests.Name = "treeView_Tests";
-            this.treeView_Tests.Size = new System.Drawing.Size(403, 367);
+            this.treeView_Tests.Size = new System.Drawing.Size(414, 465);
             this.treeView_Tests.TabIndex = 2;
             this.treeView_Tests.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_Tests_AfterCheck_1);
             this.treeView_Tests.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_Tests_BeforeSelect);
             this.treeView_Tests.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_Tests_NodeMouseDoubleClick);
             // 
-            // userControl_Result1
-            // 
-            this.userControl_Result1.AutoScroll = true;
-            this.userControl_Result1.BackColor = System.Drawing.Color.LightGray;
-            this.userControl_Result1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControl_Result1.Location = new System.Drawing.Point(3, 16);
-            this.userControl_Result1.Name = "userControl_Result1";
-            this.userControl_Result1.Size = new System.Drawing.Size(848, 424);
-            this.userControl_Result1.TabIndex = 10;
-            // 
             // metroButton_Start
             // 
             this.metroButton_Start.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.metroButton_Start.Highlight = true;
-            this.metroButton_Start.Location = new System.Drawing.Point(67, 568);
+            this.metroButton_Start.Location = new System.Drawing.Point(67, 644);
             this.metroButton_Start.Name = "metroButton_Start";
             this.metroButton_Start.Size = new System.Drawing.Size(143, 23);
             this.metroButton_Start.TabIndex = 8;
@@ -128,7 +128,7 @@
             // 
             this.metroLabel_numberElements.AutoSize = true;
             this.metroLabel_numberElements.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel_numberElements.Location = new System.Drawing.Point(67, 511);
+            this.metroLabel_numberElements.Location = new System.Drawing.Point(67, 587);
             this.metroLabel_numberElements.Name = "metroLabel_numberElements";
             this.metroLabel_numberElements.Size = new System.Drawing.Size(91, 19);
             this.metroLabel_numberElements.TabIndex = 9;
@@ -138,7 +138,7 @@
             // 
             this.metroLabel_repeat.AutoSize = true;
             this.metroLabel_repeat.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel_repeat.Location = new System.Drawing.Point(67, 538);
+            this.metroLabel_repeat.Location = new System.Drawing.Point(67, 614);
             this.metroLabel_repeat.Name = "metroLabel_repeat";
             this.metroLabel_repeat.Size = new System.Drawing.Size(122, 19);
             this.metroLabel_repeat.TabIndex = 10;
@@ -159,7 +159,7 @@
             this.metroTextBox_NumberOfElements.CustomButton.UseSelectable = true;
             this.metroTextBox_NumberOfElements.CustomButton.Visible = false;
             this.metroTextBox_NumberOfElements.Lines = new string[0];
-            this.metroTextBox_NumberOfElements.Location = new System.Drawing.Point(213, 511);
+            this.metroTextBox_NumberOfElements.Location = new System.Drawing.Point(213, 587);
             this.metroTextBox_NumberOfElements.MaxLength = 32767;
             this.metroTextBox_NumberOfElements.Name = "metroTextBox_NumberOfElements";
             this.metroTextBox_NumberOfElements.PasswordChar = '\0';
@@ -189,7 +189,7 @@
             this.metroTextBox_repeat.CustomButton.UseSelectable = true;
             this.metroTextBox_repeat.CustomButton.Visible = false;
             this.metroTextBox_repeat.Lines = new string[0];
-            this.metroTextBox_repeat.Location = new System.Drawing.Point(213, 540);
+            this.metroTextBox_repeat.Location = new System.Drawing.Point(213, 616);
             this.metroTextBox_repeat.MaxLength = 32767;
             this.metroTextBox_repeat.Name = "metroTextBox_repeat";
             this.metroTextBox_repeat.PasswordChar = '\0';
@@ -204,21 +204,21 @@
             this.metroTextBox_repeat.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_repeat.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroButton_checkAll
+            // userControl_Result1
             // 
-            this.metroButton_checkAll.Location = new System.Drawing.Point(345, 31);
-            this.metroButton_checkAll.Name = "metroButton_checkAll";
-            this.metroButton_checkAll.Size = new System.Drawing.Size(75, 23);
-            this.metroButton_checkAll.TabIndex = 11;
-            this.metroButton_checkAll.Text = "Check All";
-            this.metroButton_checkAll.UseSelectable = true;
-            this.metroButton_checkAll.Click += new System.EventHandler(this.metroButton_checkAll_Click);
+            this.userControl_Result1.AutoScroll = true;
+            this.userControl_Result1.BackColor = System.Drawing.Color.LightGray;
+            this.userControl_Result1.Location = new System.Drawing.Point(6, 18);
+            this.userControl_Result1.Name = "userControl_Result1";
+            this.userControl_Result1.Size = new System.Drawing.Size(818, 499);
+            this.userControl_Result1.TabIndex = 10;
             // 
             // TestingXMLCSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 614);
+            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(927, 683);
             this.Controls.Add(this.metroTextBox_repeat);
             this.Controls.Add(this.metroTextBox_NumberOfElements);
             this.Controls.Add(this.metroButton_Start);
@@ -227,6 +227,7 @@
             this.Controls.Add(this.metroLabel_repeat);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(927, 585);
             this.Name = "TestingXMLCSV";
             this.Text = "Testing XML and CSV";
             this.Load += new System.EventHandler(this.TestingXMLCSV_Load);
@@ -249,7 +250,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel_repeat;
         private MetroFramework.Controls.MetroTextBox metroTextBox_NumberOfElements;
         private MetroFramework.Controls.MetroTextBox metroTextBox_repeat;
-        private UserControl_Result userControl_Result1;
         private MetroFramework.Controls.MetroButton metroButton_checkAll;
+        private UserControl_Result userControl_Result1;
     }
 }
