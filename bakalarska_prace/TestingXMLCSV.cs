@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace bakalarska_prace
 {
-    public partial class TestingXMLCSV : Form
+    public partial class TestingXMLCSV : MetroFramework.Forms.MetroForm
     {
         private Tools_Vysledky tools_Vysledky;
         public TestingXMLCSV()
@@ -20,6 +20,8 @@ namespace bakalarska_prace
             tools_Vysledky = new Tools_Vysledky();
             userControl_Result1.SendToBack();
             userControl_Result1.Visible = false;
+            
+
 
         }
 
@@ -169,20 +171,24 @@ namespace bakalarska_prace
             });
 
             TreeView_AddItems(treeView_Tests, "ListList", new List<ITester> {
-                    new ArrayArrayObject.CSV_ArrayArrayObjectString(),
-                    new ArrayArrayObject.CSV_ArrayArrayObjectFile(),
-                    new ArrayArrayObject.CSV_ArrayArrayObjectNuget(),
-                    new ArrayArrayObject.XML_ArrayArrayObjectString(),
-                    new ArrayArrayObject.XML_ArrayArrayObjectFile(),
-                    new ArrayArrayObject.XML_ArrayArrayObjectNuget(),
+                    new ListListObject.CSV_ListListObjectString(),
+                    new ListListObject.CSV_ListListObjectFile(),
+                    new ListListObject.CSV_ListListObjectNuget(),
+                    new ListListObject.XML_ListListObjectString(),
+                    new ListListObject.XML_ListListObjectFile(),
+                    new ListListObject.XML_ListListObjectNuget(),
             });
 
+
+            //uncheck root
             treeView_Tests.SelectedNode = null;
             treeView_Tests.Nodes[0].Checked = false;
         }
 
         private async void treeView_Tests_AfterCheck_1(object sender, TreeViewEventArgs e)
         {
+
+            //Uspání TreeView z důvodu nesprávnému fungování, když se zasebou rychle checkuje jeden uzel
             e.Node.TreeView.Enabled = false;
             await Task.Delay(200);
             e.Node.TreeView.Enabled = true;
@@ -191,18 +197,29 @@ namespace bakalarska_prace
             if (e.Node.Nodes.Count > 0)
                 CheckAllChildNodes(e.Node, e.Node.Checked);
 
-            if (e.Node.Parent != null && e.Node.Parent.Nodes.Count > 0 && e.Node.Parent.Checked == false)
+            if (e.Node.Level == 1 && e.Node.Checked == true) // přidání do listboxu
+                listBox_selected.Items.Add(new TreeViewItem(e.Node));
+            else if ((e.Node.Level == 1 && e.Node.Checked == false))
+                foreach (TreeViewItem item in listBox_selected.Items) // odebrání z listboxu
+                {
+                    if (item.Text == e.Node.Text)
+                    {
+                        listBox_selected.Items.Remove(item);
+                        break;
+                    }
+                }
+
+            //zrušení výběru
+            e.Node.TreeView.SelectedNode = null;
+
+            //zaškrtnutí parent node, když jeho všechny děti jsou checked
+            if (e.Node.Parent != null && e.Node.Parent.Nodes.Count > 0 && e.Node.Parent.Checked)
             {
                 foreach (TreeNode node in e.Node.Parent.Nodes)
                     if (node.Checked == false)
                         return;
                 e.Node.Parent.Checked = true;
             }
-
-            e.Node.TreeView.SelectedNode = null;
-
-
-
         }
 
 
@@ -221,14 +238,15 @@ namespace bakalarska_prace
         private void button_Start_Click(object sender, EventArgs e)
         {
 
-            /*foreach (TreeViewItem node in listBox_selected.Items)
+            foreach (TreeViewItem node in listBox_selected.Items)
             {
-                (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(metroLabel_numberElements.Text));
+                (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(metroTextBox_NumberOfElements.Text));
             }
 
-            tools_Vysledky.pocetPrvku = Convert.ToInt32(metroLabel_repeat.Text);
-            tools_Vysledky.pocetTestu = 0;
+            tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
+            tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
 
+            for(int i =0; i < tools_Vysledky.pocetTestu; i++)
             foreach (TreeViewItem node in listBox_selected.Items)
             {
                 (node.Tag as ITester).SetupWriteStart();
@@ -243,9 +261,11 @@ namespace bakalarska_prace
                 (node.Tag as ITester).SetupReadEnd();
                 tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ TEST", test, (node.Tag as ITester).GetSize());
                 test = new TimeSpan(0);
-            }*/
+            }
+
             this.VisibleComponentsForTesting(false);
             userControl_Result1.SetNumberOfTests(Convert.ToInt32(metroTextBox_repeat.Text));
+            userControl_Result1.InitGridView_ToolsVysledky(tools_Vysledky);
             userControl_Result1.Visible = true;
             userControl_Result1.BringToFront();
 
@@ -271,6 +291,13 @@ namespace bakalarska_prace
         private void treeView_Tests_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             e.Node.TreeView.SelectedNode = null;
+        }
+
+        private void metroButton_checkAll_Click(object sender, EventArgs e)
+        {
+            foreach (TreeNode node in treeView_Tests.Nodes)
+                if (node.Checked != true)
+                    node.Checked = true;
         }
     }
 }

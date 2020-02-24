@@ -34,22 +34,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listBox_selected = new System.Windows.Forms.ListBox();
             this.treeView_Tests = new System.Windows.Forms.TreeView();
+            this.userControl_Result1 = new bakalarska_prace.UserControl_Result();
             this.metroButton_Start = new MetroFramework.Controls.MetroButton();
             this.metroLabel_numberElements = new MetroFramework.Controls.MetroLabel();
             this.metroLabel_repeat = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox_NumberOfElements = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_repeat = new MetroFramework.Controls.MetroTextBox();
-            this.userControl_Result1 = new bakalarska_prace.UserControl_Result();
+            this.metroButton_checkAll = new MetroFramework.Controls.MetroButton();
             this.groupBox_testovani.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_testovani
             // 
-            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
+            this.groupBox_testovani.Controls.Add(this.metroButton_checkAll);
             this.groupBox_testovani.Controls.Add(this.label2);
             this.groupBox_testovani.Controls.Add(this.label1);
             this.groupBox_testovani.Controls.Add(this.listBox_selected);
             this.groupBox_testovani.Controls.Add(this.treeView_Tests);
+            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
             this.groupBox_testovani.Location = new System.Drawing.Point(47, 51);
             this.groupBox_testovani.Name = "groupBox_testovani";
             this.groupBox_testovani.Size = new System.Drawing.Size(854, 443);
@@ -99,6 +101,16 @@
             this.treeView_Tests.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_Tests_AfterCheck_1);
             this.treeView_Tests.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_Tests_BeforeSelect);
             this.treeView_Tests.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_Tests_NodeMouseDoubleClick);
+            // 
+            // userControl_Result1
+            // 
+            this.userControl_Result1.AutoScroll = true;
+            this.userControl_Result1.BackColor = System.Drawing.Color.LightGray;
+            this.userControl_Result1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControl_Result1.Location = new System.Drawing.Point(3, 16);
+            this.userControl_Result1.Name = "userControl_Result1";
+            this.userControl_Result1.Size = new System.Drawing.Size(848, 424);
+            this.userControl_Result1.TabIndex = 10;
             // 
             // metroButton_Start
             // 
@@ -192,21 +204,20 @@
             this.metroTextBox_repeat.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_repeat.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // userControl_Result1
+            // metroButton_checkAll
             // 
-            this.userControl_Result1.AutoScroll = true;
-            this.userControl_Result1.BackColor = System.Drawing.Color.LightGray;
-            this.userControl_Result1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControl_Result1.Location = new System.Drawing.Point(3, 16);
-            this.userControl_Result1.Name = "userControl_Result1";
-            this.userControl_Result1.Size = new System.Drawing.Size(848, 424);
-            this.userControl_Result1.TabIndex = 10;
+            this.metroButton_checkAll.Location = new System.Drawing.Point(345, 31);
+            this.metroButton_checkAll.Name = "metroButton_checkAll";
+            this.metroButton_checkAll.Size = new System.Drawing.Size(75, 23);
+            this.metroButton_checkAll.TabIndex = 11;
+            this.metroButton_checkAll.Text = "Check All";
+            this.metroButton_checkAll.UseSelectable = true;
+            this.metroButton_checkAll.Click += new System.EventHandler(this.metroButton_checkAll_Click);
             // 
             // TestingXMLCSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(958, 614);
             this.Controls.Add(this.metroTextBox_repeat);
             this.Controls.Add(this.metroTextBox_NumberOfElements);
@@ -239,5 +250,6 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox_NumberOfElements;
         private MetroFramework.Controls.MetroTextBox metroTextBox_repeat;
         private UserControl_Result userControl_Result1;
+        private MetroFramework.Controls.MetroButton metroButton_checkAll;
     }
 }

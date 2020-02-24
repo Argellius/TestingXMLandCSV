@@ -45,21 +45,23 @@ namespace bakalarska_prace.ListListInteger
         }
         public void CSV_WriteListListIntegerString()
         {
-            StringBuilder.AppendLine("Integer");
-            foreach (List<int> List_Item in ListListInteger)
+            foreach (List<Int32> list in ListListInteger)
             {
-                foreach (int Item in List_Item)
+                foreach (var (value, index) in list.Select((v, i) => (v, i)))
                 {
-                    StringBuilder.AppendLine(Item.ToString());
-                }
-                StringBuilder.AppendLine(";");
+                    if (index != 0)
+                        StringBuilder.Append(";");
+                    StringBuilder.Append(value);
 
+                }
+                StringBuilder.AppendLine();
             }
             StringWriter.Write(StringBuilder);
         }
 
         public void CSV_ReadListListIntegerString()
         {
+
             while (StringReader.Peek() > 0)
             {
                 string line = StringReader.ReadLine();

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,8 +21,6 @@ namespace bakalarska_prace
             this.time = time;
             this.size = size;
         }
-
-
 
     }
 
@@ -45,12 +45,18 @@ namespace bakalarska_prace
 
         }
 
+        public List<Zaznam> GetListZaznamy()
+        {
+            return LZaznamy;
+        }
+
+
         public void ExportToCSVFile()
         {
             StringBuilder printString = new StringBuilder();
             var results = LZaznamy.GroupBy(
             p => p.name,
-            (key, g) => new { Name = key, Properties = g.ToList() });
+            (key, g) => new { Name = key, Properties = g.ToList() }).ToList();
 
             printString.Append(",");
             for (int i = 1; i <= pocetTestu; i++)
@@ -79,73 +85,87 @@ namespace bakalarska_prace
 
         }
 
-
-        public void Print()
+        public void ExportToExcelFile(DataTable dt)
         {
-            StringBuilder printString = new StringBuilder();
-            var results = LZaznamy.GroupBy(
-            p => p.name,
-            (key, g) => new { Name = key, Properties = g.ToList() });
-
-            foreach (var result in results)
+            //Codes for the Closed XML
+            using (XLWorkbook wb = new XLWorkbook())
             {
-                printString.Append(result.Name);
-                foreach (var it in result.Properties)
-                {
-                    printString.Append(";");
-                    printString.Append(it.time.TotalMilliseconds);
-                    printString.Append(";");
-                    printString.Append(it.size);
-                }
-                printString.AppendLine();
-
+                wb.Worksheets.Add(dt, dt.TableName);
+                wb.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                wb.Style.Font.Bold = true;
+                wb.SaveAs("exportExcel" + ".xlsx");
             }
-            Console.WriteLine(printString);
         }
 
-        /* public void Print()
-         {
+    
 
-             foreach (Record it_record in List_Records)
-             {
-                 Console.WriteLine(it_record.name);
-                 foreach (double it in it_record.List_Time)
-                 {
-                     Console.WriteLine(it);
-                 }
-             }
-         }
 
-         public void Zapis_Vysledku(int pocet_prvku, int pocet_prvku_v_kolekci, int pocet_testu)
-         {
+    public void Print()
+    {
+        StringBuilder printString = new StringBuilder();
+        var results = LZaznamy.GroupBy(
+        p => p.name,
+        (key, g) => new { Name = key, Properties = g.ToList() });
 
-             using (var sw = new StreamWriter(@"..\..\..\Testing_Files\VysledkyTools.csv"))
-             {
-                 StringBuilder _string = new StringBuilder();
-                 _string.Append("Pocet prvku:;");
-                 _string.Append(pocet_prvku);
-                 _string.Append(";");
-                 _string.Append("Pocet prvku v kolekci:;");
-                 _string.Append(pocet_prvku_v_kolekci);
-                 _string.Append(";");
-                 _string.Append("Pocet testu:;");
-                 _string.Append(pocet_testu);
-                 _string.AppendLine();
-                 _string.AppendLine();
+        foreach (var result in results)
+        {
+            printString.Append(result.Name);
+            foreach (var it in result.Properties)
+            {
+                printString.Append(";");
+                printString.Append(it.time.TotalMilliseconds);
+                printString.Append(";");
+                printString.Append(it.size);
+            }
+            printString.AppendLine();
 
-                 foreach (var it in List_Records)
-                 {
-
-                     _string.Append(it.name);
-                     _string.Append(";");
-                     foreach (Double record in it.List_Time)
-                         _string.Append(record.ToString() + ";");
-                     _string.AppendLine();
-                 }
-                 sw.Write(_string);
-             }
-         }
-
-     */
+        }
+        Console.WriteLine(printString);
     }
+
+    /* public void Print()
+     {
+
+         foreach (Record it_record in List_Records)
+         {
+             Console.WriteLine(it_record.name);
+             foreach (double it in it_record.List_Time)
+             {
+                 Console.WriteLine(it);
+             }
+         }
+     }
+
+     public void Zapis_Vysledku(int pocet_prvku, int pocet_prvku_v_kolekci, int pocet_testu)
+     {
+
+         using (var sw = new StreamWriter(@"..\..\..\Testing_Files\VysledkyTools.csv"))
+         {
+             StringBuilder _string = new StringBuilder();
+             _string.Append("Pocet prvku:;");
+             _string.Append(pocet_prvku);
+             _string.Append(";");
+             _string.Append("Pocet prvku v kolekci:;");
+             _string.Append(pocet_prvku_v_kolekci);
+             _string.Append(";");
+             _string.Append("Pocet testu:;");
+             _string.Append(pocet_testu);
+             _string.AppendLine();
+             _string.AppendLine();
+
+             foreach (var it in List_Records)
+             {
+
+                 _string.Append(it.name);
+                 _string.Append(";");
+                 foreach (Double record in it.List_Time)
+                     _string.Append(record.ToString() + ";");
+                 _string.AppendLine();
+             }
+             sw.Write(_string);
+         }
+     }
+
+ */
+}
 }

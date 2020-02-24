@@ -13,7 +13,7 @@ namespace bakalarska_prace.ListListObject
         private int pocetKolekci;
         private int pocetPrvkuVKolekci;
         private int pocetPrvkuVPosledniKolekci;
-        public XML_ListListObjectFile(int NumberOfElements)
+        public XML_ListListObjectFile()
         {
             this.pocetKolekci = 0;
             this.pocetPrvkuVKolekci = 0;

@@ -58,7 +58,7 @@ namespace bakalarska_prace.ListListObject
             var ListObject = new List<RecordOfEmployee>();
             while (csvReader.Read())
             {
-                if (csvReader.Context.Record.Count() > 0) //------
+                if (csvReader.Context.Record.Count() == 0) //------
                 {
                     ListListObject.Add(new List<RecordOfEmployee>(ListObject));
                     ListObject.Clear();
