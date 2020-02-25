@@ -69,7 +69,7 @@ namespace bakalarska_prace
                 variance += Math.Pow((source.ElementAt(i) - GetAverage(source)), 2.0);
             }
 
-            return Math.Round(variance / source.Count());
+            return Math.Round(variance / source.Count(), 5);
 
         }
 

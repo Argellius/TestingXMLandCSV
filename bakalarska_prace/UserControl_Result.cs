@@ -50,6 +50,7 @@ namespace bakalarska_prace
            (key, g) => new { Name = key, Properties = g.ToList() }).OrderBy(s => s.Name.Substring(4));//order by XML_... || CSV_....
 
             table_Statistika = new DataTable("TestingCSVXMLStatistika");
+
             table_Statistika.Columns.Add("Název testu", typeof(string));
             table_Statistika.Columns.Add("Průměrný čas", typeof(decimal));
             table_Statistika.Columns.Add("Průměrná velikost", typeof(decimal));
