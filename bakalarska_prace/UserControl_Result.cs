@@ -29,18 +29,6 @@ namespace bakalarska_prace
             this._vysledky = vysledky;
         }
 
-        public void SetNumberOfTests(int value)
-        {
-            for (int i = 0; i < value; i++)
-            {
-                ;
-                //metroGrid_Result.Columns.Add(String.Format("Collumn_{0}", i + 1), String.Format("{0}.", i + 1));
-            }
-        }
-
-        
-
-
         public void InitGridView_ToolsVysledky_Statistika(Tools_Vysledky _Vysledky)
         {
             var results = _Vysledky.GetListZaznamy().GroupBy(p => p.name,
@@ -50,6 +38,7 @@ namespace bakalarska_prace
             table_Statistika.Columns.Add("Název testu", typeof(string));
             table_Statistika.Columns.Add("Průměr", typeof(decimal));
             table_Statistika.Columns.Add("Median", typeof(decimal));
+            table_Statistika.Columns.Add("Rozptyl", typeof(decimal));
             table_Statistika.Columns.Add("Směrodatná odchylka", typeof(decimal));            
 
             foreach (var result in results)
@@ -58,7 +47,8 @@ namespace bakalarska_prace
                 row[0] = result.Name;
                 row[1] = MyMathLib.GetAverage(result.Properties.Select(r => r.time.TotalMilliseconds));
                 row[2] = MyMathLib.GetMedian(result.Properties.Select(r => r.time.TotalMilliseconds));
-                row[3] = MyMathLib.GetStandardDeviation(result.Properties.Select(r => r.time.TotalMilliseconds));
+                row[3] = MyMathLib.GetVariance(result.Properties.Select(r => r.time.TotalMilliseconds));
+                row[4] = MyMathLib.GetStandardDeviation(result.Properties.Select(r => r.time.TotalMilliseconds));
                 table_Statistika.Rows.Add(row);
             }
 

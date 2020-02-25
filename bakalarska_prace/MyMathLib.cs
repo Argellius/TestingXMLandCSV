@@ -58,6 +58,14 @@ namespace bakalarska_prace
             return Math.Round(source.Average(), 5);
         }
 
+        public static double GetVariance(IEnumerable<double> source)
+        {
+            double variance = source.Sum(t =>
+                Math.Pow(t - GetAverage(source), 2));
+
+            return Math.Round(variance, 5);
+        }
+
 
     }
 }

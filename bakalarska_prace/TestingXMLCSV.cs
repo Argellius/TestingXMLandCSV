@@ -264,7 +264,6 @@ namespace bakalarska_prace
             }
 
             this.VisibleComponentsForTesting(false);
-            userControl_Result1.SetNumberOfTests(Convert.ToInt32(metroTextBox_repeat.Text));
             userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
             userControl_Result1.Visible = true;
             userControl_Result1.BringToFront();

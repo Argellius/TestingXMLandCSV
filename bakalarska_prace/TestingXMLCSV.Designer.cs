@@ -210,7 +210,7 @@
             this.userControl_Result1.BackColor = System.Drawing.Color.White;
             this.userControl_Result1.Location = new System.Drawing.Point(6, 18);
             this.userControl_Result1.Name = "userControl_Result1";
-            this.userControl_Result1.Size = new System.Drawing.Size(824, 499);
+            this.userControl_Result1.Size = new System.Drawing.Size(818, 499);
             this.userControl_Result1.TabIndex = 10;
             // 
             // TestingXMLCSV
