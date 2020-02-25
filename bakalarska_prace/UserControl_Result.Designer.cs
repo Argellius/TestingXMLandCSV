@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroGrid_Result = new MetroFramework.Controls.MetroGrid();
             this.metroButton_ExportCSV = new MetroFramework.Controls.MetroButton();
-            this.metroButton_ExportXML = new MetroFramework.Controls.MetroButton();
+            this.metroButton_ExportExcel = new MetroFramework.Controls.MetroButton();
             this.comboBox_Vyber = new System.Windows.Forms.ComboBox();
-            this.metroTextBox_Vyber = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel__vyber = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid_Result)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,23 +49,23 @@
             this.metroGrid_Result.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid_Result.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid_Result.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid_Result.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid_Result.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.metroGrid_Result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid_Result.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGrid_Result.DefaultCellStyle = dataGridViewCellStyle2;
             this.metroGrid_Result.EnableHeadersVisualStyles = false;
             this.metroGrid_Result.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid_Result.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -74,14 +74,15 @@
             this.metroGrid_Result.Name = "metroGrid_Result";
             this.metroGrid_Result.ReadOnly = true;
             this.metroGrid_Result.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid_Result.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid_Result.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.metroGrid_Result.RowHeadersWidth = 51;
             this.metroGrid_Result.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid_Result.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid_Result.Size = new System.Drawing.Size(824, 382);
@@ -100,69 +101,44 @@
             this.metroButton_ExportCSV.UseSelectable = true;
             this.metroButton_ExportCSV.Click += new System.EventHandler(this.metroButton_ExportCSV_Click);
             // 
-            // metroButton_ExportXML
+            // metroButton_ExportExcel
             // 
-            this.metroButton_ExportXML.Location = new System.Drawing.Point(521, 433);
-            this.metroButton_ExportXML.Name = "metroButton_ExportXML";
-            this.metroButton_ExportXML.Size = new System.Drawing.Size(188, 23);
-            this.metroButton_ExportXML.TabIndex = 2;
-            this.metroButton_ExportXML.Text = "Export do Excelu";
-            this.metroButton_ExportXML.UseSelectable = true;
-            this.metroButton_ExportXML.Click += new System.EventHandler(this.metroButton_ExportXML_Click);
+            this.metroButton_ExportExcel.Location = new System.Drawing.Point(521, 433);
+            this.metroButton_ExportExcel.Name = "metroButton_ExportExcel";
+            this.metroButton_ExportExcel.Size = new System.Drawing.Size(188, 23);
+            this.metroButton_ExportExcel.TabIndex = 2;
+            this.metroButton_ExportExcel.Text = "Export do Excelu";
+            this.metroButton_ExportExcel.UseSelectable = true;
+            this.metroButton_ExportExcel.Click += new System.EventHandler(this.metroButton_ExportXML_Click);
             // 
             // comboBox_Vyber
             // 
+            this.comboBox_Vyber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Vyber.FormattingEnabled = true;
-            this.comboBox_Vyber.Items.AddRange(new object[] {
-            "Mezihodnoty",
-            "Statistika"});
-            this.comboBox_Vyber.Location = new System.Drawing.Point(132, 11);
+            this.comboBox_Vyber.Location = new System.Drawing.Point(162, 11);
             this.comboBox_Vyber.Name = "comboBox_Vyber";
             this.comboBox_Vyber.Size = new System.Drawing.Size(162, 21);
             this.comboBox_Vyber.TabIndex = 3;
             this.comboBox_Vyber.SelectedIndexChanged += new System.EventHandler(this.comboBox_Vyber_SelectedIndexChanged);
             // 
-            // metroTextBox_Vyber
+            // metroLabel__vyber
             // 
-            this.metroTextBox_Vyber.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            // 
-            // 
-            // 
-            this.metroTextBox_Vyber.CustomButton.Image = null;
-            this.metroTextBox_Vyber.CustomButton.Location = new System.Drawing.Point(60, 1);
-            this.metroTextBox_Vyber.CustomButton.Name = "";
-            this.metroTextBox_Vyber.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox_Vyber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox_Vyber.CustomButton.TabIndex = 1;
-            this.metroTextBox_Vyber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox_Vyber.CustomButton.UseSelectable = true;
-            this.metroTextBox_Vyber.CustomButton.Visible = false;
-            this.metroTextBox_Vyber.Lines = new string[] {
-        "Výběr hodnot:"};
-            this.metroTextBox_Vyber.Location = new System.Drawing.Point(32, 9);
-            this.metroTextBox_Vyber.MaxLength = 32767;
-            this.metroTextBox_Vyber.Name = "metroTextBox_Vyber";
-            this.metroTextBox_Vyber.PasswordChar = '\0';
-            this.metroTextBox_Vyber.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox_Vyber.SelectedText = "";
-            this.metroTextBox_Vyber.SelectionLength = 0;
-            this.metroTextBox_Vyber.SelectionStart = 0;
-            this.metroTextBox_Vyber.ShortcutsEnabled = true;
-            this.metroTextBox_Vyber.Size = new System.Drawing.Size(82, 23);
-            this.metroTextBox_Vyber.TabIndex = 4;
-            this.metroTextBox_Vyber.Text = "Výběr hodnot:";
-            this.metroTextBox_Vyber.UseSelectable = true;
-            this.metroTextBox_Vyber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox_Vyber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroLabel__vyber.AutoSize = true;
+            this.metroLabel__vyber.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel__vyber.Location = new System.Drawing.Point(34, 11);
+            this.metroLabel__vyber.Name = "metroLabel__vyber";
+            this.metroLabel__vyber.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel__vyber.TabIndex = 10;
+            this.metroLabel__vyber.Text = "Typ hodnot:";
             // 
             // UserControl_Result
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Controls.Add(this.metroTextBox_Vyber);
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.metroLabel__vyber);
             this.Controls.Add(this.comboBox_Vyber);
-            this.Controls.Add(this.metroButton_ExportXML);
+            this.Controls.Add(this.metroButton_ExportExcel);
             this.Controls.Add(this.metroButton_ExportCSV);
             this.Controls.Add(this.metroGrid_Result);
             this.Name = "UserControl_Result";
@@ -170,6 +146,7 @@
             this.Load += new System.EventHandler(this.UserControl_Result_Load);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid_Result)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -177,8 +154,8 @@
 
         private MetroFramework.Controls.MetroGrid metroGrid_Result;
         private MetroFramework.Controls.MetroButton metroButton_ExportCSV;
-        private MetroFramework.Controls.MetroButton metroButton_ExportXML;
+        private MetroFramework.Controls.MetroButton metroButton_ExportExcel;
         private System.Windows.Forms.ComboBox comboBox_Vyber;
-        private MetroFramework.Controls.MetroTextBox metroTextBox_Vyber;
+        private MetroFramework.Controls.MetroLabel metroLabel__vyber;
     }
 }
