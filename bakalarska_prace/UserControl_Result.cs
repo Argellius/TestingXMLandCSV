@@ -16,6 +16,7 @@ namespace bakalarska_prace
         DataTable table;
         public UserControl_Result()
         {
+            
             InitializeComponent();
         }
 
@@ -37,10 +38,10 @@ namespace bakalarska_prace
             }
         }
 
-        public static decimal GetMedian(IEnumerable<decimal> source)
+        public static double GetMedian(IEnumerable<double> source)
         {
             // Create a copy of the input, and sort the copy
-            decimal[] temp = source.ToArray();
+            double[] temp = source.ToArray();
             Array.Sort(temp);
 
             int count = temp.Length;
@@ -51,9 +52,9 @@ namespace bakalarska_prace
             else if (count % 2 == 0)
             {
                 // count is even, average two middle elements
-                int a = temp[count / 2 - 1];
-                int b = temp[count / 2];
-                return (a + b) / 2m;
+                double a = temp[count / 2 - 1];
+                double b = temp[count / 2];
+                return (a + b) / 2.0;
             }
             else
             {
