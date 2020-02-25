@@ -46,12 +46,12 @@
             // 
             // groupBox_testovani
             // 
+            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
             this.groupBox_testovani.Controls.Add(this.metroButton_checkAll);
             this.groupBox_testovani.Controls.Add(this.label2);
             this.groupBox_testovani.Controls.Add(this.label1);
             this.groupBox_testovani.Controls.Add(this.listBox_selected);
             this.groupBox_testovani.Controls.Add(this.treeView_Tests);
-            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
             this.groupBox_testovani.Location = new System.Drawing.Point(47, 63);
             this.groupBox_testovani.Name = "groupBox_testovani";
             this.groupBox_testovani.Size = new System.Drawing.Size(830, 518);
@@ -207,10 +207,10 @@
             // userControl_Result1
             // 
             this.userControl_Result1.AutoScroll = true;
-            this.userControl_Result1.BackColor = System.Drawing.Color.LightGray;
+            this.userControl_Result1.BackColor = System.Drawing.Color.White;
             this.userControl_Result1.Location = new System.Drawing.Point(6, 18);
             this.userControl_Result1.Name = "userControl_Result1";
-            this.userControl_Result1.Size = new System.Drawing.Size(818, 499);
+            this.userControl_Result1.Size = new System.Drawing.Size(824, 499);
             this.userControl_Result1.TabIndex = 10;
             // 
             // TestingXMLCSV

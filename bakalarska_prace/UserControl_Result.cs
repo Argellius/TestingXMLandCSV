@@ -13,7 +13,8 @@ namespace bakalarska_prace
     public partial class UserControl_Result : UserControl
     {
         Tools_Vysledky _vysledky;
-        DataTable table;
+        DataTable table_Mezivysledky;
+        DataTable table_Statistika;
         public UserControl_Result()
         {
             InitializeComponent();
@@ -37,62 +38,33 @@ namespace bakalarska_prace
             }
         }
 
-        public static decimal GetMedian(IEnumerable<decimal> source)
-        {
-            // Create a copy of the input, and sort the copy
-            decimal[] temp = source.ToArray();
-            Array.Sort(temp);
+        
 
-            int count = temp.Length;
-            if (count == 0)
-            {
-                throw new InvalidOperationException("Empty collection");
-            }
-            else if (count % 2 == 0)
-            {
-                // count is even, average two middle elements
-                int a = temp[count / 2 - 1];
-                int b = temp[count / 2];
-                return (a + b) / 2m;
-            }
-            else
-            {
-                // count is odd, return the middle element
-                return temp[count / 2];
-            }
-        }
 
         public void InitGridView_ToolsVysledky_Statistika(Tools_Vysledky _Vysledky)
         {
             var results = _Vysledky.GetListZaznamy().GroupBy(p => p.name,
            (key, g) => new { Name = key, Properties = g.ToList() }).OrderBy(s => s.Name.Substring(4));//order by XML_... || CSV_....
 
-            DataTable table = new DataTable("TestingCSVXMLStatistika");
-            DataColumn column_nazev = new DataColumn("Název testu");
-            column_nazev.DataType = typeof(string);
-            table.Columns.Add(column_nazev);
-            //Založení sloupců
-            DataColumn column_prumer = new DataColumn("Průměr");
-            column_nazev.DataType = typeof(string);
-            table.Columns.Add(column_prumer);
-
-            DataColumn column_median = new DataColumn("Median");
-            column_nazev.DataType = typeof(string);
-            table.Columns.Add(column_median);
-
+            table_Statistika = new DataTable("TestingCSVXMLStatistika");
+            table_Statistika.Columns.Add("Název testu", typeof(string));
+            table_Statistika.Columns.Add("Průměr", typeof(decimal));
+            table_Statistika.Columns.Add("Median", typeof(decimal));
+            table_Statistika.Columns.Add("Směrodatná odchylka", typeof(decimal));            
 
             foreach (var result in results)
             {
-                DataRow row = table.NewRow();
+                DataRow row = table_Statistika.NewRow();
                 row[0] = result.Name;
-                row[1] = result.Properties.Select(r => r.time.TotalMilliseconds).Average();
-                row[2] = GetMedian(result.Properties.Select(r => r.time.TotalMilliseconds));
-                table.Rows.Add(row);
-
+                row[1] = MyMathLib.GetAverage(result.Properties.Select(r => r.time.TotalMilliseconds));
+                row[2] = MyMathLib.GetMedian(result.Properties.Select(r => r.time.TotalMilliseconds));
+                row[3] = MyMathLib.GetStandardDeviation(result.Properties.Select(r => r.time.TotalMilliseconds));
+                table_Statistika.Rows.Add(row);
             }
 
-            metroGrid_Result.DataSource = table;
-
+            metroGrid_Result.DataSource = table_Statistika;
+            for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
+                metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         //Init gridview
@@ -107,46 +79,46 @@ namespace bakalarska_prace
 
 
             //Inicializace tabulky
-            table = new DataTable("TestingCSVXML");
+            table_Mezivysledky = new DataTable("TestingCSVXML");
             DataColumn column_nazev = new DataColumn("Název testu");
             column_nazev.DataType = typeof(string);
-            table.Columns.Add(column_nazev);
+            table_Mezivysledky.Columns.Add(column_nazev);
 
             //Založení sloupců
             for (int i = 0; i < _Vysledky.pocetTestu; i++)
             {
                 DataColumn column = new DataColumn(String.Format("{0}.", i + 1));
                 column.DataType = typeof(Decimal);
-                table.Columns.Add(column);
+                table_Mezivysledky.Columns.Add(column);
                 DataColumn column2 = new DataColumn(String.Format("Size_{0}.", i + 1));
                 column2.DataType = typeof(int);
-                table.Columns.Add(column2);
+                table_Mezivysledky.Columns.Add(column2);
             }
 
             //Přidání řádků s daty
             foreach (var result in results)
             {
-                DataRow row = table.NewRow();
+                DataRow row = table_Mezivysledky.NewRow();
                 row[0] = result.Name;
                 for (int i = 0; i < result.Properties.Count; i++)
                 {
                     row[i * 2 + 1] = result.Properties[i].time.TotalMilliseconds;
                     row[i * 2 + 2] = result.Properties[i].size;
                 }
-                table.Rows.Add(row);
+                table_Mezivysledky.Rows.Add(row);
 
             }
 
 
-            if (table.Columns.Count > 100)
+            if (table_Mezivysledky.Columns.Count > 100)
             {
                 var copyDt = new DataTable();
                 for (var i = 0; i < 101; i++)
                 {
-                    copyDt.Columns.Add(table.Columns[i].ColumnName, table.Columns[i].DataType);
+                    copyDt.Columns.Add(table_Mezivysledky.Columns[i].ColumnName, table_Mezivysledky.Columns[i].DataType);
                 }
                 copyDt.BeginLoadData();
-                foreach (DataRow dr in table.Rows)
+                foreach (DataRow dr in table_Mezivysledky.Rows)
                 {
                     copyDt.Rows.Add(Enumerable.Range(0, 101).Select(i => dr[i]).ToArray());
                 }
@@ -157,7 +129,7 @@ namespace bakalarska_prace
                 metroGrid_Result.DataSource = copyDt;
             }
             else
-                metroGrid_Result.DataSource = table;
+                metroGrid_Result.DataSource = table_Mezivysledky;
 
 
             //Autosize šířky sloupců
@@ -167,21 +139,25 @@ namespace bakalarska_prace
 
         private void metroGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-
-
-
+            metroGrid_Result.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+          
         }
 
         private void metroButton_ExportCSV_Click(object sender, EventArgs e)
         {
-            _vysledky.ExportToCSVFile();
+            if (comboBox_Vyber.SelectedIndex == 0)
+                _vysledky.ExportToCSVFile(table_Mezivysledky);
+            else
+                _vysledky.ExportToCSVFile(table_Statistika);            
             MessageBox.Show("Done");
         }
 
         private void metroButton_ExportXML_Click(object sender, EventArgs e)
         {
-            _vysledky.ExportToExcelFile(table);
+            if (comboBox_Vyber.SelectedIndex == 0)
+            _vysledky.ExportToExcelFile(table_Mezivysledky);
+            else
+                _vysledky.ExportToExcelFile(table_Statistika);
         }
 
         private void metroGrid_Result_ColumnAdded(object sender, DataGridViewColumnEventArgs e)

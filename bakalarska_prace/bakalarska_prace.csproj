@@ -123,6 +123,7 @@
     <Compile Include="Integer\ListListInteger\XML_ListListIntegerNuget.cs" />
     <Compile Include="Integer\ListListInteger\XML_ListListIntegerString.cs" />
     <Compile Include="ITester.cs" />
+    <Compile Include="MyMathLib.cs" />
     <Compile Include="Object\ArrayArrayObject\CSV_ArrayArraylistObjectFile.cs" />
     <Compile Include="Object\ArrayArrayObject\CSV_ArrayArrayObjectNuget.cs" />
     <Compile Include="Object\ArrayArrayObject\CSV_ArrayArrayObjectString.cs" />

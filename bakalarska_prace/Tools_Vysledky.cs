@@ -51,37 +51,21 @@ namespace bakalarska_prace
         }
 
 
-        public void ExportToCSVFile()
+        public void ExportToCSVFile(DataTable dt)
         {
-            StringBuilder printString = new StringBuilder();
-            var results = LZaznamy.GroupBy(
-            p => p.name,
-            (key, g) => new { Name = key, Properties = g.ToList() }).ToList();
+            StringBuilder sb = new StringBuilder();
 
-            printString.Append(",");
-            for (int i = 1; i <= pocetTestu; i++)
-                printString.Append(i + ",,");
-            printString.AppendLine();
+            IEnumerable<string> columnNames = dt.Columns.Cast<DataColumn>().
+                                              Select(column => column.ColumnName);
+            sb.AppendLine(string.Join(",", columnNames));
 
-
-            foreach (var result in results)
+            foreach (DataRow row in dt.Rows)
             {
-                printString.Append(result.Name);
-                foreach (var it in result.Properties)
-                {
-                    printString.Append(",");
-                    printString.Append(it.time.TotalMilliseconds);
-                    printString.Append(",");
-                    printString.Append(it.size);
-                }
-                printString.AppendLine();
-
+                IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                sb.AppendLine(string.Join(",", fields));
             }
 
-            using (var streamWriter = new StreamWriter("exportCSV" + ".csv"))
-            {
-                streamWriter.Write(printString);
-            }
+            File.WriteAllText("exportCSV.csv", sb.ToString());
 
         }
 
