@@ -94,6 +94,7 @@ namespace bakalarska_prace
             {
                 if (StringBuilder.Length > 0)
                     StringBuilder.Clear();
+                this.StreamWriter.Flush();
                 this.StreamWriter.Close();
                 this.StreamWriter.Dispose();
 
@@ -102,6 +103,7 @@ namespace bakalarska_prace
             {
                 if (StringBuilder.Length > 0)
                     StringBuilder.Clear();
+                this.StreamReader.BaseStream.Flush();
                 this.StreamReader.Close();
                 this.StreamReader.Dispose();
             }
@@ -112,15 +114,15 @@ namespace bakalarska_prace
             if (Write)
             {
                 this.StringData = StringWriter.ToString();
-                StringBuilder.Clear();
+                StringBuilder.Clear();                
                 StringWriter.Close();
                 StringWriter.Dispose();
             }
             else
             {
                 this.StringData = string.Empty;
-                StringBuilder.Clear();
-                this.StringReader.Close();
+                this.StringBuilder.Clear();
+                this.StringReader.Close();                
                 this.StringReader.Dispose();
             }
         }
@@ -145,7 +147,9 @@ namespace bakalarska_prace
 
         protected long ToolsGetSizeOfString()
         {
-            return StringWriter.GetStringBuilder().Length;
+            var length = StringWriter.GetStringBuilder().Length;
+            StringWriter.Flush();
+            return length;
 
         }
 
