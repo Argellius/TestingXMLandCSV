@@ -8,7 +8,7 @@ namespace bakalarska_prace.ListListObject
 {
     class CSV_ListListObjectFile : Tools, ITester
     {
-        private List<List<RecordOfEmployee>>ListListObject;
+        private List<List<RecordOfEmployee>> ListListObject;
         private int pocetKolekci;
         private int pocetPrvkuVKolekci;
         private int pocetPrvkuVPosledniKolekci;
@@ -23,6 +23,7 @@ namespace bakalarska_prace.ListListObject
 
         private void Inicialize(bool Write)
         {
+
             ListListObject = new List<List<RecordOfEmployee>>();
 
             if (Write)
@@ -41,6 +42,7 @@ namespace bakalarska_prace.ListListObject
                     ListListObject.Add(new List<RecordOfEmployee>(List_Object));
                 }
             }
+            ;
         }
 
         public void CSV_WriteListListObjectFile()
@@ -74,7 +76,7 @@ namespace bakalarska_prace.ListListObject
                     StringBuilder.AppendLine();
                 }
                 StringBuilder.AppendLine();
-            }          
+            }
             StreamWriter.Write(StringBuilder);
 
         }

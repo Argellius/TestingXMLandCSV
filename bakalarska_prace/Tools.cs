@@ -90,10 +90,21 @@ namespace bakalarska_prace
 
         protected void ToolsSetupEndFile(bool Write)
         {
-            if (Write)               
-                    this.StreamWriter.Close();
+            if (Write)
+            {
+                if (StringBuilder.Length > 0)
+                    StringBuilder.Clear();
+                this.StreamWriter.Close();
+                this.StreamWriter.Dispose();
+
+            }
             else
+            {
+                if (StringBuilder.Length > 0)
+                    StringBuilder.Clear();
                 this.StreamReader.Close();
+                this.StreamReader.Dispose();
+            }
         }
 
         protected void ToolsSetupEndString(bool Write)
@@ -103,11 +114,13 @@ namespace bakalarska_prace
                 this.StringData = StringWriter.ToString();
                 StringBuilder.Clear();
                 StringWriter.Close();
+                StringWriter.Dispose();
             }
             else
             {
-                this.StringData = string.Empty;
+                this.StringData = string.Empty;                
                 this.StringReader.Close();
+                this.StringReader.Dispose();
             }
         }
 
