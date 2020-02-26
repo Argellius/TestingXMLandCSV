@@ -73,10 +73,11 @@ namespace bakalarska_prace.ListListObject
                     StringBuilder.Append(it.Indisposed);
                     StringBuilder.AppendLine();
                 }
-                StringBuilder.AppendLine(";");
-
+                StringBuilder.AppendLine();
             }
+            StringWriter.Write(StringBuilder);
         }
+
         public void CSV_ReadListListObjectString()
         {
             List<RecordOfEmployee> List_Obj = new List<RecordOfEmployee>();
@@ -86,34 +87,35 @@ namespace bakalarska_prace.ListListObject
             while (StringReader.Peek() > 0)
             {
                 String[] values = null;
-                RecordOfEmployee Employee = new RecordOfEmployee(false);
-
+                RecordOfEmployee Zamestnanec = new RecordOfEmployee(false);
                 line = StringReader.ReadLine();
-                if (line != ";")
-                    values = line.Split(',');
-                else if (line == ";")
+                if (line == String.Empty)
                 {
                     ListListObject.Add(List_Obj);
                     List_Obj = new List<RecordOfEmployee>();
                     continue;
                 }
                 else
-                    return;
+                {
+                    values = line.Split(',');
+                }
+                
 
-                Employee = new RecordOfEmployee(false);
-                Employee.ID = Convert.ToInt64(values[0]);
-                Employee.Money = Convert.ToInt64(values[1]);
-                Employee.Age = Convert.ToInt64(values[2]);
-                Employee.Children = Convert.ToInt64(values[3]);
-                Employee.FirstName = values[4];
-                Employee.FamilyName = values[5];
-                Employee.PIN = values[6];
-                Employee.Residence = values[7];
-                Employee.Ready = bool.Parse(values[8]);
-                Employee.License = bool.Parse(values[9]);
-                Employee.Indisposed = bool.Parse(values[10]);
-                List_Obj.Add(Employee);
+                Zamestnanec = new RecordOfEmployee(false);
+                Zamestnanec.ID = Convert.ToInt64(values[0]);
+                Zamestnanec.Money = Convert.ToInt64(values[1]);
+                Zamestnanec.Age = Convert.ToInt64(values[2]);
+                Zamestnanec.Children = Convert.ToInt64(values[3]);
+                Zamestnanec.FirstName = values[4];
+                Zamestnanec.FamilyName = values[5];
+                Zamestnanec.PIN = values[6];
+                Zamestnanec.Residence = values[7];
+                Zamestnanec.Ready = bool.Parse(values[8]);
+                Zamestnanec.License = bool.Parse(values[9]);
+                Zamestnanec.Indisposed = bool.Parse(values[10]);
+                List_Obj.Add(Zamestnanec);
             }
+            ;
         }
 
 

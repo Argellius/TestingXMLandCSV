@@ -73,7 +73,7 @@ namespace bakalarska_prace.ListListObject
                     StringBuilder.Append(it.Indisposed);
                     StringBuilder.AppendLine();
                 }
-                StringBuilder.AppendLine(";");
+                StringBuilder.AppendLine();
             }          
             StreamWriter.Write(StringBuilder);
 
@@ -89,16 +89,17 @@ namespace bakalarska_prace.ListListObject
                 String[] values = null;
                 RecordOfEmployee Zamestnanec = new RecordOfEmployee(false);
                 line = StreamReader.ReadLine();
-                if (line != ";")
-                    values = line.Split(',');
-                else if (line == ";")
+                if (line == String.Empty)
                 {
                     ListListObject.Add(List_Obj);
                     List_Obj = new List<RecordOfEmployee>();
                     continue;
                 }
                 else
-                    return;
+                {
+                    values = line.Split(',');
+                }
+
 
                 Zamestnanec = new RecordOfEmployee(false);
                 Zamestnanec.ID = Convert.ToInt64(values[0]);

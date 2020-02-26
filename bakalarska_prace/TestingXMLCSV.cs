@@ -252,14 +252,14 @@ namespace bakalarska_prace
                 (node.Tag as ITester).SetupWriteStart();
                 TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
                 (node.Tag as ITester).SetupWriteEnd();
-                tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE TEST", test, (node.Tag as ITester).GetSize());
+                tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
                 test = new TimeSpan(0);
 
 
                 (node.Tag as ITester).SetupReadStart();
                 test = OtestujZmer((node.Tag as ITester).TestRead);
                 (node.Tag as ITester).SetupReadEnd();
-                tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ TEST", test, (node.Tag as ITester).GetSize());
+                tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
                 test = new TimeSpan(0);
             }
 

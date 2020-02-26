@@ -22,9 +22,11 @@ namespace bakalarska_prace
 
         private void UserControl_Result_Load(object sender, EventArgs e)
         {
+            metroGrid_Result.AlternatingRowsDefaultCellStyle.BackColor = Color.RosyBrown;
+            metroGrid_Result.DefaultCellStyle.ForeColor = Color.Black;
             comboBox_Vyber.Items.Add("Mezivýsledky");
             comboBox_Vyber.Items.Add("Statistika");
-            metroGrid_Result.Font = new Font("Times New Roman", 11, FontStyle.Regular);
+            
 
         }
 
@@ -120,6 +122,7 @@ namespace bakalarska_prace
                 }
                 table_Mezivysledky.Rows.Add(row);
 
+
             }
 
 
@@ -148,6 +151,7 @@ namespace bakalarska_prace
             //Autosize šířky sloupců
             for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
                 metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
         }
 
         private void metroGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
