@@ -118,7 +118,8 @@ namespace bakalarska_prace
             }
             else
             {
-                this.StringData = string.Empty;                
+                this.StringData = string.Empty;
+                StringBuilder.Clear();
                 this.StringReader.Close();
                 this.StringReader.Dispose();
             }
