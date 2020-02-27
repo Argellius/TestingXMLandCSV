@@ -198,6 +198,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Result\exportExcel2.xlsx" />
+    <None Include="Result\exportExcelMeziVysledky.xlsx" />
+    <None Include="Result\exportExcelStatistika.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
