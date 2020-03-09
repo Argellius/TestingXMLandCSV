@@ -9,7 +9,7 @@ namespace bakalarska_prace.ListObject
 {
     class XML_ListObjectString : Tools, ITester
     {
-        private List<RecordOfEmployee> ListObject;
+        private List<EmployeeRecord> ListObject;
         private int NumberOfElements;
 
         public XML_ListObjectString()
@@ -19,10 +19,10 @@ namespace bakalarska_prace.ListObject
 
         private void Inicialize(bool Write)
         {
-            ListObject = new List<RecordOfEmployee>();
+            ListObject = new List<EmployeeRecord>();
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ListObject.Add(new RecordOfEmployee(true));
+                    ListObject.Add(new EmployeeRecord(true));
 
         }
         public void XML_SerializeListObjectString()
@@ -32,7 +32,7 @@ namespace bakalarska_prace.ListObject
 
         public void XML_DeSerializeListObjectString()
         {
-            ListObject = (List<RecordOfEmployee>)XmlSerializer.Deserialize(StringReader);
+            ListObject = (List<EmployeeRecord>)XmlSerializer.Deserialize(StringReader);
         }
 
         void ITester.SetupWriteStart()

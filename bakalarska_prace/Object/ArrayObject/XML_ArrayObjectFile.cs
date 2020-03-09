@@ -9,7 +9,7 @@ namespace bakalarska_prace.ArrayObject
 {
     class XML_ArrayObjectFile : Tools, ITester
     {
-        private RecordOfEmployee[] ArrayObject;
+        private EmployeeRecord[] ArrayObject;
         private int NumberOfElements;
         
 
@@ -20,21 +20,22 @@ namespace bakalarska_prace.ArrayObject
 
         private void Inicialize(bool Write)
         {
-            ArrayObject = new RecordOfEmployee[this.NumberOfElements];
+            ArrayObject = new EmployeeRecord[this.NumberOfElements];
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayObject[i] = new RecordOfEmployee(true);
+                    ArrayObject[i] = new EmployeeRecord(true);
 
         }
 
-        public void XML_SerializeListListObjectFile()
+        public void XML_SerializeArrayObjectFile()
         {
             XmlSerializer.Serialize(base.StreamWriter, ArrayObject);
         }
 
+
         public void XML_DeSerializeArrayObjectFile()
         {
-            ArrayObject = (RecordOfEmployee[])XmlSerializer.Deserialize(base.StreamReader);
+            ArrayObject = (EmployeeRecord[])XmlSerializer.Deserialize(base.StreamReader);
         }
 
         void ITester.SetupWriteStart()
@@ -58,7 +59,7 @@ namespace bakalarska_prace.ArrayObject
         }
         void ITester.TestWrite()
         {
-            XML_SerializeListListObjectFile();
+            XML_SerializeArrayObjectFile();
         }
         void ITester.TestRead()
         {

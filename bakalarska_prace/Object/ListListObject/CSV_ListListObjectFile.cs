@@ -8,38 +8,38 @@ namespace bakalarska_prace.ListListObject
 {
     class CSV_ListListObjectFile : Tools, ITester
     {
-        private List<List<RecordOfEmployee>> ListListObject;
-        private int pocetKolekci;
-        private int pocetPrvkuVKolekci;
-        private int pocetPrvkuVPosledniKolekci;
+        private List<List<EmployeeRecord>> ListListObject;
+        private int NumberOfCollections;
+        private int ElementsInCollection;
+        private int ElementsInLastCollection;
 
 
         public CSV_ListListObjectFile()
         {
-            this.pocetKolekci = 0;
-            this.pocetPrvkuVKolekci = 0;
-            this.pocetPrvkuVPosledniKolekci = 0;
+            this.NumberOfCollections = 0;
+            this.ElementsInCollection = 0;
+            this.ElementsInLastCollection = 0;
         }
 
         private void Inicialize(bool Write)
         {
 
-            ListListObject = new List<List<RecordOfEmployee>>();
+            ListListObject = new List<List<EmployeeRecord>>();
 
             if (Write)
             {
-                List<RecordOfEmployee> List_Object = new List<RecordOfEmployee>();
-                for (int i = 0; i < pocetPrvkuVKolekci; i++)
-                    List_Object.Add(new RecordOfEmployee(true));
+                List<EmployeeRecord> List_Object = new List<EmployeeRecord>();
+                for (int i = 0; i < ElementsInCollection; i++)
+                    List_Object.Add(new EmployeeRecord(true));
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ListListObject.Add(new List<RecordOfEmployee>(List_Object));
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ListListObject.Add(new List<EmployeeRecord>(List_Object));
                 List_Object.Clear();
-                if (pocetPrvkuVPosledniKolekci > 0)
+                if (ElementsInLastCollection > 0)
                 {
-                    for (int i = 0; i < pocetPrvkuVPosledniKolekci; i++)
-                        List_Object.Add(new RecordOfEmployee(true));
-                    ListListObject.Add(new List<RecordOfEmployee>(List_Object));
+                    for (int i = 0; i < ElementsInLastCollection; i++)
+                        List_Object.Add(new EmployeeRecord(true));
+                    ListListObject.Add(new List<EmployeeRecord>(List_Object));
                 }
             }
             ;
@@ -48,9 +48,9 @@ namespace bakalarska_prace.ListListObject
         public void CSV_WriteListListObjectFile()
         {
             StringBuilder.AppendLine("ID, Money, Age, Children, FirstName, FamilyName, PIN, Residence, Ready, License, Indisposed");
-            foreach (List<RecordOfEmployee> List_Object in ListListObject)
+            foreach (List<EmployeeRecord> List_Object in ListListObject)
             {
-                foreach (RecordOfEmployee it in List_Object)
+                foreach (EmployeeRecord it in List_Object)
                 {
                     StringBuilder.Append(it.ID);
                     StringBuilder.Append(",");
@@ -82,19 +82,19 @@ namespace bakalarska_prace.ListListObject
         }
         public void CSV_ReadListListObjectFile()
         {
-            List<RecordOfEmployee> List_Obj = new List<RecordOfEmployee>();
+            List<EmployeeRecord> List_Obj = new List<EmployeeRecord>();
             //read header
             var line = StreamReader.ReadLine();
 
             while (StreamReader.Peek() > 0)
             {
                 String[] values = null;
-                RecordOfEmployee Zamestnanec = new RecordOfEmployee(false);
+                EmployeeRecord Zamestnanec = new EmployeeRecord(false);
                 line = StreamReader.ReadLine();
                 if (line == String.Empty)
                 {
                     ListListObject.Add(List_Obj);
-                    List_Obj = new List<RecordOfEmployee>();
+                    List_Obj = new List<EmployeeRecord>();
                     continue;
                 }
                 else
@@ -103,11 +103,11 @@ namespace bakalarska_prace.ListListObject
                 }
 
 
-                Zamestnanec = new RecordOfEmployee(false);
-                Zamestnanec.ID = Convert.ToInt64(values[0]);
-                Zamestnanec.Money = Convert.ToInt64(values[1]);
-                Zamestnanec.Age = Convert.ToInt64(values[2]);
-                Zamestnanec.Children = Convert.ToInt64(values[3]);
+                Zamestnanec = new EmployeeRecord(false);
+                Zamestnanec.ID = Convert.ToInt32(values[0]);
+                Zamestnanec.Money = Convert.ToInt32(values[1]);
+                Zamestnanec.Age = Convert.ToInt32(values[2]);
+                Zamestnanec.Children = Convert.ToInt32(values[3]);
                 Zamestnanec.FirstName = values[4];
                 Zamestnanec.FamilyName = values[5];
                 Zamestnanec.PIN = values[6];
@@ -153,9 +153,9 @@ namespace bakalarska_prace.ListListObject
 
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.NumberOfCollections = (int)Math.Sqrt(NumberOfElements);
+            this.ElementsInCollection = NumberOfElements / NumberOfCollections;
+            this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
     }
 }

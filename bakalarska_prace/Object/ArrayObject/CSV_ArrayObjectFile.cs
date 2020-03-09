@@ -8,7 +8,7 @@ namespace bakalarska_prace.ArrayObject
 {
     class CSV_ArrayObjectFile : Tools, ITester
     {
-        private RecordOfEmployee[] ArrayObject;
+        private EmployeeRecord[] ArrayObject;
         private int NumberOfElements;
 
         public CSV_ArrayObjectFile()
@@ -18,10 +18,10 @@ namespace bakalarska_prace.ArrayObject
 
         private void Inicialize(bool Write)
         {
-            ArrayObject = new RecordOfEmployee[this.NumberOfElements];
+            ArrayObject = new EmployeeRecord[this.NumberOfElements];
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayObject[i] = new RecordOfEmployee(true);
+                    ArrayObject[i] = new EmployeeRecord(true);
 
         }
 
@@ -60,7 +60,7 @@ namespace bakalarska_prace.ArrayObject
         }
         public void CSV_ReadArrayObjectFile()
         {
-            RecordOfEmployee EmployeeObj;
+            EmployeeRecord EmployeeObj;
 
             //read header
             base.StreamReader.ReadLine();
@@ -73,13 +73,13 @@ namespace bakalarska_prace.ArrayObject
 
             while (base.StreamReader.Peek() > 0)
             {
-                EmployeeObj = new RecordOfEmployee(false);
+                EmployeeObj = new EmployeeRecord(false);
                 var line = base.StreamReader.ReadLine();
                 var values = line.Split(',');
-                EmployeeObj.ID = Convert.ToInt64(values[0]);
-                EmployeeObj.Money = Convert.ToInt64(values[1]);
-                EmployeeObj.Age = Convert.ToInt64(values[2]);
-                EmployeeObj.Children = Convert.ToInt64(values[3]);
+                EmployeeObj.ID = Convert.ToInt32(values[0]);
+                EmployeeObj.Money = Convert.ToInt32(values[1]);
+                EmployeeObj.Age = Convert.ToInt32(values[2]);
+                EmployeeObj.Children = Convert.ToInt32(values[3]);
                 EmployeeObj.FirstName = values[4];
                 EmployeeObj.FamilyName = values[5];
                 EmployeeObj.PIN = values[6];

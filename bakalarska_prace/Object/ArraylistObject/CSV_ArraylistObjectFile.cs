@@ -23,7 +23,7 @@ namespace bakalarska_prace.ArrayListObject
 
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayListObject.Add(new RecordOfEmployee(true));
+                    ArrayListObject.Add(new EmployeeRecord(true));
         }
 
         public void CSV_WriteArrayListObjectFile()
@@ -31,27 +31,27 @@ namespace bakalarska_prace.ArrayListObject
             StringBuilder.AppendLine("ID, vyplata, pocet_let, pocet_deti, Jmeno, Prijmeni, Rodne_cislo, Bydliste, uzpusobily, ridicak, kurak");
             for (int o = 0; o < ArrayListObject.Count; o++)
             {
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).ID);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).ID);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).Money);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).Money);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).Age);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).Age);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).Children);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).Children);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).FirstName);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).FirstName);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).FamilyName);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).FamilyName);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).PIN);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).PIN);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).Residence);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).Residence);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).Ready);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).Ready);
                 StringBuilder.Append(",");
-                StringBuilder.Append((ArrayListObject[o] as RecordOfEmployee).License);
+                StringBuilder.Append((ArrayListObject[o] as EmployeeRecord).License);
                 StringBuilder.Append(",");
-                StringBuilder.AppendLine((ArrayListObject[o] as RecordOfEmployee).Indisposed.ToString());
+                StringBuilder.AppendLine((ArrayListObject[o] as EmployeeRecord).Indisposed.ToString());
             }
 
             StreamWriter.Write(StringBuilder);
@@ -59,7 +59,7 @@ namespace bakalarska_prace.ArrayListObject
         }
         public void CSV_ReadArrayListObjectFile()
         {
-            RecordOfEmployee Employee;
+            EmployeeRecord Employee;
             //read header
             StreamReader.ReadLine();
 
@@ -67,13 +67,13 @@ namespace bakalarska_prace.ArrayListObject
             //try catch bool, int exc
             while (StreamReader.Peek() > 0)
             {
-                Employee = new RecordOfEmployee(false);
+                Employee = new EmployeeRecord(false);
                 var line = StreamReader.ReadLine();
                 var values = line.Split(',');
-                Employee.ID = Convert.ToInt64(values[0]);
-                Employee.Money = Convert.ToInt64(values[1]);
-                Employee.Age = Convert.ToInt64(values[2]);
-                Employee.Children = Convert.ToInt64(values[3]);
+                Employee.ID = Convert.ToInt32(values[0]);
+                Employee.Money = Convert.ToInt32(values[1]);
+                Employee.Age = Convert.ToInt32(values[2]);
+                Employee.Children = Convert.ToInt32(values[3]);
                 Employee.FirstName = values[4];
                 Employee.FamilyName = values[5];
                 Employee.PIN = values[6];

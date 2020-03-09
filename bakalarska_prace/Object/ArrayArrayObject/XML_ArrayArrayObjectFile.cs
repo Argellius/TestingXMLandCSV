@@ -10,45 +10,45 @@ namespace bakalarska_prace.ArrayArrayObject
 {
     class XML_ArrayArrayObjectFile : Tools, ITester
     {
-        private RecordOfEmployee[][] ArrayArrayObject;
-        private int pocetKolekci;
-        private int pocetPrvkuVKolekci;
-        private int pocetPrvkuVPosledniKolekci;
+        private EmployeeRecord[][] ArrayArrayObject;
+        private int NumberOfCollections;
+        private int ElementsInCollection;
+        private int ElementsInLastCollection;
 
         public XML_ArrayArrayObjectFile()
         {
-            this.pocetKolekci = 0;
-            this.pocetPrvkuVKolekci = 0;
-            this.pocetPrvkuVPosledniKolekci = 0;
+            this.NumberOfCollections = 0;
+            this.ElementsInCollection = 0;
+            this.ElementsInLastCollection = 0;
         }
 
         private void Inicialize(bool Write)
         {
-            if (pocetPrvkuVPosledniKolekci > 0)
+            if (ElementsInLastCollection > 0)
             {
-                ArrayArrayObject = new RecordOfEmployee[this.pocetKolekci + 1][];
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections + 1][];
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ArrayArrayObject[i] = new RecordOfEmployee[pocetPrvkuVKolekci];
-                ArrayArrayObject[pocetKolekci] = new RecordOfEmployee[pocetPrvkuVPosledniKolekci];
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
+                ArrayArrayObject[NumberOfCollections] = new EmployeeRecord[ElementsInLastCollection];
             }
             else
             {
-                ArrayArrayObject = new RecordOfEmployee[this.pocetKolekci][];
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections][];
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ArrayArrayObject[i] = new RecordOfEmployee[pocetPrvkuVKolekci];
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
             }
 
             if (Write)
             {
-                for (int j = 0; j < pocetKolekci; j++)
-                    for (int i = 0; i < pocetPrvkuVKolekci; i++)
-                        ArrayArrayObject[j][i] = new RecordOfEmployee(true);
-                if (pocetPrvkuVPosledniKolekci > 0)
+                for (int j = 0; j < NumberOfCollections; j++)
+                    for (int i = 0; i < ElementsInCollection; i++)
+                        ArrayArrayObject[j][i] = new EmployeeRecord(true);
+                if (ElementsInLastCollection > 0)
                 {
-                    for (int j = 0; j < pocetPrvkuVPosledniKolekci; j++)
-                        ArrayArrayObject[pocetKolekci][j] = new RecordOfEmployee(true);
+                    for (int j = 0; j < ElementsInLastCollection; j++)
+                        ArrayArrayObject[NumberOfCollections][j] = new EmployeeRecord(true);
                 }
 
             }
@@ -60,7 +60,7 @@ namespace bakalarska_prace.ArrayArrayObject
 
         public void XML_DeSerializeArrayArrayObjectFile()
         {
-            ArrayArrayObject = (RecordOfEmployee[][])XmlSerializer.Deserialize(base.StreamReader);
+            ArrayArrayObject = (EmployeeRecord[][])XmlSerializer.Deserialize(base.StreamReader);
         }
 
         void ITester.SetupWriteStart()
@@ -96,9 +96,9 @@ namespace bakalarska_prace.ArrayArrayObject
         }
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.NumberOfCollections = (int)Math.Sqrt(NumberOfElements);
+            this.ElementsInCollection = NumberOfElements / NumberOfCollections;
+            this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
     }
 }

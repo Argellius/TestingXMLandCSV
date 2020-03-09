@@ -11,44 +11,44 @@ namespace bakalarska_prace.ArrayArrayObject
 {
     class CSV_ArrayArrayObjectNuget : Tools, ITester
     {
-        private RecordOfEmployee[][] ArrayArrayObject;
-        private int pocetKolekci;
-        private int pocetPrvkuVKolekci;
-        private int pocetPrvkuVPosledniKolekci;
+        private EmployeeRecord[][] ArrayArrayObject;
+        private int NumberOfCollections;
+        private int ElementsInCollection;
+        private int ElementsInLastCollection;
 
         public CSV_ArrayArrayObjectNuget() {
-            pocetKolekci = 0;
-            pocetPrvkuVKolekci = 0;
-            pocetPrvkuVPosledniKolekci = 0;
+            NumberOfCollections = 0;
+            ElementsInCollection = 0;
+            ElementsInLastCollection = 0;
         }
 
         private void Inicialize(bool Write)
         {
-            if (pocetPrvkuVPosledniKolekci > 0)
+            if (ElementsInLastCollection > 0)
             {
-                ArrayArrayObject = new RecordOfEmployee[this.pocetKolekci + 1][];
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections + 1][];
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ArrayArrayObject[i] = new RecordOfEmployee[pocetPrvkuVKolekci];
-                ArrayArrayObject[pocetKolekci] = new RecordOfEmployee[pocetPrvkuVPosledniKolekci];
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
+                ArrayArrayObject[NumberOfCollections] = new EmployeeRecord[ElementsInLastCollection];
             }
             else
             {
-                ArrayArrayObject = new RecordOfEmployee[this.pocetKolekci][];
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections][];
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ArrayArrayObject[i] = new RecordOfEmployee[pocetPrvkuVKolekci];
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
             }
 
             if (Write)
             {
-                for (int j = 0; j < pocetKolekci; j++)
-                    for (int i = 0; i < pocetPrvkuVKolekci; i++)
-                        ArrayArrayObject[j][i] = new RecordOfEmployee(true);
-                if (pocetPrvkuVPosledniKolekci > 0)
+                for (int j = 0; j < NumberOfCollections; j++)
+                    for (int i = 0; i < ElementsInCollection; i++)
+                        ArrayArrayObject[j][i] = new EmployeeRecord(true);
+                if (ElementsInLastCollection > 0)
                 {
-                    for (int j = 0; j < pocetPrvkuVPosledniKolekci; j++)
-                        ArrayArrayObject[pocetKolekci][j] = new RecordOfEmployee(true);
+                    for (int j = 0; j < ElementsInLastCollection; j++)
+                        ArrayArrayObject[NumberOfCollections][j] = new EmployeeRecord(true);
                 }
 
             }
@@ -56,9 +56,9 @@ namespace bakalarska_prace.ArrayArrayObject
 
         public void CSV_WriteArrayArrayObjectNuget()
         {
-            foreach (RecordOfEmployee[] record in ArrayArrayObject)
+            foreach (EmployeeRecord[] record in ArrayArrayObject)
             {
-                csvWriter.WriteRecords<RecordOfEmployee>(record);
+                csvWriter.WriteRecords<EmployeeRecord>(record);
                 csvWriter.NextRecord();
             }
         }
@@ -75,7 +75,7 @@ namespace bakalarska_prace.ArrayArrayObject
                     i = 0;
                     continue;
                 }
-                ArrayArrayObject[index_pole][i] = csvReader.GetRecord<RecordOfEmployee>();
+                ArrayArrayObject[index_pole][i] = csvReader.GetRecord<EmployeeRecord>();
                 i++;
             }
 
@@ -118,9 +118,9 @@ namespace bakalarska_prace.ArrayArrayObject
 
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.NumberOfCollections = (int)Math.Sqrt(NumberOfElements);
+            this.ElementsInCollection = NumberOfElements / NumberOfCollections;
+            this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
     }
 }

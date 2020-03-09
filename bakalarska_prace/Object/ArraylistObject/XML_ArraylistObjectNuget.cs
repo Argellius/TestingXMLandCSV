@@ -29,7 +29,7 @@ namespace bakalarska_prace.ArrayListObject
 
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayListObject.Add(new RecordOfEmployee(true));
+                    ArrayListObject.Add(new EmployeeRecord(true));
         }
 
         public void XML_SerializeArrayListObjectNuget()

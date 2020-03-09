@@ -10,7 +10,7 @@ namespace bakalarska_prace.ArrayObject
 {
     class CSV_ArrayObjectNuget : Tools, ITester
     {
-        private RecordOfEmployee[] ArrayObject;
+        private EmployeeRecord[] ArrayObject;
         private int NumberOfElements;
 
 
@@ -21,10 +21,10 @@ namespace bakalarska_prace.ArrayObject
 
         private void Inicialize(bool Write)
         {
-            ArrayObject = new RecordOfEmployee[this.NumberOfElements];
+            ArrayObject = new EmployeeRecord[this.NumberOfElements];
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayObject[i] = new RecordOfEmployee(true);
+                    ArrayObject[i] = new EmployeeRecord(true);
 
         }
 
@@ -35,7 +35,7 @@ namespace bakalarska_prace.ArrayObject
         public void CSV_ReadArrayObjectFile()
         {
             csvReader.Read();
-            ArrayObject = csvReader.GetRecords<RecordOfEmployee>().ToArray();            
+            ArrayObject = csvReader.GetRecords<EmployeeRecord>().ToArray();            
         }
 
 

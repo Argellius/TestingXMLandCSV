@@ -34,6 +34,8 @@ namespace bakalarska_prace.ListInteger
             csvWriter.NextRecord();
             csvWriter.WriteRecords(this.ListInteger);
         }
+
+
         public void CSV_ReadListIntegerFile()
         {
             ListInteger = csvReader.GetRecords<Int32>().ToList();

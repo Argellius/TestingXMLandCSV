@@ -9,35 +9,35 @@ namespace bakalarska_prace.ListListObject
 {
     class XML_ListListObjectString : Tools, ITester
     {
-        private List<List<RecordOfEmployee>> ListListObject;
-        private int pocetKolekci;
-        private int pocetPrvkuVKolekci;
-        private int pocetPrvkuVPosledniKolekci;
+        private List<List<EmployeeRecord>> ListListObject;
+        private int NumberOfCollections;
+        private int ElementsInCollection;
+        private int ElementsInLastCollection;
         public XML_ListListObjectString()
         {
-            this.pocetKolekci = 0;
-            this.pocetPrvkuVKolekci = 0;
-            this.pocetPrvkuVPosledniKolekci = 0;
+            this.NumberOfCollections = 0;
+            this.ElementsInCollection = 0;
+            this.ElementsInLastCollection = 0;
         }
 
         private void Inicialize(bool Write)
         {
-            ListListObject = new List<List<RecordOfEmployee>>();
+            ListListObject = new List<List<EmployeeRecord>>();
 
             if (Write)
             {
-                List<RecordOfEmployee> List_Object = new List<RecordOfEmployee>();
-                for (int i = 0; i < pocetPrvkuVKolekci; i++)
-                    List_Object.Add(new RecordOfEmployee(true));
+                List<EmployeeRecord> List_Object = new List<EmployeeRecord>();
+                for (int i = 0; i < ElementsInCollection; i++)
+                    List_Object.Add(new EmployeeRecord(true));
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ListListObject.Add(new List<RecordOfEmployee>(List_Object));
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ListListObject.Add(new List<EmployeeRecord>(List_Object));
                 List_Object.Clear();
-                if (pocetPrvkuVPosledniKolekci > 0)
+                if (ElementsInLastCollection > 0)
                 {
-                    for (int i = 0; i < pocetPrvkuVPosledniKolekci; i++)
-                        List_Object.Add(new RecordOfEmployee(true));
-                    ListListObject.Add(new List<RecordOfEmployee>(List_Object));
+                    for (int i = 0; i < ElementsInLastCollection; i++)
+                        List_Object.Add(new EmployeeRecord(true));
+                    ListListObject.Add(new List<EmployeeRecord>(List_Object));
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace bakalarska_prace.ListListObject
 
         public void XML_DeSerializeListListObjectString()
         {
-            ListListObject = (List<List<RecordOfEmployee>>)XmlSerializer.Deserialize(StringReader);
+            ListListObject = (List<List<EmployeeRecord>>)XmlSerializer.Deserialize(StringReader);
         }
 
         void ITester.SetupWriteStart()
@@ -86,9 +86,9 @@ namespace bakalarska_prace.ListListObject
 
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.NumberOfCollections = (int)Math.Sqrt(NumberOfElements);
+            this.ElementsInCollection = NumberOfElements / NumberOfCollections;
+            this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
     }
 }
