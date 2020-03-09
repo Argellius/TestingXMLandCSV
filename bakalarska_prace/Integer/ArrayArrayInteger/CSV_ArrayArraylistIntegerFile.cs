@@ -10,44 +10,44 @@ namespace bakalarska_prace.ArrayArrayInteger
     class CSV_ArrayArrayIntegerFile : Tools, ITester
     {
         private System.Int32[][] ArrayArray_Integer;
-        private int pocetKolekci;
-        private int pocetPrvkuVKolekci;
-        private int pocetPrvkuVPosledniKolekci;
+        private int NumberOfCollections;
+        private int ElementsInCollection;
+        private int ElementsInLastCollection;
 
         public CSV_ArrayArrayIntegerFile()
         {
-            pocetKolekci = 0;
-            pocetPrvkuVKolekci = 0;
-            pocetPrvkuVPosledniKolekci = 0;
+            NumberOfCollections = 0;
+            ElementsInCollection = 0;
+            ElementsInLastCollection = 0;
         }
 
         private void Inicialize(bool Write)
         {
-            if (pocetPrvkuVPosledniKolekci > 0)
+            if (ElementsInLastCollection > 0)
             {
-                ArrayArray_Integer = new Int32[this.pocetKolekci + 1][];
+                ArrayArray_Integer = new Int32[this.NumberOfCollections + 1][];
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ArrayArray_Integer[i] = new int[pocetPrvkuVKolekci];
-                ArrayArray_Integer[pocetKolekci] = new int[pocetPrvkuVPosledniKolekci];
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArray_Integer[i] = new int[ElementsInCollection];
+                ArrayArray_Integer[NumberOfCollections] = new int[ElementsInLastCollection];
             }
             else
             {
-                ArrayArray_Integer = new Int32[this.pocetKolekci][];
+                ArrayArray_Integer = new Int32[this.NumberOfCollections][];
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ArrayArray_Integer[i] = new int[pocetPrvkuVKolekci];
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArray_Integer[i] = new int[ElementsInCollection];
             }
 
             if (Write)
             {
-                for (int j = 0; j < pocetKolekci; j++)
-                    for (int i = 0; i < pocetPrvkuVKolekci; i++)
+                for (int j = 0; j < NumberOfCollections; j++)
+                    for (int i = 0; i < ElementsInCollection; i++)
                         ArrayArray_Integer[j][i] = int.MaxValue;
-                if (pocetPrvkuVPosledniKolekci > 0)
+                if (ElementsInLastCollection > 0)
                 {
-                    for (int j = 0; j < pocetPrvkuVPosledniKolekci; j++)
-                        ArrayArray_Integer[pocetKolekci][j] = int.MaxValue;
+                    for (int j = 0; j < ElementsInLastCollection; j++)
+                        ArrayArray_Integer[NumberOfCollections][j] = int.MaxValue;
                 }
 
             }
@@ -118,9 +118,9 @@ namespace bakalarska_prace.ArrayArrayInteger
 
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.NumberOfCollections = (int)Math.Sqrt(NumberOfElements);
+            this.ElementsInCollection = NumberOfElements / NumberOfCollections;
+            this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
     }
 }

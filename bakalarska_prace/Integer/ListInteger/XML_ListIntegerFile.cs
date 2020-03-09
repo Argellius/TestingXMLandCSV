@@ -26,15 +26,17 @@ namespace bakalarska_prace.ListInteger
 
         }
 
-        public void XML_SerializeArrayIntegerFile()
+        public void XML_SerializeListIntegerFile()
         {
-            XmlSerializer.Serialize(base.StreamWriter, ListInteger);
+            XmlSerializer.Serialize(StreamWriter, ListInteger);
         }
 
-        public void XML_DeSerializeArrayIntegerFile()
+
+        public void XML_DeSerializeListIntegerFile()
         {
             ListInteger = (List<System.Int32>)XmlSerializer.Deserialize(StreamReader);
         }
+
 
         void ITester.SetupWriteStart()
         {
@@ -57,11 +59,11 @@ namespace bakalarska_prace.ListInteger
         }
         void ITester.TestWrite()
         {
-            XML_SerializeArrayIntegerFile();
+            XML_SerializeListIntegerFile();
         }
         void ITester.TestRead()
         {
-            XML_DeSerializeArrayIntegerFile();
+            XML_DeSerializeListIntegerFile();
         }
         long ITester.GetSize()
         {

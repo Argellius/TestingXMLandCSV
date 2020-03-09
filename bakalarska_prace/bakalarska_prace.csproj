@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>bakalarska_prace</RootNamespace>
     <AssemblyName>bakalarska_prace</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -154,7 +154,7 @@
     <Compile Include="Object\ListObject\XML_ListObjectFile.cs" />
     <Compile Include="Object\ListObject\XML_ListObjectNuget.cs" />
     <Compile Include="Object\ListObject\XML_ListObjectString.cs" />
-    <Compile Include="RecordOfEmployee.cs" />
+    <Compile Include="EmployeeRecord.cs" />
     <Compile Include="TestingXMLCSV.cs">
       <SubType>Form</SubType>
     </Compile>

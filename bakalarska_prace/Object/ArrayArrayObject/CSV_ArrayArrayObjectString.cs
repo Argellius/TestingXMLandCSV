@@ -5,45 +5,45 @@ namespace bakalarska_prace.ArrayArrayObject
 {
     class CSV_ArrayArrayObjectString : Tools, ITester
     {
-        private RecordOfEmployee[][] ArrayArrayObject;
-        private int pocetKolekci;
-        private int pocetPrvkuVKolekci;
-        private int pocetPrvkuVPosledniKolekci;
+        private EmployeeRecord[][] ArrayArrayObject;
+        private int NumberOfCollections;
+        private int ElementsInCollection;
+        private int ElementsInLastCollection;
 
         public CSV_ArrayArrayObjectString()
         {
-            this.pocetKolekci = 0;
-            this.pocetPrvkuVKolekci = 0;
-            this.pocetPrvkuVPosledniKolekci = 0;
+            this.NumberOfCollections = 0;
+            this.ElementsInCollection = 0;
+            this.ElementsInLastCollection = 0;
         }
 
         private void Inicialize(bool Write)
         {
-            if (pocetPrvkuVPosledniKolekci > 0)
+            if (ElementsInLastCollection > 0)
             {
-                ArrayArrayObject = new RecordOfEmployee[this.pocetKolekci + 1][];
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections + 1][];
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ArrayArrayObject[i] = new RecordOfEmployee[pocetPrvkuVKolekci];
-                ArrayArrayObject[pocetKolekci] = new RecordOfEmployee[pocetPrvkuVPosledniKolekci];
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
+                ArrayArrayObject[NumberOfCollections] = new EmployeeRecord[ElementsInLastCollection];
             }
             else
             {
-                ArrayArrayObject = new RecordOfEmployee[this.pocetKolekci][];
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections][];
 
-                for (int i = 0; i < pocetKolekci; i++)
-                    ArrayArrayObject[i] = new RecordOfEmployee[pocetPrvkuVKolekci];
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
             }
 
             if (Write)
             {
-                for (int j = 0; j < pocetKolekci; j++)
-                    for (int i = 0; i < pocetPrvkuVKolekci; i++)
-                        ArrayArrayObject[j][i] = new RecordOfEmployee(true);
-                if (pocetPrvkuVPosledniKolekci > 0)
+                for (int j = 0; j < NumberOfCollections; j++)
+                    for (int i = 0; i < ElementsInCollection; i++)
+                        ArrayArrayObject[j][i] = new EmployeeRecord(true);
+                if (ElementsInLastCollection > 0)
                 {
-                    for (int j = 0; j < pocetPrvkuVPosledniKolekci; j++)
-                        ArrayArrayObject[pocetKolekci][j] = new RecordOfEmployee(true);
+                    for (int j = 0; j < ElementsInLastCollection; j++)
+                        ArrayArrayObject[NumberOfCollections][j] = new EmployeeRecord(true);
                 }
 
             }
@@ -51,9 +51,9 @@ namespace bakalarska_prace.ArrayArrayObject
         public void CSV_WriteArrayArrayObjectString()
         {
             StringBuilder.AppendLine("ID, Money, Age, Children, FirstName, FamilyName, PIN, Residence, Ready, License, Indisposed");
-            foreach (RecordOfEmployee[] array in ArrayArrayObject)
+            foreach (EmployeeRecord[] array in ArrayArrayObject)
             {
-                foreach (RecordOfEmployee record in array)
+                foreach (EmployeeRecord record in array)
                 {
 
                     StringBuilder.Append(record.ID);
@@ -109,11 +109,11 @@ namespace bakalarska_prace.ArrayArrayObject
                     values = line.Split(',');
                 }
 
-                var Zamestnanec = new RecordOfEmployee(false);
-                Zamestnanec.ID = Convert.ToInt64(values[0]);
-                Zamestnanec.Money = Convert.ToInt64(values[1]);
-                Zamestnanec.Age = Convert.ToInt64(values[2]);
-                Zamestnanec.Children = Convert.ToInt64(values[3]);
+                var Zamestnanec = new EmployeeRecord(false);
+                Zamestnanec.ID = Convert.ToInt32(values[0]);
+                Zamestnanec.Money = Convert.ToInt32(values[1]);
+                Zamestnanec.Age = Convert.ToInt32(values[2]);
+                Zamestnanec.Children = Convert.ToInt32(values[3]);
                 Zamestnanec.FirstName = values[4];
                 Zamestnanec.FamilyName = values[5];
                 Zamestnanec.PIN = values[6];
@@ -159,9 +159,9 @@ namespace bakalarska_prace.ArrayArrayObject
 
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.NumberOfCollections = (int)Math.Sqrt(NumberOfElements);
+            this.ElementsInCollection = NumberOfElements / NumberOfCollections;
+            this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
 
     }

@@ -11,7 +11,7 @@ namespace bakalarska_prace.ArrayObject
 {
     class XML_ArrayObjectNuget : Tools, ITester
     {
-        private RecordOfEmployee[] ArrayObject;
+        private EmployeeRecord[] ArrayObject;
         private int NumberOfElements;
         private SharpSerializer XML_SharpSerializer;
 
@@ -22,21 +22,21 @@ namespace bakalarska_prace.ArrayObject
 
         private void Inicialize(bool Write)
         {
-            ArrayObject = new RecordOfEmployee[this.NumberOfElements];
+            ArrayObject = new EmployeeRecord[this.NumberOfElements];
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayObject[i] = new RecordOfEmployee(true);
+                    ArrayObject[i] = new EmployeeRecord(true);
 
         }
 
-        public void XML_SerializeListListObjectNuget()
+        public void XML_SerializeArrayObjectNuget()
         {
             XML_SharpSerializer.Serialize(ArrayObject, FileStr);
         }
 
         public void XML_DeSerializeArrayObjectNuget()
         {
-            this.ArrayObject = (RecordOfEmployee[])XML_SharpSerializer.Deserialize(FileStr);
+            this.ArrayObject = (EmployeeRecord[])XML_SharpSerializer.Deserialize(FileStr);
         }
 
         void ITester.SetupWriteStart()
@@ -62,7 +62,7 @@ namespace bakalarska_prace.ArrayObject
         }
         void ITester.TestWrite()
         {
-            XML_SerializeListListObjectNuget();
+            XML_SerializeArrayObjectNuget();
         }
         void ITester.TestRead()
         {

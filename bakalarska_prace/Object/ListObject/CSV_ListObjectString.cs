@@ -8,7 +8,7 @@ namespace bakalarska_prace.ListObject
 {
     class CSV_ListObjectString : Tools, ITester
     {
-        private List<RecordOfEmployee> ListObject;
+        private List<EmployeeRecord> ListObject;
         private int NumberOfElements;
 
 
@@ -19,46 +19,46 @@ namespace bakalarska_prace.ListObject
 
         private void Inicialize(bool Write)
         {
-            ListObject = new List<RecordOfEmployee>();
+            ListObject = new List<EmployeeRecord>();
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ListObject.Add(new RecordOfEmployee(true));
+                    ListObject.Add(new EmployeeRecord(true));
 
         }
 
         public void CSV_WriteListObjectString()
         {
             base.StringBuilder.AppendLine("ID, Money, Age, Children, FirstName, FamilyName, PIN, Residence, Ready, License, Indisposed");
-            for (int o = 0; o < ListObject.Count; o++)
+            foreach (EmployeeRecord employee in ListObject)
             {
-                StringBuilder.Append(ListObject[o].ID);
+                StringBuilder.Append(employee.ID);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].Money);
+                StringBuilder.Append(employee.Money);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].Age);
+                StringBuilder.Append(employee.Age);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].Children);
+                StringBuilder.Append(employee.Children);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].FirstName);
+                StringBuilder.Append(employee.FirstName);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].FamilyName);
+                StringBuilder.Append(employee.FamilyName);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].PIN);
+                StringBuilder.Append(employee.PIN);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].Residence);
+                StringBuilder.Append(employee.Residence);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].Ready);
+                StringBuilder.Append(employee.Ready);
                 StringBuilder.Append(",");
-                StringBuilder.Append(ListObject[o].License);
+                StringBuilder.Append(employee.License);
                 StringBuilder.Append(",");
-                StringBuilder.AppendLine(ListObject[o].Indisposed.ToString());
+                StringBuilder.AppendLine(employee.Indisposed.ToString());
             }
 
             StringWriter.Write(StringBuilder);
         }
         public void CSV_ReadListObjectString()
         {
-            RecordOfEmployee EmployeeObj;
+            EmployeeRecord EmployeeObj;
             //read header
             StringReader.ReadLine();
 
@@ -66,13 +66,13 @@ namespace bakalarska_prace.ListObject
             //try catch bool, int exc
             while (StringReader.Peek() > 0)
             {
-                EmployeeObj = new RecordOfEmployee(false);
+                EmployeeObj = new EmployeeRecord(false);
                 var line = StringReader.ReadLine();
                 var values = line.Split(',');
-                EmployeeObj.ID = Convert.ToInt64(values[0]);
-                EmployeeObj.Money = Convert.ToInt64(values[1]);
-                EmployeeObj.Age = Convert.ToInt64(values[2]);
-                EmployeeObj.Children = Convert.ToInt64(values[3]);
+                EmployeeObj.ID = Convert.ToInt32(values[0]);
+                EmployeeObj.Money = Convert.ToInt32(values[1]);
+                EmployeeObj.Age = Convert.ToInt32(values[2]);
+                EmployeeObj.Children = Convert.ToInt32(values[3]);
                 EmployeeObj.FirstName = values[4];
                 EmployeeObj.FamilyName = values[5];
                 EmployeeObj.PIN = values[6];

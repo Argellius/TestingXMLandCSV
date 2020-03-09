@@ -1,6 +1,7 @@
 ﻿using Polenter.Serialization;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +30,8 @@ namespace bakalarska_prace.ListInteger
         }
 
         public void XML_SerializeListIntegerNuget()
-        {
-            XML_SharpSerializer.Serialize(ListInteger, FileStr);
+        {            
+            XML_SharpSerializer.Serialize(ListInteger, FileStr);          
         }
 
         public void XML_DeSerializeListIntegerNuget()

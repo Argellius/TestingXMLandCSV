@@ -32,8 +32,9 @@ namespace bakalarska_prace.ListInteger
 
         public void XML_DeSerializeListIntegerString()
         {
-            ListInteger = (List<System.Int32>)XmlSerializer.Deserialize(StringReader);
+            ListInteger = (List<Int32>)XmlSerializer.Deserialize(StringReader);
         }
+
 
         void ITester.SetupWriteStart()
         {

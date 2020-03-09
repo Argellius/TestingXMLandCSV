@@ -26,7 +26,7 @@ namespace bakalarska_prace.ArrayListObject
 
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayListObject.Add(new RecordOfEmployee(true));
+                    ArrayListObject.Add(new EmployeeRecord(true));
         }
 
         public void CSV_WriteArrayListObjectNuget()
@@ -35,7 +35,7 @@ namespace bakalarska_prace.ArrayListObject
         }
         public void CSV_ReadArrayListObjectFile()
         {
-            ArrayListObject = new ArrayList(csvReader.GetRecords<RecordOfEmployee>().ToArray());
+            ArrayListObject = new ArrayList(csvReader.GetRecords<EmployeeRecord>().ToArray());
             
         }
 

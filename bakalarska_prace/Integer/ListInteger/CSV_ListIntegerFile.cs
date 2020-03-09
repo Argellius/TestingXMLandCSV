@@ -42,10 +42,9 @@ namespace bakalarska_prace.ListInteger
             StreamReader.ReadLine();
 
             //read records
-            //try catch bool, int exc
             while (!StreamReader.EndOfStream)
             {
-                var line = StreamReader.ReadLine();
+                string line = StreamReader.ReadLine();
                 ListInteger.Add(Convert.ToInt32(line));
 
             }

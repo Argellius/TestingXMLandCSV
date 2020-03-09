@@ -10,7 +10,7 @@ namespace bakalarska_prace.ListObject
 {
     class CSV_ListObjectNuget : Tools, ITester
     {
-        private List<RecordOfEmployee> ListObject;
+        private List<EmployeeRecord> ListObject;
         private int NumberOfElements;
 
 
@@ -21,10 +21,10 @@ namespace bakalarska_prace.ListObject
 
         private void Inicialize(bool Write)
         {
-            ListObject = new List<RecordOfEmployee>();
+            ListObject = new List<EmployeeRecord>();
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ListObject.Add(new RecordOfEmployee(true));
+                    ListObject.Add(new EmployeeRecord(true));
 
         }
 
@@ -34,7 +34,7 @@ namespace bakalarska_prace.ListObject
         }
         public void CSV_ReadListObjectFile()
         {
-            ListObject = csvReader.GetRecords<RecordOfEmployee>().ToList();
+            ListObject = csvReader.GetRecords<EmployeeRecord>().ToList();
             
         }
 

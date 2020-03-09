@@ -12,16 +12,16 @@ namespace bakalarska_prace.ListListInteger
     class CSV_ListListIntegerNuget : Tools, ITester
     {
         private List<List<System.Int32>> ListListInteger;
-        private int pocetKolekci;
-        private int pocetPrvkuVKolekci;
-        private int pocetPrvkuVPosledniKolekci;
+        private int NumberOfCollections;
+        private int ElementsInCollection;
+        private int ElementsInLastCollection;
 
 
         public CSV_ListListIntegerNuget()
         {
-            this.pocetKolekci = 0;
-            this.pocetPrvkuVKolekci = 0;
-            this.pocetPrvkuVPosledniKolekci = 0;
+            this.NumberOfCollections = 0;
+            this.ElementsInCollection = 0;
+            this.ElementsInLastCollection = 0;
         }
 
         private void Inicialize(bool Write)
@@ -31,15 +31,15 @@ namespace bakalarska_prace.ListListInteger
             if (Write)
             {
                 List<int> ListInteger = new List<int>();
-                for (int i = 0; i < pocetPrvkuVKolekci; i++)
+                for (int i = 0; i < ElementsInCollection; i++)
                     ListInteger.Add(System.Int32.MaxValue);
 
-                for (int i = 0; i < pocetKolekci; i++)
+                for (int i = 0; i < NumberOfCollections; i++)
                     ListListInteger.Add(new List<int>(ListInteger));
                 ListInteger.Clear();
-                if (pocetPrvkuVPosledniKolekci > 0)
+                if (ElementsInLastCollection > 0)
                 {
-                    for (int i = 0; i < pocetPrvkuVPosledniKolekci; i++)
+                    for (int i = 0; i < ElementsInLastCollection; i++)
                         ListInteger.Add(Int32.MaxValue);
                     ListListInteger.Add(new List<int>(ListInteger));
                 }
@@ -108,9 +108,9 @@ namespace bakalarska_prace.ListListInteger
 
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
-            this.pocetKolekci = (int)Math.Sqrt(NumberOfElements);
-            this.pocetPrvkuVKolekci = NumberOfElements / pocetKolekci;
-            this.pocetPrvkuVPosledniKolekci = NumberOfElements % pocetKolekci;
+            this.NumberOfCollections = (int)Math.Sqrt(NumberOfElements);
+            this.ElementsInCollection = NumberOfElements / NumberOfCollections;
+            this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
     }
 }

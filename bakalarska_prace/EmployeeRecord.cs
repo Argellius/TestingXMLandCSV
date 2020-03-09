@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace bakalarska_prace
 {
     [Serializable]
-    public class RecordOfEmployee //Object for serialization to CSV and XML
+    public class EmployeeRecord 
     {
-        public Int64 ID { get; set; }
-        public Int64 Money { get; set; }
-        public Int64 Age { get; set; }
-        public Int64 Children { get; set; }
+        public Int32 ID { get; set; }
+        public Int32 Money { get; set; }
+        public Int32 Age { get; set; }
+        public Int32 Children { get; set; }
 
         public string FirstName { get; set; }
         public string FamilyName { get; set; }
@@ -25,26 +25,26 @@ namespace bakalarska_prace
                 
 
         //XMLSerializer
-        public RecordOfEmployee()
+        public EmployeeRecord()
         {
             ;
         }
 
-        public RecordOfEmployee(bool boo)
+        public EmployeeRecord(bool boo)
         {
             if (boo == false)
-                new RecordOfEmployee();
+                new EmployeeRecord();
             else
             {
-                this.ID = Int64.MaxValue;
-                this.Money = Int64.MaxValue;
-                this.Age = Int64.MaxValue;
-                this.Children = Int64.MaxValue;
+                this.ID = Int32.MaxValue;
+                this.Money = Int32.MaxValue;
+                this.Age = Int32.MaxValue;
+                this.Children = Int32.MaxValue;
 
 
-                this.FirstName = new string('A', 10);
-                this.FamilyName = new string('B', 10);
-                this.PIN = "123456789/1234";
+                this.FirstName = new string('A', 12);
+                this.FamilyName = new string('B', 12);
+                this.PIN = "0123456789";
                 this.Residence = new string('D', 10);
 
                 this.Ready = true;

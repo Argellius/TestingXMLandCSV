@@ -35,16 +35,17 @@ namespace bakalarska_prace.ListInteger
             }
             StringWriter.Write(StringBuilder);
         }
+
+
         public void CSV_ReadListIntegerString()
         {
             //read header
             StringReader.ReadLine();
 
             //read records
-            //try catch bool, int exc
             while (StringReader.Peek() > 0)
             {
-                var line = StringReader.ReadLine();
+                string line = StringReader.ReadLine();
                 ListInteger.Add(Convert.ToInt32(line));
 
             }

@@ -24,7 +24,7 @@ namespace bakalarska_prace.ArrayListObject
 
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayListObject.Add(new RecordOfEmployee(true));
+                    ArrayListObject.Add(new EmployeeRecord(true));
         }
 
         public void XML_SerializeArrayListObjectFile()
@@ -40,7 +40,7 @@ namespace bakalarska_prace.ArrayListObject
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
-            XmlSerializer = new XmlSerializer(ArrayListObject.GetType(), new Type[] { typeof(RecordOfEmployee) });
+            XmlSerializer = new XmlSerializer(ArrayListObject.GetType(), new Type[] { typeof(EmployeeRecord) });
             base.ToolsInicializeStream(this.GetType(), true);
         }
         void ITester.SetupReadStart()
