@@ -20,7 +20,7 @@ namespace bakalarska_prace
 
         //protected string path = @"..\..\..\TestResults\";
         protected string path = @"D:\TestResults\";
-        protected EmployeeRecord _Zamestnanci_With_Data;
+        protected RecordOfEmployee _Zamestnanci_With_Data;
 
         protected XmlSerializer XmlSerializer;
 
