@@ -81,6 +81,7 @@ namespace bakalarska_prace.ListListObject
         public void CSV_ReadListListObjectString()
         {
             List<EmployeeRecord> List_Obj = new List<EmployeeRecord>();
+
             //read header
             var line = StringReader.ReadLine();
 
@@ -98,8 +99,7 @@ namespace bakalarska_prace.ListListObject
                 else
                 {
                     values = line.Split(',');
-                }
-                
+                }                
 
                 Zamestnanec = new EmployeeRecord(false);
                 Zamestnanec.ID = Convert.ToInt32(values[0]);
@@ -114,8 +114,7 @@ namespace bakalarska_prace.ListListObject
                 Zamestnanec.License = bool.Parse(values[9]);
                 Zamestnanec.Indisposed = bool.Parse(values[10]);
                 List_Obj.Add(Zamestnanec);
-            }
-            ;
+            }            
         }
 
 

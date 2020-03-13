@@ -7,44 +7,42 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace bakalarska_prace.ArrayInteger
+namespace bakalarska_prace.ArrayObject
 {
-    class XML_ArrayIntegerNuget : Tools, ITester
+    class XML_ArrayObjectSharpSerializer : Tools, ITester
     {
-        private System.Int32[] ArrayInteger;
+        private EmployeeRecord[] ArrayObject;
         private int NumberOfElements;
         private SharpSerializer XML_SharpSerializer;
 
-        public XML_ArrayIntegerNuget()
+        public XML_ArrayObjectSharpSerializer()
         {
             this.NumberOfElements = 0;
-            XML_SharpSerializer = new SharpSerializer(false);
-
-
         }
 
         private void Inicialize(bool Write)
         {
-            ArrayInteger = new Int32[this.NumberOfElements];
+            ArrayObject = new EmployeeRecord[this.NumberOfElements];
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayInteger[i] = int.MaxValue;
+                    ArrayObject[i] = new EmployeeRecord(true);
+
         }
 
-        public void XML_SerializeArrayIntegerNuget()
+        public void XML_SerializeArrayObjectSharpSerializer()
         {
-            XML_SharpSerializer.Serialize(ArrayInteger, FileStr);            
+            XML_SharpSerializer.Serialize(ArrayObject, FileStr);
         }
 
-        public void XML_DeSerializeArrayIntegerNuget()
-        {            
-                this.ArrayInteger = (Int32[])XML_SharpSerializer.Deserialize(FileStr);
-            
+        public void XML_DeSerializeArrayObjectSharpSerializer()
+        {
+            this.ArrayObject = (EmployeeRecord[])XML_SharpSerializer.Deserialize(FileStr);
         }
 
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
+            XML_SharpSerializer = new SharpSerializer(false);
             FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
 
         }
@@ -64,11 +62,11 @@ namespace bakalarska_prace.ArrayInteger
         }
         void ITester.TestWrite()
         {
-            XML_SerializeArrayIntegerNuget();
+            XML_SerializeArrayObjectSharpSerializer();
         }
         void ITester.TestRead()
         {
-            XML_DeSerializeArrayIntegerNuget();
+            XML_DeSerializeArrayObjectSharpSerializer();
         }
         long ITester.GetSize()
         {

@@ -1,29 +1,26 @@
-﻿using Polenter.Serialization;
+﻿using CsvHelper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace bakalarska_prace.ArrayArrayInteger
 {
-
-    class XML_ArrayArrayIntegerNuget : Tools, ITester
+    class CSV_ArrayArrayIntegerCSVHelperFile : Tools, ITester
     {
-        private System.Int32[][] ArrayArray_Integer;        
-        private SharpSerializer XML_SharpSerializer;        
+        private System.Int32[][] ArrayArray_Integer;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
 
-        public XML_ArrayArrayIntegerNuget()
+        public CSV_ArrayArrayIntegerCSVHelperFile()
         {
             NumberOfCollections = 0;
             ElementsInCollection = 0;
-            ElementsInLastCollection = 0;           
+            ElementsInLastCollection = 0;
         }
         private void Inicialize(bool Write)
         {
@@ -56,46 +53,63 @@ namespace bakalarska_prace.ArrayArrayInteger
 
             }
         }
-        public void XML_SerializeArrayArrayIntegerNuget()
+
+        public void CSV_WriteArrayArrayIntegerCSVHelperFile()
         {
-           
-            XML_SharpSerializer.Serialize(ArrayArray_Integer, FileStr);
+            foreach (Int32[] array in ArrayArray_Integer)
+            {
+                csvWriter.WriteRecords(array);
+                csvWriter.NextRecord();
+            }
         }
 
-        public void XML_DeSerializeArrayArrayIntegerNuget()
+        public void CSV_ReadArrayArrayIntegerCSVHelperFile()
         {
-            this.ArrayArray_Integer = (Int32[][])XML_SharpSerializer.Deserialize(FileStr);
-            
+            int index_pole = 0;
+            int i = 0;
+
+            while (csvReader.Read())
+            {
+                if (csvReader.Context.Record.Count() == 0) //------
+                {
+                    index_pole++;
+                    i = 0;
+                    continue;
+                }
+                ArrayArray_Integer[index_pole][i] = csvReader.GetRecord<Int32>();
+                i++;
+            }
         }
 
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
-            XML_SharpSerializer = new SharpSerializer(false);
-            FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
-
+            base.ToolsInicializeStream(this.GetType(), true);
+            csvWriter = new CsvWriter(base.StreamWriter, CultureInfo.InvariantCulture);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Open);
+            base.ToolsInicializeStream(this.GetType(), false);
+            csvReader = new CsvReader(StreamReader, CultureInfo.InvariantCulture);
+            csvReader.Configuration.IgnoreBlankLines = false;
+            csvReader.Configuration.HasHeaderRecord = false;
         }
         void ITester.SetupWriteEnd()
         {
-            FileStr.Close();
-
+            base.ToolsSetupEndFile(true);
         }
         void ITester.SetupReadEnd()
         {
-            FileStr.Close();
+            base.ToolsSetupEndFile(false);
         }
         void ITester.TestWrite()
         {
-            XML_SerializeArrayArrayIntegerNuget();
+            CSV_WriteArrayArrayIntegerCSVHelperFile();
         }
         void ITester.TestRead()
         {
-            XML_DeSerializeArrayArrayIntegerNuget();
+            CSV_ReadArrayArrayIntegerCSVHelperFile();
         }
         long ITester.GetSize()
         {

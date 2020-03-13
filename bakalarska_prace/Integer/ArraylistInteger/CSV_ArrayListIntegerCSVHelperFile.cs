@@ -1,41 +1,41 @@
 ﻿using CsvHelper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bakalarska_prace.ListObject
+namespace bakalarska_prace.ArrayListInteger
 {
-    class CSV_ListObjectNuget : Tools, ITester
+    class CSV_ArrayListIntegerCSVHelperFile : Tools, ITester
     {
-        private List<EmployeeRecord> ListObject;
+        private ArrayList ArrayListInteger;
         private int NumberOfElements;
 
 
-        public CSV_ListObjectNuget()
+        public CSV_ArrayListIntegerCSVHelperFile()
         {
             this.NumberOfElements = 0;
         }
 
-        private void Inicialize(bool Write)
+        private void Inicialize(bool write)
         {
-            ListObject = new List<EmployeeRecord>();
-            if (Write)
+            ArrayListInteger = new ArrayList();
+
+            if (write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ListObject.Add(new EmployeeRecord(true));
-
+                    ArrayListInteger.Add(int.MaxValue);
         }
 
-        public void CSV_WriteListObjectNuget()
+        public void CSV_WriteArrayIntegerCSVHelperFile()
         {
-            csvWriter.WriteRecords(this.ListObject);
+            csvWriter.WriteRecords(this.ArrayListInteger);
         }
-        public void CSV_ReadListObjectFile()
+        public void CSV_ReadArrayIntegerCSVHelperFile()
         {
-            ListObject = csvReader.GetRecords<EmployeeRecord>().ToList();
-            
+            ArrayListInteger = new ArrayList(csvReader.GetRecords<Int32>().ToArray());
         }
 
 
@@ -61,17 +61,17 @@ namespace bakalarska_prace.ListObject
         }
         void ITester.TestWrite()
         {
-            CSV_WriteListObjectNuget();
+            CSV_WriteArrayIntegerCSVHelperFile();
         }
         void ITester.TestRead()
         {
-            CSV_ReadListObjectFile();
-
+            CSV_ReadArrayIntegerCSVHelperFile();
         }
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
         }
+
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
             this.NumberOfElements = NumberOfElements;

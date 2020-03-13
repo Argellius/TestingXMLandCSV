@@ -1,42 +1,44 @@
 ﻿using Polenter.Serialization;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace bakalarska_prace.ArrayObject
+namespace bakalarska_prace.ListObject
 {
-    class XML_ArrayObjectNuget : Tools, ITester
+    class XML_ListObjectSharpSerializer : Tools, ITester
     {
-        private EmployeeRecord[] ArrayObject;
+        private List<EmployeeRecord> ListObject;
         private int NumberOfElements;
         private SharpSerializer XML_SharpSerializer;
 
-        public XML_ArrayObjectNuget()
-        {
+        public XML_ListObjectSharpSerializer()
+        {            
             this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool Write)
         {
-            ArrayObject = new EmployeeRecord[this.NumberOfElements];
+            ListObject = new List<EmployeeRecord>();
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayObject[i] = new EmployeeRecord(true);
+                    ListObject.Add(new EmployeeRecord(true));
 
         }
 
-        public void XML_SerializeArrayObjectNuget()
+        public void XML_SerializeListObjectSharpSerializer()
         {
-            XML_SharpSerializer.Serialize(ArrayObject, FileStr);
+            XML_SharpSerializer.Serialize(ListObject, FileStr);
         }
 
-        public void XML_DeSerializeArrayObjectNuget()
+        public void XML_DeSerializeListObjectSharpSerializer()
         {
-            this.ArrayObject = (EmployeeRecord[])XML_SharpSerializer.Deserialize(FileStr);
+            this.ListObject = (List<EmployeeRecord>)XML_SharpSerializer.Deserialize(FileStr);
+
         }
 
         void ITester.SetupWriteStart()
@@ -62,17 +64,16 @@ namespace bakalarska_prace.ArrayObject
         }
         void ITester.TestWrite()
         {
-            XML_SerializeArrayObjectNuget();
+            XML_SerializeListObjectSharpSerializer();
         }
         void ITester.TestRead()
         {
-            XML_DeSerializeArrayObjectNuget();
+            XML_DeSerializeListObjectSharpSerializer();
         }
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
         }
-
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
             this.NumberOfElements = NumberOfElements;

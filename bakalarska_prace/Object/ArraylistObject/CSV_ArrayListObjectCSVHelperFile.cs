@@ -1,44 +1,41 @@
 ﻿using CsvHelper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bakalarska_prace.ListInteger
+namespace bakalarska_prace.ArrayListObject
 {
-    class CSV_ListIntegerNuget : Tools, ITester
+    class CSV_ArrayListObjectCSVHelperFile : Tools, ITester
     {
-        private List<System.Int32> ListInteger;
+        private ArrayList ArrayListObject;
         private int NumberOfElements;
 
 
-        public CSV_ListIntegerNuget()
+        public CSV_ArrayListObjectCSVHelperFile()
         {
             this.NumberOfElements = 0;
         }
 
         private void Inicialize(bool Write)
         {
-            ListInteger = new List<Int32>();
+            ArrayListObject = new ArrayList();
+
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ListInteger.Add(int.MaxValue);
-
+                    ArrayListObject.Add(new EmployeeRecord(true));
         }
 
-        public void CSV_WriteListIntegerNuget()
+        public void CSV_WriteArrayListObjectCSVHelperFile()
         {
-            csvWriter.WriteField("Integer");
-            csvWriter.NextRecord();
-            csvWriter.WriteRecords(this.ListInteger);
+            csvWriter.WriteRecords(this.ArrayListObject);
         }
-
-
-        public void CSV_ReadListIntegerFile()
+        public void CSV_ReadArrayListObjectCSVHelperFile()
         {
-            ListInteger = csvReader.GetRecords<Int32>().ToList();
+            ArrayListObject = new ArrayList(csvReader.GetRecords<EmployeeRecord>().ToArray());
             
         }
 
@@ -65,12 +62,11 @@ namespace bakalarska_prace.ListInteger
         }
         void ITester.TestWrite()
         {
-            CSV_WriteListIntegerNuget();
+            CSV_WriteArrayListObjectCSVHelperFile();
         }
         void ITester.TestRead()
         {
-            CSV_ReadListIntegerFile();
-
+            CSV_ReadArrayListObjectCSVHelperFile();
         }
         long ITester.GetSize()
         {

@@ -7,63 +7,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bakalarska_prace.ArrayArrayInteger
+namespace bakalarska_prace.ArrayArrayObject
 {
-    class CSV_ArrayArrayIntegerNuget : Tools, ITester
+    class CSV_ArrayArrayObjectCSVHelperFile : Tools, ITester
     {
-        private System.Int32[][] ArrayArray_Integer;
+        private EmployeeRecord[][] ArrayArrayObject;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
 
-        public CSV_ArrayArrayIntegerNuget()
-        {
+        public CSV_ArrayArrayObjectCSVHelperFile() {
             NumberOfCollections = 0;
             ElementsInCollection = 0;
             ElementsInLastCollection = 0;
         }
+
         private void Inicialize(bool Write)
         {
             if (ElementsInLastCollection > 0)
             {
-                ArrayArray_Integer = new Int32[this.NumberOfCollections + 1][];
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections + 1][];
 
                 for (int i = 0; i < NumberOfCollections; i++)
-                    ArrayArray_Integer[i] = new int[ElementsInCollection];
-                ArrayArray_Integer[NumberOfCollections] = new int[ElementsInLastCollection];
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
+                ArrayArrayObject[NumberOfCollections] = new EmployeeRecord[ElementsInLastCollection];
             }
             else
             {
-                ArrayArray_Integer = new Int32[this.NumberOfCollections][];
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections][];
 
                 for (int i = 0; i < NumberOfCollections; i++)
-                    ArrayArray_Integer[i] = new int[ElementsInCollection];
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
             }
 
             if (Write)
             {
                 for (int j = 0; j < NumberOfCollections; j++)
                     for (int i = 0; i < ElementsInCollection; i++)
-                        ArrayArray_Integer[j][i] = int.MaxValue;
+                        ArrayArrayObject[j][i] = new EmployeeRecord(true);
                 if (ElementsInLastCollection > 0)
                 {
                     for (int j = 0; j < ElementsInLastCollection; j++)
-                        ArrayArray_Integer[NumberOfCollections][j] = int.MaxValue;
+                        ArrayArrayObject[NumberOfCollections][j] = new EmployeeRecord(true);
                 }
 
             }
         }
 
-        public void CSV_WriteArrayArrayIntegerNuget()
+        public void CSV_WriteArrayArrayObjectCSVHelperFile()
         {
-            foreach (Int32[] array in ArrayArray_Integer)
+            foreach (EmployeeRecord[] record in ArrayArrayObject)
             {
-                csvWriter.WriteRecords(array);
+                csvWriter.WriteRecords<EmployeeRecord>(record);
                 csvWriter.NextRecord();
             }
         }
-
-        public void CSV_ReadArrayArrayIntegerNuget()
+        public void CSV_ReadArrayArrayObjectCSVHelperFile()
         {
             int index_pole = 0;
             int i = 0;
@@ -76,10 +75,12 @@ namespace bakalarska_prace.ArrayArrayInteger
                     i = 0;
                     continue;
                 }
-                ArrayArray_Integer[index_pole][i] = csvReader.GetRecord<Int32>();
+                ArrayArrayObject[index_pole][i] = csvReader.GetRecord<EmployeeRecord>();
                 i++;
             }
+
         }
+
 
         void ITester.SetupWriteStart()
         {
@@ -93,7 +94,6 @@ namespace bakalarska_prace.ArrayArrayInteger
             base.ToolsInicializeStream(this.GetType(), false);
             csvReader = new CsvReader(StreamReader, CultureInfo.InvariantCulture);
             csvReader.Configuration.IgnoreBlankLines = false;
-            csvReader.Configuration.HasHeaderRecord = false;
         }
         void ITester.SetupWriteEnd()
         {
@@ -105,11 +105,11 @@ namespace bakalarska_prace.ArrayArrayInteger
         }
         void ITester.TestWrite()
         {
-            CSV_WriteArrayArrayIntegerNuget();
+            CSV_WriteArrayArrayObjectCSVHelperFile();
         }
         void ITester.TestRead()
         {
-            CSV_ReadArrayArrayIntegerNuget();
+            CSV_ReadArrayArrayObjectCSVHelperFile();
         }
         long ITester.GetSize()
         {

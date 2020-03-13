@@ -1,77 +1,84 @@
-﻿using CsvHelper;
+﻿
+
+using Polenter.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace bakalarska_prace.ArrayListInteger
 {
-    class CSV_ArrayListIntegerNuget : Tools, ITester
+
+    class XML_ArrayListIntegerSharpSerializer : Tools, ITester
     {
         private ArrayList ArrayListInteger;
         private int NumberOfElements;
+        private SharpSerializer XML_SharpSerializer;
 
 
-        public CSV_ArrayListIntegerNuget()
+        public XML_ArrayListIntegerSharpSerializer()
         {
+            this.XML_SharpSerializer = new SharpSerializer(false);
             this.NumberOfElements = 0;
+
         }
 
-        private void Inicialize(bool write)
+        private void Inicialize(bool Write)
         {
             ArrayListInteger = new ArrayList();
 
-            if (write)
+            if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
                     ArrayListInteger.Add(int.MaxValue);
         }
 
-        public void CSV_WriteArrayIntegerNuget()
+        public void XML_SerializeArrayIntegerSharpSerializer()
         {
-            csvWriter.WriteRecords(this.ArrayListInteger);
-        }
-        public void CSV_ReadArrayIntegerFile()
-        {
-            ArrayListInteger = new ArrayList(csvReader.GetRecords<Int32>().ToArray());
+            XML_SharpSerializer.Serialize(ArrayListInteger, FileStr);
         }
 
+        public void XML_DeSerializeArrayIntegerSharpSerializer()
+        {
+            this.ArrayListInteger = (ArrayList)XML_SharpSerializer.Deserialize(FileStr);
+
+        }
 
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
-            base.ToolsInicializeStream(this.GetType(), true);
-            csvWriter = new CsvWriter(base.StreamWriter, CultureInfo.InvariantCulture);
+            FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
+
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
-            csvReader = new CsvReader(StreamReader, CultureInfo.InvariantCulture);
+            FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Open);
         }
         void ITester.SetupWriteEnd()
         {
-            base.ToolsSetupEndFile(true);
+            FileStr.Close();
+
         }
         void ITester.SetupReadEnd()
         {
-            base.ToolsSetupEndFile(false);
+            FileStr.Close();
         }
         void ITester.TestWrite()
         {
-            CSV_WriteArrayIntegerNuget();
+            XML_SerializeArrayIntegerSharpSerializer();
         }
         void ITester.TestRead()
         {
-            CSV_ReadArrayIntegerFile();
+            XML_DeSerializeArrayIntegerSharpSerializer();
         }
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
         }
-
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
             this.NumberOfElements = NumberOfElements;

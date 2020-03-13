@@ -1,35 +1,33 @@
-﻿using Polenter.Serialization;
+﻿using CsvHelper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace bakalarska_prace.ListListInteger
 {
-
-    class XML_ListListIntegerNuget : Tools, ITester
+    class CSV_ListListIntegerCSVHelperFile : Tools, ITester
     {
         private List<List<System.Int32>> ListListInteger;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
-        private SharpSerializer XML_SharpSerializer;
 
-        public XML_ListListIntegerNuget()
+
+        public CSV_ListListIntegerCSVHelperFile()
         {
             this.NumberOfCollections = 0;
             this.ElementsInCollection = 0;
             this.ElementsInLastCollection = 0;
-            XML_SharpSerializer = new SharpSerializer(false);
         }
 
         private void Inicialize(bool Write)
         {
             ListListInteger = new List<List<System.Int32>>();
+
             if (Write)
             {
                 List<int> ListInteger = new List<int>();
@@ -48,58 +46,71 @@ namespace bakalarska_prace.ListListInteger
 
             }
         }
-        public void XML_SerializeListListIntegerNuget()
+
+        public void CSV_WriteListListIntegerCSVHelperFile()
         {
-           
-            XML_SharpSerializer.Serialize(ListListInteger, FileStr);
+            foreach(List<System.Int32> item in ListListInteger)
+            {
+                csvWriter.WriteField(item);
+                csvWriter.NextRecord();
+            }
             
         }
-
-        public void XML_DeSerializeListListIntegerNuget()
+        public void CSV_ReadListListIntegerCSVHelperFile()
         {
-            ListListInteger = (List<List<Int32>>)XML_SharpSerializer.Deserialize(FileStr);
+            List<int> result = new List<int>();
+            int recordValue;
+            while (csvReader.Read())
+            {
+                for (var i = 0; csvReader.TryGetField(i, out recordValue); i++)
+                {
+                    result.Add(recordValue);                    
+                }
+                ListListInteger.Add(new List<int>(result));
+                result.Clear();
+            }
+            
         }
 
         void ITester.SetupWriteStart()
         {
-            
             Inicialize(true);
-            FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
-
+            base.ToolsInicializeStream(this.GetType(), true);
+            csvWriter = new CsvWriter(base.StreamWriter, CultureInfo.InvariantCulture);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Open);
+            base.ToolsInicializeStream(this.GetType(), false);
+            csvReader = new CsvReader(StreamReader, CultureInfo.InvariantCulture);
+            csvReader.Configuration.HasHeaderRecord = false;
         }
         void ITester.SetupWriteEnd()
         {
-            FileStr.Close();
-            FileStr.Dispose();
+            base.ToolsSetupEndFile(true);
         }
         void ITester.SetupReadEnd()
         {
-            FileStr.Close();
-            FileStr.Dispose();
+            base.ToolsSetupEndFile(false);
         }
         void ITester.TestWrite()
         {
-            XML_SerializeListListIntegerNuget();
+            CSV_WriteListListIntegerCSVHelperFile();
         }
         void ITester.TestRead()
         {
-            XML_DeSerializeListListIntegerNuget();
+            CSV_ReadListListIntegerCSVHelperFile();
         }
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
         }
+
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
             this.NumberOfCollections = (int)Math.Sqrt(NumberOfElements);
             this.ElementsInCollection = NumberOfElements / NumberOfCollections;
             this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
-
     }
 }

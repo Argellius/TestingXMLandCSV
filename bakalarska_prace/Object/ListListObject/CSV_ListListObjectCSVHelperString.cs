@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bakalarska_prace.ListListInteger
+namespace bakalarska_prace.ListListObject
 {
-    class CSV_ListListIntegerString : Tools, ITester
+    class CSV_ListListObjectCSVHelperString : Tools, ITester
     {
-        private List<List<System.Int32>> ListListInteger;
+        private List<List<EmployeeRecord>> ListListObject;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
 
-        public CSV_ListListIntegerString()
+
+        public CSV_ListListObjectCSVHelperString()
         {
             this.NumberOfCollections = 0;
             this.ElementsInCollection = 0;
@@ -23,48 +25,48 @@ namespace bakalarska_prace.ListListInteger
 
         private void Inicialize(bool Write)
         {
-            ListListInteger = new List<List<System.Int32>>();
+            ListListObject = new List<List<EmployeeRecord>>();
 
             if (Write)
             {
-                List<int> ListInteger = new List<int>();
+                List<EmployeeRecord> List_Object = new List<EmployeeRecord>();
                 for (int i = 0; i < ElementsInCollection; i++)
-                    ListInteger.Add(System.Int32.MaxValue);
+                    List_Object.Add(new EmployeeRecord(true));
 
                 for (int i = 0; i < NumberOfCollections; i++)
-                    ListListInteger.Add(new List<int>(ListInteger));
-                ListInteger.Clear();
+                    ListListObject.Add(new List<EmployeeRecord>(List_Object));
+                List_Object.Clear();
                 if (ElementsInLastCollection > 0)
                 {
                     for (int i = 0; i < ElementsInLastCollection; i++)
-                        ListInteger.Add(Int32.MaxValue);
-                    ListListInteger.Add(new List<int>(ListInteger));
+                        List_Object.Add(new EmployeeRecord(true));
+                    ListListObject.Add(new List<EmployeeRecord>(List_Object));
                 }
-
             }
         }
-        public void CSV_WriteListListIntegerString()
+
+        public void CSV_WriteListListObjectCSVHelperString()
         {
-            foreach (List<Int32> list in ListListInteger)
+            foreach (List<EmployeeRecord> record in ListListObject)
             {
-                foreach (var (value, index) in list.Select((v, i) => (v, i)))
+                csvWriter.WriteRecords(record);
+                csvWriter.NextRecord();
+            }
+        }
+
+
+        public void CSV_ReadListListObjectCSVHelperString()
+        {
+            var ListObject = new List<EmployeeRecord>();
+            while (csvReader.Read())
+            {
+                if (csvReader.Context.Record.Count() == 0) //------
                 {
-                    if (index != 0)
-                        StringBuilder.Append(";");
-                    StringBuilder.Append(value);
-
+                    ListListObject.Add(new List<EmployeeRecord>(ListObject));
+                    ListObject.Clear();
+                    continue;
                 }
-                StringBuilder.AppendLine();
-            }
-            StringWriter.Write(StringBuilder);
-        }
-
-        public void CSV_ReadListListIntegerString()
-        {
-            while (StringReader.Peek() > 0)
-            {
-                string line = StringReader.ReadLine();
-                ListListInteger.Add(line.Split(';').ToList().ConvertAll(int.Parse));
+                ListObject.Add(csvReader.GetRecord<EmployeeRecord>());
             }
         }
 
@@ -73,11 +75,14 @@ namespace bakalarska_prace.ListListInteger
         {
             Inicialize(true);
             base.ToolsInicializeString(true);
+            csvWriter = new CsvWriter(base.StringWriter, CultureInfo.InvariantCulture);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeString(false, base.StringData);
+            base.ToolsInicializeString(false, StringData);
+            csvReader = new CsvReader(StringReader, CultureInfo.InvariantCulture);
+            csvReader.Configuration.IgnoreBlankLines = false;
         }
         void ITester.SetupWriteEnd()
         {
@@ -89,11 +94,12 @@ namespace bakalarska_prace.ListListInteger
         }
         void ITester.TestWrite()
         {
-            CSV_WriteListListIntegerString();
+            CSV_WriteListListObjectCSVHelperString();
         }
         void ITester.TestRead()
         {
-            CSV_ReadListListIntegerString();
+            CSV_ReadListListObjectCSVHelperString();
+
         }
         long ITester.GetSize()
         {

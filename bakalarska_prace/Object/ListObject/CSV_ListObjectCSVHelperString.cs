@@ -1,23 +1,21 @@
-﻿using Polenter.Serialization;
+﻿using CsvHelper;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace bakalarska_prace.ListObject
 {
-    class XML_ListObjectNuget : Tools, ITester
+    class CSV_ListObjectCSVHelperString : Tools, ITester
     {
         private List<EmployeeRecord> ListObject;
         private int NumberOfElements;
-        private SharpSerializer XML_SharpSerializer;
 
-        public XML_ListObjectNuget()
-        {            
+
+        public CSV_ListObjectCSVHelperString()
+        {
             this.NumberOfElements = 0;
         }
 
@@ -30,49 +28,48 @@ namespace bakalarska_prace.ListObject
 
         }
 
-        public void XML_SerializeListObjectNuget()
+        public void CSV_WriteListObjectCSVHelperString()
         {
-            XML_SharpSerializer.Serialize(ListObject, FileStr);
+            csvWriter.WriteRecords(this.ListObject);
+        }
+        public void CSV_ReadListObjectCSVHelperString()
+        {
+            ListObject = csvReader.GetRecords<EmployeeRecord>().ToList();            
         }
 
-        public void XML_DeSerializeListObjectNuget()
-        {
-            this.ListObject = (List<EmployeeRecord>)XML_SharpSerializer.Deserialize(FileStr);
-
-        }
 
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
-            XML_SharpSerializer = new SharpSerializer(false);
-            FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
-
+            base.ToolsInicializeString(true);
+            csvWriter = new CsvWriter(base.StringWriter, CultureInfo.InvariantCulture);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Open);
+            base.ToolsInicializeString(false, StringData);
+            csvReader = new CsvReader(StringReader, CultureInfo.InvariantCulture);
         }
         void ITester.SetupWriteEnd()
         {
-            FileStr.Close();
-
+            base.ToolsSetupEndString(true);
         }
         void ITester.SetupReadEnd()
         {
-            FileStr.Close();
+            base.ToolsSetupEndString(false);
         }
         void ITester.TestWrite()
         {
-            XML_SerializeListObjectNuget();
+            CSV_WriteListObjectCSVHelperString();
         }
         void ITester.TestRead()
         {
-            XML_DeSerializeListObjectNuget();
+            CSV_ReadListObjectCSVHelperString();
+
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile(this.GetType());
+            return ToolsGetSizeOfString();
         }
         void ITester.SetNumberOfElements(int NumberOfElements)
         {

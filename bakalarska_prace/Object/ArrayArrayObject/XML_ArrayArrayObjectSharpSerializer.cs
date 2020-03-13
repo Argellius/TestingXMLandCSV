@@ -1,5 +1,6 @@
 ﻿using Polenter.Serialization;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,16 +8,19 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace bakalarska_prace.ListListObject
+namespace bakalarska_prace.ArrayArrayObject
 {
-    class XML_ListListObjectNuget : Tools, ITester
+
+    class XML_ArrayArrayObjectSharpSerializer : Tools, ITester
     {
-        private List<List<EmployeeRecord>> ListListObject;
+        private EmployeeRecord[][] ArrayArrayObject;
+        
+        private SharpSerializer XML_SharpSerializer;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
-        private SharpSerializer XML_SharpSerializer;
-        public XML_ListListObjectNuget()
+
+        public XML_ArrayArrayObjectSharpSerializer()
         {
             this.NumberOfCollections = 0;
             this.ElementsInCollection = 0;
@@ -25,69 +29,74 @@ namespace bakalarska_prace.ListListObject
 
         private void Inicialize(bool Write)
         {
-            ListListObject = new List<List<EmployeeRecord>>();
+            if (ElementsInLastCollection > 0)
+            {
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections + 1][];
+
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
+                ArrayArrayObject[NumberOfCollections] = new EmployeeRecord[ElementsInLastCollection];
+            }
+            else
+            {
+                ArrayArrayObject = new EmployeeRecord[this.NumberOfCollections][];
+
+                for (int i = 0; i < NumberOfCollections; i++)
+                    ArrayArrayObject[i] = new EmployeeRecord[ElementsInCollection];
+            }
 
             if (Write)
             {
-                List<EmployeeRecord> List_Object = new List<EmployeeRecord>();
-                for (int i = 0; i < ElementsInCollection; i++)
-                    List_Object.Add(new EmployeeRecord(true));
-
-                for (int i = 0; i < NumberOfCollections; i++)
-                    ListListObject.Add(new List<EmployeeRecord>(List_Object));
-                List_Object.Clear();
+                for (int j = 0; j < NumberOfCollections; j++)
+                    for (int i = 0; i < ElementsInCollection; i++)
+                        ArrayArrayObject[j][i] = new EmployeeRecord(true);
                 if (ElementsInLastCollection > 0)
                 {
-                    for (int i = 0; i < ElementsInLastCollection; i++)
-                        List_Object.Add(new EmployeeRecord(true));
-                    ListListObject.Add(new List<EmployeeRecord>(List_Object));
+                    for (int j = 0; j < ElementsInLastCollection; j++)
+                        ArrayArrayObject[NumberOfCollections][j] = new EmployeeRecord(true);
                 }
+
             }
         }
-
-        public void XML_SerializeListListObjectNuget()
+        public void XML_SerializeArrayArrayObjectSharpSerializer()
         {
-            XML_SharpSerializer.Serialize(ListListObject, FileStr);
+            XML_SharpSerializer.Serialize(ArrayArrayObject, FileStr);
         }
 
-        public void XML_DeSerializeListListObjectNuget()
+        public void XML_DeSerializeArrayArrayObjectSharpSerializer()
         {
-            ;
-            ListListObject = XML_SharpSerializer.Deserialize(FileStr) as List<List<EmployeeRecord>>;           
+            this.ArrayArrayObject = (EmployeeRecord[][])XML_SharpSerializer.Deserialize(FileStr);
+            
         }
 
         void ITester.SetupWriteStart()
         {
+            XML_SharpSerializer = new SharpSerializer(false);
             Inicialize(true);
             FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
-            XML_SharpSerializer = new SharpSerializer(false);
 
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
             FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Open);
-            FileStr.Position = 0;
         }
         void ITester.SetupWriteEnd()
         {
-            
             FileStr.Close();
-            FileStr.Dispose();
 
         }
         void ITester.SetupReadEnd()
         {
             FileStr.Close();
-            FileStr.Dispose();
         }
         void ITester.TestWrite()
         {
-            XML_SerializeListListObjectNuget();
+            XML_SerializeArrayArrayObjectSharpSerializer();
         }
         void ITester.TestRead()
         {
-            XML_DeSerializeListListObjectNuget();
+            XML_DeSerializeArrayArrayObjectSharpSerializer();
         }
         long ITester.GetSize()
         {

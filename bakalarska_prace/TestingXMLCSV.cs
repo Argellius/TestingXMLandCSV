@@ -85,48 +85,53 @@ namespace bakalarska_prace
             TreeView_AddItems(treeView_Tests, "Array", new List<ITester> {
                     new ArrayInteger.XML_ArrayIntegerString(),
                     new ArrayInteger.XML_ArrayIntegerFile(),
-                    new ArrayInteger.XML_ArrayIntegerNuget(),
+                    new ArrayInteger.XML_ArrayIntegerSharpSerializer(),
                     new ArrayInteger.CSV_ArrayIntegerString(),
                     new ArrayInteger.CSV_ArrayIntegerFile(),
-                    new ArrayInteger.CSV_ArrayIntegerNuget(),
+                    new ArrayInteger.CSV_ArrayIntegerCSVHelperFile(),
+                    new ArrayInteger.CSV_ArrayIntegerCSVHelperString(),
 
             });
 
             TreeView_AddItems(treeView_Tests, "List", new List<ITester> {
                     new ListInteger.CSV_ListIntegerString(),
                     new ListInteger.CSV_ListIntegerFile(),
-                    new ListInteger.CSV_ListIntegerNuget(),
+                    new ListInteger.CSV_ListIntegerCSVHelperFile(),
+                    new ListInteger.CSV_ListIntegerCSVHelperString(),
                     new ListInteger.XML_ListIntegerString(),
                     new ListInteger.XML_ListIntegerFile(),
-                    new ListInteger.XML_ListIntegerNuget(),
+                    new ListInteger.XML_ListIntegerSharpSerializer(),
 
             });
 
             TreeView_AddItems(treeView_Tests, "ArrayList", new List<ITester> {
                 new ArrayListInteger.CSV_ArrayListIntegerString(),
                     new ArrayListInteger.CSV_ArrayListIntegerFile(),
-                    new ArrayListInteger.CSV_ArrayListIntegerNuget(),
+                    new ArrayListInteger.CSV_ArrayListIntegerCSVHelperFile(),
+                    new ArrayListInteger.CSV_ArrayListIntegerCSVHelperString(),
                     new ArrayListInteger.XML_ArrayListIntegerString(),
                     new ArrayListInteger.XML_ArrayListIntegerFile(),
-                    new ArrayListInteger.XML_ArrayListIntegerNuget(),
+                    new ArrayListInteger.XML_ArrayListIntegerSharpSerializer(),
             });
 
             TreeView_AddItems(treeView_Tests, "ArrayArray", new List<ITester> {
                     new ArrayArrayInteger.CSV_ArrayArrayIntegerString(),
                     new ArrayArrayInteger.CSV_ArrayArrayIntegerFile(),
-                    new ArrayArrayInteger.CSV_ArrayArrayIntegerNuget(),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerCSVHelperFile(),
+                    new ArrayArrayInteger.CSV_ArrayArrayIntegerCSVHelperString(),
                     new ArrayArrayInteger.XML_ArrayArrayIntegerString(),
                     new ArrayArrayInteger.XML_ArrayArrayIntegerFile(),
-                    new ArrayArrayInteger.XML_ArrayArrayIntegerNuget(),
+                    new ArrayArrayInteger.XML_ArrayArrayIntegerSharpSerializer(),
             });
 
             TreeView_AddItems(treeView_Tests, "ListList", new List<ITester> {
                     new ListListInteger.CSV_ListListIntegerString(),
                     new ListListInteger.CSV_ListListIntegerFile(),
-                    new ListListInteger.CSV_ListListIntegerNuget(),
+                    new ListListInteger.CSV_ListListIntegerCSVHelperFile(),
+                    new ListListInteger.CSV_ListListIntegerCSVHelperString(),
                     new ListListInteger.XML_ListListIntegerString(),
                     new ListListInteger.XML_ListListIntegerFile(),
-                    new ListListInteger.XML_ListListIntegerNuget(),
+                    new ListListInteger.XML_ListListIntegerSharpSerializer(),
             });
 
             //---
@@ -134,49 +139,54 @@ namespace bakalarska_prace
             TreeView_AddItems(treeView_Tests, "Array", new List<ITester> {
                     new ArrayObject.XML_ArrayObjectString(),
                     new ArrayObject.XML_ArrayObjectFile(),
-                    new ArrayObject.XML_ArrayObjectNuget(),
+                    new ArrayObject.XML_ArrayObjectSharpSerializer(),
                     new ArrayObject.CSV_ArrayObjectString(),
                     new ArrayObject.CSV_ArrayObjectFile(),
-                    new ArrayObject.CSV_ArrayObjectNuget(),
+                    new ArrayObject.CSV_ArrayObjectCSVHelperFile(),
+                    new ArrayObject.CSV_ArrayObjectCSVHelperString(),
 
             });
 
             TreeView_AddItems(treeView_Tests, "List", new List<ITester> {
                     new ListObject.CSV_ListObjectString(),
                     new ListObject.CSV_ListObjectFile(),
-                    new ListObject.CSV_ListObjectNuget(),
+                    new ListObject.CSV_ListObjectCSVHelperFile(),
+                    new ListObject.CSV_ListObjectCSVHelperString(),
                     new ListObject.XML_ListObjectString(),
                     new ListObject.XML_ListObjectFile(),
-                    new ListObject.XML_ListObjectNuget(),
+                    new ListObject.XML_ListObjectSharpSerializer(),
 
             });
 
             TreeView_AddItems(treeView_Tests, "ArrayList", new List<ITester> {
                     new ArrayListObject.CSV_ArrayListObjectString(),
                     new ArrayListObject.CSV_ArrayListObjectFile(),
-                    new ArrayListObject.CSV_ArrayListObjectNuget(),
+                    new ArrayListObject.CSV_ArrayListObjectCSVHelperFile(),
+                    new ArrayListObject.CSV_ArrayListObjectCSVHelperString(),
                     new ArrayListObject.XML_ArrayListObjectString(),
                     new ArrayListObject.XML_ArrayListObjectFile(),
-                    new ArrayListObject.XML_ArrayListObjectNuget(),
+                    new ArrayListObject.XML_ArrayListObjectSharpSerializer(),
 
             });
 
             TreeView_AddItems(treeView_Tests, "ArrayArray", new List<ITester> {
                     new ArrayArrayObject.CSV_ArrayArrayObjectString(),
                     new ArrayArrayObject.CSV_ArrayArrayObjectFile(),
-                    new ArrayArrayObject.CSV_ArrayArrayObjectNuget(),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectCSVHelperFile(),
+                    new ArrayArrayObject.CSV_ArrayArrayObjectCSVHelperString(),
                     new ArrayArrayObject.XML_ArrayArrayObjectString(),
                     new ArrayArrayObject.XML_ArrayArrayObjectFile(),
-                    new ArrayArrayObject.XML_ArrayArrayObjectNuget(),
+                    new ArrayArrayObject.XML_ArrayArrayObjectSharpSerializer(),
             });
 
             TreeView_AddItems(treeView_Tests, "ListList", new List<ITester> {
                     new ListListObject.CSV_ListListObjectString(),
                     new ListListObject.CSV_ListListObjectFile(),
-                    new ListListObject.CSV_ListListObjectNuget(),
+                    new ListListObject.CSV_ListListObjectCSVHelperFile(),
+                    new ListListObject.CSV_ListListObjectCSVHelperString(),
                     new ListListObject.XML_ListListObjectString(),
                     new ListListObject.XML_ListListObjectFile(),
-                    new ListListObject.XML_ListListObjectNuget(),
+                    new ListListObject.XML_ListListObjectSharpSerializer(),
             });
 
 

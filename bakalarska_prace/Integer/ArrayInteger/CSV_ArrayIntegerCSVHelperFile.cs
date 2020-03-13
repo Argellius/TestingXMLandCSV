@@ -6,36 +6,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bakalarska_prace.ArrayObject
+namespace bakalarska_prace.ArrayInteger
 {
-    class CSV_ArrayObjectNuget : Tools, ITester
+    class CSV_ArrayIntegerCSVHelperFile : Tools, ITester
     {
-        private EmployeeRecord[] ArrayObject;
+        private Int32[] ArrayInteger;
         private int NumberOfElements;
 
 
-        public CSV_ArrayObjectNuget()
+        public CSV_ArrayIntegerCSVHelperFile()
         {
             this.NumberOfElements = 0;
         }
 
-        private void Inicialize(bool Write)
+        private void Inicialize(bool write)
         {
-            ArrayObject = new EmployeeRecord[this.NumberOfElements];
-            if (Write)
+            ArrayInteger = new Int32[this.NumberOfElements];
+            if (write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayObject[i] = new EmployeeRecord(true);
-
+                    ArrayInteger[i] = int.MaxValue;
         }
 
-        public void CSV_WriteArrayObjectNuget()
+        public void CSV_WriteArrayIntegerCSVHelperFile()
         {
-            csvWriter.WriteRecords(this.ArrayObject);
+            csvWriter.WriteRecords(this.ArrayInteger);
         }
-        public void CSV_ReadArrayObjectFile()
+        public void CSV_ReadArrayIntegerCSVHelperFile()
         {
-            csvReader.Read();
-            ArrayObject = csvReader.GetRecords<EmployeeRecord>().ToArray();            
+            ArrayInteger = csvReader.GetRecords<System.Int32>().ToArray();            
         }
 
 
@@ -62,11 +60,11 @@ namespace bakalarska_prace.ArrayObject
         }
         void ITester.TestWrite()
         {
-            CSV_WriteArrayObjectNuget();
+            CSV_WriteArrayIntegerCSVHelperFile();
         }
         void ITester.TestRead()
         {
-            CSV_ReadArrayObjectFile();
+            CSV_ReadArrayIntegerCSVHelperFile();
         }
         long ITester.GetSize()
         {

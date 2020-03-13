@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace bakalarska_prace.ArrayArrayObject
 {
-    class CSV_ArrayArrayObjectNuget : Tools, ITester
+    class CSV_ArrayArrayObjectCSVHelperString : Tools, ITester
     {
         private EmployeeRecord[][] ArrayArrayObject;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
 
-        public CSV_ArrayArrayObjectNuget() {
+        public CSV_ArrayArrayObjectCSVHelperString() {
             NumberOfCollections = 0;
             ElementsInCollection = 0;
             ElementsInLastCollection = 0;
@@ -54,7 +54,7 @@ namespace bakalarska_prace.ArrayArrayObject
             }
         }
 
-        public void CSV_WriteArrayArrayObjectNuget()
+        public void CSV_WriteArrayArrayObjectCSVHelperString()
         {
             foreach (EmployeeRecord[] record in ArrayArrayObject)
             {
@@ -62,7 +62,7 @@ namespace bakalarska_prace.ArrayArrayObject
                 csvWriter.NextRecord();
             }
         }
-        public void CSV_ReadArrayArrayObjectNuget()
+        public void CSV_ReadArrayArrayObjectCSVHelperString()
         {
             int index_pole = 0;
             int i = 0;
@@ -85,35 +85,35 @@ namespace bakalarska_prace.ArrayArrayObject
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
-            base.ToolsInicializeStream(this.GetType(), true);
-            csvWriter = new CsvWriter(base.StreamWriter, CultureInfo.InvariantCulture);
+            base.ToolsInicializeString(true);
+            csvWriter = new CsvWriter(base.StringWriter, CultureInfo.InvariantCulture);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
-            csvReader = new CsvReader(StreamReader, CultureInfo.InvariantCulture);
+            base.ToolsInicializeString(false, StringData);
+            csvReader = new CsvReader(StringReader, CultureInfo.InvariantCulture);
             csvReader.Configuration.IgnoreBlankLines = false;
         }
         void ITester.SetupWriteEnd()
         {
-            base.ToolsSetupEndFile(true);
+            base.ToolsSetupEndString(true);
         }
         void ITester.SetupReadEnd()
         {
-            base.ToolsSetupEndFile(false);
+            base.ToolsSetupEndString(false);
         }
         void ITester.TestWrite()
         {
-            CSV_WriteArrayArrayObjectNuget();
+            CSV_WriteArrayArrayObjectCSVHelperString();
         }
         void ITester.TestRead()
         {
-            CSV_ReadArrayArrayObjectNuget();
+            CSV_ReadArrayArrayObjectCSVHelperString();
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile(this.GetType());
+            return ToolsGetSizeOfString();
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

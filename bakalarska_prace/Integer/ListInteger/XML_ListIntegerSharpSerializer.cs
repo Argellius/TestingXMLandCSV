@@ -1,54 +1,48 @@
-﻿
-
-using Polenter.Serialization;
+﻿using Polenter.Serialization;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace bakalarska_prace.ArrayListInteger
+namespace bakalarska_prace.ListInteger
 {
-
-    class XML_ArrayListIntegerNuget : Tools, ITester
+    class XML_ListIntegerSharpSerializer : Tools, ITester
     {
-        private ArrayList ArrayListInteger;
+        private List<System.Int32> ListInteger;
         private int NumberOfElements;
         private SharpSerializer XML_SharpSerializer;
-
-
-        public XML_ArrayListIntegerNuget()
+        public XML_ListIntegerSharpSerializer()
         {
-            this.XML_SharpSerializer = new SharpSerializer(false);
             this.NumberOfElements = 0;
-
         }
 
         private void Inicialize(bool Write)
         {
-            ArrayListInteger = new ArrayList();
-
+            ListInteger = new List<Int32>();
             if (Write)
                 for (int i = 0; i < NumberOfElements; i++)
-                    ArrayListInteger.Add(int.MaxValue);
+                    ListInteger.Add(int.MaxValue);
+
         }
 
-        public void XML_SerializeArrayIntegerNuget()
-        {
-            XML_SharpSerializer.Serialize(ArrayListInteger, FileStr);
+        public void XML_SerializeListIntegerSharpSerializer()
+        {            
+            XML_SharpSerializer.Serialize(ListInteger, FileStr);          
         }
 
-        public void XML_DeSerializeArrayIntegerNuget()
+        public void XML_DeSerializeListIntegerSharpSerializer()
         {
-            this.ArrayListInteger = (ArrayList)XML_SharpSerializer.Deserialize(FileStr);
+            this.ListInteger = (List<System.Int32>)XML_SharpSerializer.Deserialize(FileStr);
 
         }
 
         void ITester.SetupWriteStart()
         {
+            XML_SharpSerializer = new SharpSerializer(false);
             Inicialize(true);
             FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
 
@@ -69,16 +63,17 @@ namespace bakalarska_prace.ArrayListInteger
         }
         void ITester.TestWrite()
         {
-            XML_SerializeArrayIntegerNuget();
+            XML_SerializeListIntegerSharpSerializer();
         }
         void ITester.TestRead()
         {
-            XML_DeSerializeArrayIntegerNuget();
+            XML_DeSerializeListIntegerSharpSerializer();
         }
         long ITester.GetSize()
         {
             return ToolsGetSizeOfFile(this.GetType());
         }
+
         void ITester.SetNumberOfElements(int NumberOfElements)
         {
             this.NumberOfElements = NumberOfElements;
