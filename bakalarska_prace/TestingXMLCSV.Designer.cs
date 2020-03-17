@@ -29,88 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestingXMLCSV));
-            this.groupBox_testovani = new System.Windows.Forms.GroupBox();
-            this.metroButton_checkAll = new MetroFramework.Controls.MetroButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox_selected = new System.Windows.Forms.ListBox();
-            this.treeView_Tests = new System.Windows.Forms.TreeView();
             this.metroButton_Start = new MetroFramework.Controls.MetroButton();
             this.metroLabel_numberElements = new MetroFramework.Controls.MetroLabel();
             this.metroLabel_repeat = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox_NumberOfElements = new MetroFramework.Controls.MetroTextBox();
             this.metroTextBox_repeat = new MetroFramework.Controls.MetroTextBox();
+            this.treeView_Tests = new System.Windows.Forms.TreeView();
+            this.listBox_selected = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.metroButton_checkAll = new MetroFramework.Controls.MetroButton();
+            this.groupBox_testovani = new System.Windows.Forms.GroupBox();
             this.userControl_Result1 = new bakalarska_prace.UserControl_Result();
             this.groupBox_testovani.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox_testovani
-            // 
-            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
-            this.groupBox_testovani.Controls.Add(this.metroButton_checkAll);
-            this.groupBox_testovani.Controls.Add(this.label2);
-            this.groupBox_testovani.Controls.Add(this.label1);
-            this.groupBox_testovani.Controls.Add(this.listBox_selected);
-            this.groupBox_testovani.Controls.Add(this.treeView_Tests);
-            this.groupBox_testovani.Location = new System.Drawing.Point(47, 63);
-            this.groupBox_testovani.Name = "groupBox_testovani";
-            this.groupBox_testovani.Size = new System.Drawing.Size(830, 518);
-            this.groupBox_testovani.TabIndex = 0;
-            this.groupBox_testovani.TabStop = false;
-            this.groupBox_testovani.Text = "Testování";
-            // 
-            // metroButton_checkAll
-            // 
-            this.metroButton_checkAll.Location = new System.Drawing.Point(345, 18);
-            this.metroButton_checkAll.Name = "metroButton_checkAll";
-            this.metroButton_checkAll.Size = new System.Drawing.Size(75, 23);
-            this.metroButton_checkAll.TabIndex = 11;
-            this.metroButton_checkAll.Text = "Check All";
-            this.metroButton_checkAll.UseSelectable = true;
-            this.metroButton_checkAll.Click += new System.EventHandler(this.metroButton_checkAll_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(453, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Vybrané testovací případy:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(14, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Testovací případy:";
-            // 
-            // listBox_selected
-            // 
-            this.listBox_selected.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.listBox_selected.FormattingEnabled = true;
-            this.listBox_selected.ItemHeight = 17;
-            this.listBox_selected.Location = new System.Drawing.Point(456, 50);
-            this.listBox_selected.Name = "listBox_selected";
-            this.listBox_selected.Size = new System.Drawing.Size(368, 463);
-            this.listBox_selected.TabIndex = 3;
-            // 
-            // treeView_Tests
-            // 
-            this.treeView_Tests.CheckBoxes = true;
-            this.treeView_Tests.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView_Tests.HideSelection = false;
-            this.treeView_Tests.Location = new System.Drawing.Point(6, 47);
-            this.treeView_Tests.Name = "treeView_Tests";
-            this.treeView_Tests.Size = new System.Drawing.Size(414, 465);
-            this.treeView_Tests.TabIndex = 2;
-            this.treeView_Tests.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_Tests_AfterCheck_1);
-            this.treeView_Tests.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_Tests_BeforeSelect);
-            this.treeView_Tests.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_Tests_NodeMouseDoubleClick);
             // 
             // metroButton_Start
             // 
@@ -204,6 +136,74 @@
             this.metroTextBox_repeat.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_repeat.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // treeView_Tests
+            // 
+            this.treeView_Tests.CheckBoxes = true;
+            this.treeView_Tests.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView_Tests.HideSelection = false;
+            this.treeView_Tests.Location = new System.Drawing.Point(6, 47);
+            this.treeView_Tests.Name = "treeView_Tests";
+            this.treeView_Tests.Size = new System.Drawing.Size(414, 465);
+            this.treeView_Tests.TabIndex = 2;
+            this.treeView_Tests.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_Tests_AfterCheck_1);
+            this.treeView_Tests.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_Tests_BeforeSelect);
+            this.treeView_Tests.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_Tests_NodeMouseDoubleClick);
+            // 
+            // listBox_selected
+            // 
+            this.listBox_selected.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.listBox_selected.FormattingEnabled = true;
+            this.listBox_selected.ItemHeight = 17;
+            this.listBox_selected.Location = new System.Drawing.Point(456, 50);
+            this.listBox_selected.Name = "listBox_selected";
+            this.listBox_selected.Size = new System.Drawing.Size(368, 463);
+            this.listBox_selected.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(14, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Testovací případy:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(453, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Vybrané testovací případy:";
+            // 
+            // metroButton_checkAll
+            // 
+            this.metroButton_checkAll.Location = new System.Drawing.Point(345, 18);
+            this.metroButton_checkAll.Name = "metroButton_checkAll";
+            this.metroButton_checkAll.Size = new System.Drawing.Size(75, 23);
+            this.metroButton_checkAll.TabIndex = 11;
+            this.metroButton_checkAll.Text = "Check All";
+            this.metroButton_checkAll.UseSelectable = true;
+            this.metroButton_checkAll.Click += new System.EventHandler(this.metroButton_checkAll_Click);
+            // 
+            // groupBox_testovani
+            // 
+            this.groupBox_testovani.Controls.Add(this.metroButton_checkAll);
+            this.groupBox_testovani.Controls.Add(this.label2);
+            this.groupBox_testovani.Controls.Add(this.label1);
+            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
+            this.groupBox_testovani.Controls.Add(this.listBox_selected);
+            this.groupBox_testovani.Controls.Add(this.treeView_Tests);
+            this.groupBox_testovani.Location = new System.Drawing.Point(47, 63);
+            this.groupBox_testovani.Name = "groupBox_testovani";
+            this.groupBox_testovani.Size = new System.Drawing.Size(830, 518);
+            this.groupBox_testovani.TabIndex = 0;
+            this.groupBox_testovani.TabStop = false;
+            this.groupBox_testovani.Text = "Testování";
+            // 
             // userControl_Result1
             // 
             this.userControl_Result1.AutoScroll = true;
@@ -240,18 +240,17 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox_testovani;
-        private System.Windows.Forms.TreeView treeView_Tests;
-        private System.Windows.Forms.ListBox listBox_selected;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroButton metroButton_Start;
         private MetroFramework.Controls.MetroLabel metroLabel_numberElements;
         private MetroFramework.Controls.MetroLabel metroLabel_repeat;
         private MetroFramework.Controls.MetroTextBox metroTextBox_NumberOfElements;
         private MetroFramework.Controls.MetroTextBox metroTextBox_repeat;
-        private MetroFramework.Controls.MetroButton metroButton_checkAll;
+        private System.Windows.Forms.TreeView treeView_Tests;
+        private System.Windows.Forms.ListBox listBox_selected;
         private UserControl_Result userControl_Result1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private MetroFramework.Controls.MetroButton metroButton_checkAll;
+        private System.Windows.Forms.GroupBox groupBox_testovani;
     }
 }

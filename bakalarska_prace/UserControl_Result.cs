@@ -189,5 +189,14 @@ namespace bakalarska_prace
             else
                 InitGridView_ToolsVysledky_Statistika(this._vysledky);
         }
+
+        private void UserControl_Result_Resize(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void UserControl_Result_SizeChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace bakalarska_prace
 {
-    [Serializable]
+    [Serializable]    
     public class EmployeeRecord 
     {
         public Int32 ID { get; set; }
@@ -30,9 +31,9 @@ namespace bakalarska_prace
             ;
         }
 
-        public EmployeeRecord(bool boo)
+        public EmployeeRecord(bool FullObject)
         {
-            if (boo == false)
+            if (FullObject == false)
                 new EmployeeRecord();
             else
             {

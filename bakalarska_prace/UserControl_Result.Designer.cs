@@ -144,6 +144,8 @@
             this.Name = "UserControl_Result";
             this.Size = new System.Drawing.Size(824, 500);
             this.Load += new System.EventHandler(this.UserControl_Result_Load);
+            this.SizeChanged += new System.EventHandler(this.UserControl_Result_SizeChanged);
+            this.Resize += new System.EventHandler(this.UserControl_Result_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid_Result)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

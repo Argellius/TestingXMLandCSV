@@ -145,7 +145,7 @@ namespace bakalarska_prace
 
         }
 
-        protected long ToolsGetSizeOfString()
+        protected long ToolsGetSizeOfFile()
         {
             var length = StringWriter.GetStringBuilder().Length;
             StringWriter.Flush();

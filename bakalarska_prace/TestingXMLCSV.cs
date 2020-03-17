@@ -20,7 +20,7 @@ namespace bakalarska_prace
             tools_Vysledky = new Tools_Vysledky();
             userControl_Result1.SendToBack();
             userControl_Result1.Visible = false;
-            
+
 
 
         }
@@ -76,7 +76,7 @@ namespace bakalarska_prace
             metroButton_Start.Visible = visible;
 
             metroTextBox_NumberOfElements.Visible = visible;
-            metroTextBox_repeat.Visible = visible;            
+            metroTextBox_repeat.Visible = visible;
 
         }
 
@@ -189,6 +189,28 @@ namespace bakalarska_prace
                     new ListListObject.XML_ListListObjectSharpSerializer(),
             });
 
+            TreeView_AddItems(treeView_Tests, "ArrayListArrayList", new List<ITester>
+            {
+                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerString(),
+                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerFile(),
+                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerSharpSerializer(),
+                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerCSVHelperFile(),
+                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerCSVHelperString(),
+                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerString(),
+                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerFile(),
+            });
+
+            TreeView_AddItems(treeView_Tests, "ArrayListArrayList", new List<ITester>
+            {
+                    new ArrayListArrayListObject.CSV_ArrayListArrayListObjectString(),
+                    new ArrayListArrayListObject.CSV_ArrayListArrayListObjectFile(),
+                    new ArrayListArrayListObject.CSV_ArrayListArrayListObjectCSVHelperFile(),
+                    new ArrayListArrayListObject.CSV_ArrayListArrayListObjectCSVHelperString(),
+                    new ArrayListArrayListObject.XML_ArrayListArrayListObjectString(),
+                    new ArrayListArrayListObject.XML_ArrayListArrayListObjectFile(),
+                    new ArrayListArrayListObject.XML_ArrayListArrayListObjectSharpSerializer(),
+            }) ;
+
 
             //uncheck root
             treeView_Tests.SelectedNode = null;
@@ -256,27 +278,27 @@ namespace bakalarska_prace
             tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
             tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
 
-            for(int i =0; i < tools_Vysledky.pocetTestu; i++)
-            foreach (TreeViewItem node in listBox_selected.Items)
-            {
-                (node.Tag as ITester).SetupWriteStart();
-                TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
-                (node.Tag as ITester).SetupWriteEnd();
-                tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
-                test = new TimeSpan(0);
+            for (int i = 0; i < tools_Vysledky.pocetTestu; i++)
+                foreach (TreeViewItem node in listBox_selected.Items)
+                {
+                    (node.Tag as ITester).SetupWriteStart();
+                    TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
+                    (node.Tag as ITester).SetupWriteEnd();
+                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
+                    test = new TimeSpan(0);
 
 
-                (node.Tag as ITester).SetupReadStart();
-                test = OtestujZmer((node.Tag as ITester).TestRead);
-                (node.Tag as ITester).SetupReadEnd();
-                tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
-                test = new TimeSpan(0);
-            }
+                    (node.Tag as ITester).SetupReadStart();
+                    test = OtestujZmer((node.Tag as ITester).TestRead);
+                    (node.Tag as ITester).SetupReadEnd();
+                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
+                    test = new TimeSpan(0);
+                }
 
             this.VisibleComponentsForTesting(false);
             userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
             userControl_Result1.ShowResultsComponent();
-            
+
 
 
         }
@@ -308,5 +330,7 @@ namespace bakalarska_prace
                 if (node.Checked != true)
                     node.Checked = true;
         }
+
+
     }
 }
