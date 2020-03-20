@@ -13,7 +13,7 @@ namespace bakalarska_prace.ArrayListArrayListInteger
 
     class XML_ArrayListArrayListIntegerSharpSerializer : Tools, ITester
     {
-        private List<List<System.Int32>> ListListInteger;
+        private ArrayList ArrayListArrayListInteger;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
@@ -24,26 +24,26 @@ namespace bakalarska_prace.ArrayListArrayListInteger
             this.NumberOfCollections = 0;
             this.ElementsInCollection = 0;
             this.ElementsInLastCollection = 0;
-            XML_SharpSerializer = new SharpSerializer(false);
         }
 
         private void Inicialize(bool Write)
         {
-            ListListInteger = new List<List<System.Int32>>();
+            ArrayListArrayListInteger = new ArrayList();
+
             if (Write)
             {
-                List<int> ListInteger = new List<int>();
+                ArrayList ArrayListIntreger = new ArrayList();
                 for (int i = 0; i < ElementsInCollection; i++)
-                    ListInteger.Add(System.Int32.MaxValue);
+                    ArrayListIntreger.Add(System.Int32.MaxValue);
 
                 for (int i = 0; i < NumberOfCollections; i++)
-                    ListListInteger.Add(new List<int>(ListInteger));
-                ListInteger.Clear();
+                    ArrayListArrayListInteger.Add(new ArrayList(ArrayListIntreger));
+                ArrayListIntreger.Clear();
                 if (ElementsInLastCollection > 0)
                 {
                     for (int i = 0; i < ElementsInLastCollection; i++)
-                        ListInteger.Add(Int32.MaxValue);
-                    ListListInteger.Add(new List<int>(ListInteger));
+                        ArrayListIntreger.Add(Int32.MaxValue);
+                    ArrayListArrayListInteger.Add(new ArrayList(ArrayListIntreger));
                 }
 
             }
@@ -51,13 +51,13 @@ namespace bakalarska_prace.ArrayListArrayListInteger
         public void XML_SerializeArrayListArrayListIntegerSharpSerializer()
         {
            
-            XML_SharpSerializer.Serialize(ListListInteger, FileStr);
+            XML_SharpSerializer.Serialize(ArrayListArrayListInteger, FileStr);
             
         }
 
         public void XML_DeSerializeArrayListArrayListIntegerSharpSerializer()
         {
-            ListListInteger = (List<List<Int32>>)XML_SharpSerializer.Deserialize(FileStr);
+            ArrayListArrayListInteger = (ArrayList)XML_SharpSerializer.Deserialize(FileStr);
         }
 
         void ITester.SetupWriteStart()
@@ -65,7 +65,7 @@ namespace bakalarska_prace.ArrayListArrayListInteger
             
             Inicialize(true);
             FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
-
+            XML_SharpSerializer = new SharpSerializer(false);
         }
         void ITester.SetupReadStart()
         {
@@ -81,6 +81,10 @@ namespace bakalarska_prace.ArrayListArrayListInteger
         {
             FileStr.Close();
             FileStr.Dispose();
+
+            ArrayListArrayListInteger = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
         }
         void ITester.TestWrite()
         {

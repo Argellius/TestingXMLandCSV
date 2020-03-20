@@ -51,7 +51,7 @@ namespace bakalarska_prace
             var results = _Vysledky.GetListZaznamy().GroupBy(p => p.name,
            (key, g) => new { Name = key, Properties = g.ToList() }).OrderBy(s => s.Name.Substring(4));//order by XML_... || CSV_....
 
-            table_Statistika = new DataTable("TestingCSVXMLStatistika");
+            table_Statistika = new DataTable("Statistika");
 
             table_Statistika.Columns.Add("Název testu", typeof(string));
             table_Statistika.Columns.Add("Průměrný čas", typeof(decimal));
@@ -94,7 +94,7 @@ namespace bakalarska_prace
 
 
             //Inicializace tabulky
-            table_Mezivysledky = new DataTable("TestingCSVXML");
+            table_Mezivysledky = new DataTable("MeziVysledky");
             DataColumn column_nazev = new DataColumn("Název testu");
             column_nazev.DataType = typeof(string);
             table_Mezivysledky.Columns.Add(column_nazev);
@@ -175,6 +175,7 @@ namespace bakalarska_prace
                 _vysledky.ExportToExcelFile(table_Mezivysledky);
             else
                 _vysledky.ExportToExcelFile(table_Statistika);
+            MessageBox.Show("Done");
         }
 
         private void metroGrid_Result_ColumnAdded(object sender, DataGridViewColumnEventArgs e)

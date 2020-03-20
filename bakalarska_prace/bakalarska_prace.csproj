@@ -99,7 +99,7 @@
     <Compile Include="Integer\ArrayArray\XML_ArrayArrayIntegerFile.cs" />
     <Compile Include="Integer\ArrayArray\XML_ArrayArrayIntegerSharpSerializer.cs" />
     <Compile Include="Integer\ArrayArray\XML_ArrayArrayIntegerString.cs" />
-    <Compile Include="Integer\ArraylistArraylist\XML_ArrayListArrayListIntegerSharpSerializer.cs" />
+    <Compile Include="Integer\ArrayListArrayList\XML_ArrayListArrayListIntegerSharpSerializer.cs" />
     <Compile Include="Integer\Array\CSV_ArrayIntegerCSVHelperString.cs" />
     <Compile Include="Integer\Array\CSV_ArrayIntegerFile.cs" />
     <Compile Include="Integer\Array\CSV_ArrayIntegerCSVHelperFile.cs" />
@@ -107,12 +107,12 @@
     <Compile Include="Integer\Array\XML_ArrayIntegerFile.cs" />
     <Compile Include="Integer\Array\XML_ArrayIntegerSharpSerializer.cs" />
     <Compile Include="Integer\Array\XML_ArrayIntegerString.cs" />
-    <Compile Include="Integer\ArraylistArraylist\CSV_ArrayListArrayListIntegerCSVHelperFile.cs" />
-    <Compile Include="Integer\ArraylistArraylist\CSV_ArrayListArrayListIntegerCSVHelperString.cs" />
-    <Compile Include="Integer\ArraylistArraylist\CSV_ArrayListArrayListIntegerFile.cs" />
-    <Compile Include="Integer\ArraylistArraylist\CSV_ArrayListArrayListIntegerString.cs" />
-    <Compile Include="Integer\ArraylistArraylist\XML_ArrayListArrayListIntegerFile.cs" />
-    <Compile Include="Integer\ArraylistArraylist\XML_ArrayListArrayListIntegerString.cs" />
+    <Compile Include="Integer\ArrayListArrayList\CSV_ArrayListArrayListIntegerCSVHelperFile.cs" />
+    <Compile Include="Integer\ArrayListArrayList\CSV_ArrayListArrayListIntegerCSVHelperString.cs" />
+    <Compile Include="Integer\ArrayListArrayList\CSV_ArrayListArrayListIntegerFile.cs" />
+    <Compile Include="Integer\ArrayListArrayList\CSV_ArrayListArrayListIntegerString.cs" />
+    <Compile Include="Integer\ArrayListArrayList\XML_ArrayListArrayListIntegerFile.cs" />
+    <Compile Include="Integer\ArrayListArrayList\XML_ArrayListArrayListIntegerString.cs" />
     <Compile Include="Integer\Arraylist\CSV_ArrayListIntegerCSVHelperString.cs" />
     <Compile Include="Integer\Arraylist\CSV_ArraylistIntegerFile.cs" />
     <Compile Include="Integer\Arraylist\CSV_ArrayListIntegerCSVHelperFile.cs" />

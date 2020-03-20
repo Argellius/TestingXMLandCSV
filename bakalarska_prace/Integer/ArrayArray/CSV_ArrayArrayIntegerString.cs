@@ -9,7 +9,7 @@ namespace bakalarska_prace.ArrayArrayInteger
 {
     class CSV_ArrayArrayIntegerString : Tools, ITester
     {
-        private System.Int32[][] ArrayArray_Integer;
+        private System.Int32[][] ArrayArrayInteger;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
@@ -24,36 +24,36 @@ namespace bakalarska_prace.ArrayArrayInteger
         {
             if (ElementsInLastCollection > 0)
             {
-                ArrayArray_Integer = new Int32[this.NumberOfCollections + 1][];
+                ArrayArrayInteger = new Int32[this.NumberOfCollections + 1][];
 
                 for (int i = 0; i < NumberOfCollections; i++)
-                    ArrayArray_Integer[i] = new int[ElementsInCollection];
-                ArrayArray_Integer[NumberOfCollections] = new int[ElementsInLastCollection];
+                    ArrayArrayInteger[i] = new int[ElementsInCollection];
+                ArrayArrayInteger[NumberOfCollections] = new int[ElementsInLastCollection];
             }
             else
             {
-                ArrayArray_Integer = new Int32[this.NumberOfCollections][];
+                ArrayArrayInteger = new Int32[this.NumberOfCollections][];
 
                 for (int i = 0; i < NumberOfCollections; i++)
-                    ArrayArray_Integer[i] = new int[ElementsInCollection];
+                    ArrayArrayInteger[i] = new int[ElementsInCollection];
             }
 
             if (Write)
             {
                 for (int j = 0; j < NumberOfCollections; j++)
                     for (int i = 0; i < ElementsInCollection; i++)
-                        ArrayArray_Integer[j][i] = int.MaxValue;
+                        ArrayArrayInteger[j][i] = int.MaxValue;
                 if (ElementsInLastCollection > 0)
                 {
                     for (int j = 0; j < ElementsInLastCollection; j++)
-                        ArrayArray_Integer[NumberOfCollections][j] = int.MaxValue;
+                        ArrayArrayInteger[NumberOfCollections][j] = int.MaxValue;
                 }
 
             }
         }
         public void CSV_WriteArrayArrayIntegerString()
         {
-            foreach (Int32[] array in ArrayArray_Integer)
+            foreach (Int32[] array in ArrayArrayInteger)
             {
                 foreach (var (value, index) in array.Select((v, i) => (v, i)))
                 {
@@ -77,7 +77,7 @@ namespace bakalarska_prace.ArrayArrayInteger
 
                 foreach (var (value, index) in values.Select((v, i) => (v, i)))
                 {
-                    ArrayArray_Integer[index_pole][index] = Convert.ToInt32(value);
+                    ArrayArrayInteger[index_pole][index] = Convert.ToInt32(value);
                 }
                 index_pole++;
             }
@@ -100,6 +100,7 @@ namespace bakalarska_prace.ArrayArrayInteger
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ArrayArrayInteger = null;
         }
         void ITester.TestWrite()
         {
@@ -111,7 +112,7 @@ namespace bakalarska_prace.ArrayArrayInteger
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

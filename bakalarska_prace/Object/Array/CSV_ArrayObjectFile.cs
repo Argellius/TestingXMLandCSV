@@ -96,12 +96,12 @@ namespace bakalarska_prace.ArrayObject
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
-            base.ToolsInicializeStream(this.GetType(), true);
+            base.ToolsInicializeFile(this.GetType(), true);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
+            base.ToolsInicializeFile(this.GetType(), false);
         }
         void ITester.SetupWriteEnd()
         {
@@ -110,6 +110,7 @@ namespace bakalarska_prace.ArrayObject
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndFile(false);
+            ArrayObject = null;
         }
         void ITester.TestWrite()
         {

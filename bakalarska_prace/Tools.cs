@@ -12,7 +12,6 @@ using System.Xml.Serialization;
 
 namespace bakalarska_prace
 {
-    public enum TestType { String, File };
 
     abstract class Tools
     {
@@ -20,35 +19,37 @@ namespace bakalarska_prace
 
         //protected string path = @"..\..\..\TestResults\";
         protected string path = @"D:\TestResults\";
-        protected EmployeeRecord _Zamestnanci_With_Data;
-
+       
+        //XMLSerializer
         protected XmlSerializer XmlSerializer;
 
-        //Tools for string's test
+        //String test tools
         protected StringBuilder StringBuilder;
 
         protected StringWriter StringWriter;
         protected StringReader StringReader;
 
-        //Tools for file's test
+        //File test tools
         protected StreamWriter StreamWriter;
         protected StreamReader StreamReader;
 
+        //CSVHelper
         protected CsvWriter csvWriter;
         protected CsvReader csvReader;
 
+        //SharpSerializer
         protected FileStream FileStr;
 
         public Tools()
         {
             StringBuilder = new StringBuilder();
-            _Zamestnanci_With_Data = new EmployeeRecord(true);
         }
 
 
-        protected void ToolsInicializeStream(Type obj, bool Write)
+        //File tools
+        protected void ToolsInicializeFile(Type obj, bool Write)
         {
-            StringBuilder.Clear();
+            
             string ClassName = obj.Name;
             if (Write)
             {
@@ -77,16 +78,8 @@ namespace bakalarska_prace
                     this.StreamReader = new StreamReader(this.path + ClassName + ".xml");
 
             }
+            StringBuilder.Clear();
         }
-
-        protected void ToolsInicializeString(bool Write, string data = null)
-        {
-            if (Write)
-                this.StringWriter = new StringWriter();
-            else
-                this.StringReader = new StringReader(data);
-        }
-
 
         protected void ToolsSetupEndFile(bool Write)
         {
@@ -108,6 +101,41 @@ namespace bakalarska_prace
                 this.StreamReader.Dispose();
             }
         }
+        protected long ToolsGetSizeOfFile(Type obj)
+        {
+            string FileName = this.path + obj.Name;
+            long lengthFile;
+            if (File.Exists(FileName + ".csv"))
+            {
+                lengthFile =  new FileInfo(FileName + ".csv").Length;
+            }
+            else if (File.Exists(FileName + ".xml"))
+            {
+                lengthFile = new FileInfo(FileName + ".xml").Length;
+            }
+            else
+                return 0;
+
+            if (StreamReader != null)
+            {
+                StreamWriter = null;
+                StreamReader = null;
+                StringBuilder.Clear();
+            }
+
+            return lengthFile;
+
+        }
+
+
+        //String tools
+        protected void ToolsInicializeString(bool Write, string data = null)
+        {
+            if (Write)
+                this.StringWriter = new StringWriter();
+            else
+                this.StringReader = new StringReader(data);
+        }
 
         protected void ToolsSetupEndString(bool Write)
         {
@@ -116,41 +144,28 @@ namespace bakalarska_prace
                 this.StringData = StringWriter.ToString();
                 StringBuilder.Clear();                
                 StringWriter.Close();
+                StringWriter.Flush();
                 StringWriter.Dispose();
             }
             else
-            {
+            {                
                 this.StringData = string.Empty;
                 this.StringBuilder.Clear();
                 this.StringReader.Close();                
                 this.StringReader.Dispose();
             }
-        }
+        }        
 
-
-        protected long ToolsGetSizeOfFile(Type obj)
-        {
-            string FileName = this.path + obj.Name;
-
-            if (File.Exists(FileName + ".csv"))
-            {
-                return new FileInfo(FileName + ".csv").Length;
-            }
-            else if (File.Exists(FileName + ".xml"))
-            {
-                return new FileInfo(FileName + ".xml").Length;
-            }
-            else
-                return 0;
-
-        }
-
-        protected long ToolsGetSizeOfFile()
+        protected long ToolsGetSizeOfString()
         {
             var length = StringWriter.GetStringBuilder().Length;
-            StringWriter.Flush();
-            return length;
-
+            if (StringReader != null)
+            {
+                StringWriter = null;
+                StringReader = null;
+                StringBuilder.Clear();                
+            }
+            return length;   
         }
 
 

@@ -72,6 +72,8 @@ namespace bakalarska_prace.ArrayListArrayListInteger
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ArrayListArrayListInteger = null;
+            XmlSerializer = null;
         }
         void ITester.TestWrite()
         {
@@ -83,7 +85,7 @@ namespace bakalarska_prace.ArrayListArrayListInteger
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
         void ITester.SetNumberOfElements(int NumberOfElements)
         {

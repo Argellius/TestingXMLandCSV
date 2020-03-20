@@ -41,13 +41,13 @@ namespace bakalarska_prace.ListObject
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
-            base.ToolsInicializeStream(this.GetType(), true);
+            base.ToolsInicializeFile(this.GetType(), true);
             csvWriter = new CsvWriter(base.StreamWriter, CultureInfo.InvariantCulture);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
+            base.ToolsInicializeFile(this.GetType(), false);
             csvReader = new CsvReader(StreamReader, CultureInfo.InvariantCulture);
         }
         void ITester.SetupWriteEnd()

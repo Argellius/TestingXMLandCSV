@@ -114,7 +114,7 @@ namespace bakalarska_prace.ListObject
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
         void ITester.SetNumberOfElements(int NumberOfElements)
         {

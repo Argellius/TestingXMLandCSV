@@ -68,6 +68,7 @@ namespace bakalarska_prace.ArrayListInteger
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ArrayListInteger = null;
         }
         void ITester.TestWrite()
         {
@@ -79,7 +80,7 @@ namespace bakalarska_prace.ArrayListInteger
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
         void ITester.SetNumberOfElements(int NumberOfElements)
         {

@@ -24,7 +24,6 @@ namespace bakalarska_prace.ListListInteger
             this.NumberOfCollections = 0;
             this.ElementsInCollection = 0;
             this.ElementsInLastCollection = 0;
-            XML_SharpSerializer = new SharpSerializer(false);
         }
 
         private void Inicialize(bool Write)
@@ -65,6 +64,7 @@ namespace bakalarska_prace.ListListInteger
             
             Inicialize(true);
             FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
+            XML_SharpSerializer = new SharpSerializer(false);
 
         }
         void ITester.SetupReadStart()
@@ -79,8 +79,11 @@ namespace bakalarska_prace.ListListInteger
         }
         void ITester.SetupReadEnd()
         {
-            FileStr.Close();
-            FileStr.Dispose();
+            FileStr.Close(); 
+            ListListInteger = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
+
         }
         void ITester.TestWrite()
         {

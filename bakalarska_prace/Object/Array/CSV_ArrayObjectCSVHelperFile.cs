@@ -42,13 +42,13 @@ namespace bakalarska_prace.ArrayObject
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
-            base.ToolsInicializeStream(this.GetType(), true);
+            base.ToolsInicializeFile(this.GetType(), true);
             csvWriter = new CsvWriter(base.StreamWriter, CultureInfo.InvariantCulture);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
+            base.ToolsInicializeFile(this.GetType(), false);
             csvReader = new CsvReader(StreamReader, CultureInfo.InvariantCulture);
             csvReader.Configuration.HasHeaderRecord = false;
         }
@@ -59,6 +59,9 @@ namespace bakalarska_prace.ArrayObject
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndFile(false);
+            ArrayObject = null;
+            csvWriter = null;
+            csvReader = null;
         }
         void ITester.TestWrite()
         {
@@ -70,7 +73,7 @@ namespace bakalarska_prace.ArrayObject
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile(this.GetType());
+            return ToolsGetSizeOfFile(this.GetType());            
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

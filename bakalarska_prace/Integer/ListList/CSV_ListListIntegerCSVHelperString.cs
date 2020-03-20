@@ -92,6 +92,9 @@ namespace bakalarska_prace.ListListInteger
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ListListInteger = null;
+            csvWriter = null;
+            csvReader = null;
         }
         void ITester.TestWrite()
         {
@@ -103,7 +106,7 @@ namespace bakalarska_prace.ListListInteger
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

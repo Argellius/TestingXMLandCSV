@@ -109,7 +109,7 @@ namespace bakalarska_prace.ArrayListArrayListObject
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

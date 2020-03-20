@@ -65,19 +65,19 @@ namespace bakalarska_prace
                 sb.AppendLine(string.Join(",", fields));
             }
 
-            File.WriteAllText("exportCSV.csv", sb.ToString());
+            File.WriteAllText(DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + dt.TableName + this.pocetPrvku + ".csv", sb.ToString());
 
         }
 
         public void ExportToExcelFile(DataTable dt)
         {
-            //Codes for the Closed XML
+            //Export into excel with NuGet ClosedXML
             using (XLWorkbook wb = new XLWorkbook())
             {
                 wb.Worksheets.Add(dt, dt.TableName);
                 wb.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 wb.Style.Font.Bold = true;
-                wb.SaveAs("exportExcel" + ".xlsx");
+                wb.SaveAs(DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + dt.TableName + this.pocetPrvku + ".xlsx");
             }
         }
 

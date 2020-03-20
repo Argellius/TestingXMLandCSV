@@ -41,12 +41,12 @@ namespace bakalarska_prace.ArrayListObject
         {
             Inicialize(true);
             XmlSerializer = new XmlSerializer(ArrayListObject.GetType(), new Type[] { typeof(EmployeeRecord) });
-            base.ToolsInicializeStream(this.GetType(), true);
+            base.ToolsInicializeFile(this.GetType(), true);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
+            base.ToolsInicializeFile(this.GetType(), false);
         }
         void ITester.SetupWriteEnd()
         {

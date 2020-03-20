@@ -60,6 +60,9 @@ namespace bakalarska_prace.ListInteger
         void ITester.SetupReadEnd()
         {
             FileStr.Close();
+            ListInteger = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
         }
         void ITester.TestWrite()
         {

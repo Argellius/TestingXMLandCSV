@@ -10,6 +10,7 @@ namespace bakalarska_prace.ArrayInteger
     class XML_ArrayIntegerString : Tools, ITester
     {
         private System.Int32[] ArrayInteger;
+
         private int NumberOfElements;
 
         public XML_ArrayIntegerString()
@@ -53,6 +54,8 @@ namespace bakalarska_prace.ArrayInteger
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ArrayInteger = null;
+            XmlSerializer = null;
         }
         void ITester.TestWrite()
         {
@@ -64,7 +67,7 @@ namespace bakalarska_prace.ArrayInteger
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

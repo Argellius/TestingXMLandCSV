@@ -57,6 +57,9 @@ namespace bakalarska_prace.ArrayInteger
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ArrayInteger = null;
+            csvWriter = null;
+            csvReader = null;
         }
         void ITester.TestWrite()
         {
@@ -65,10 +68,11 @@ namespace bakalarska_prace.ArrayInteger
         void ITester.TestRead()
         {
             CSV_ReadArrayIntegerCSVHelperString();
+
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

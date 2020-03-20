@@ -54,6 +54,8 @@ namespace bakalarska_prace.ListInteger
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ListInteger = null;
+            XmlSerializer = null;
         }
         void ITester.TestWrite()
         {
@@ -65,7 +67,7 @@ namespace bakalarska_prace.ListInteger
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

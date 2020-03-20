@@ -22,7 +22,6 @@ namespace bakalarska_prace.ArrayListInteger
 
         public XML_ArrayListIntegerSharpSerializer()
         {
-            this.XML_SharpSerializer = new SharpSerializer(false);
             this.NumberOfElements = 0;
 
         }
@@ -51,7 +50,7 @@ namespace bakalarska_prace.ArrayListInteger
         {
             Inicialize(true);
             FileStr = new System.IO.FileStream(path + this.GetType().Name + ".xml", System.IO.FileMode.Create);
-
+            this.XML_SharpSerializer = new SharpSerializer(false);
         }
         void ITester.SetupReadStart()
         {
@@ -66,6 +65,9 @@ namespace bakalarska_prace.ArrayListInteger
         void ITester.SetupReadEnd()
         {
             FileStr.Close();
+            ArrayListInteger = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
         }
         void ITester.TestWrite()
         {

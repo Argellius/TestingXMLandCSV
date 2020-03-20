@@ -117,10 +117,11 @@ namespace bakalarska_prace.ArrayObject
         void ITester.TestRead()
         {
             CSV_ReadArrayObjectString();
+            ArrayObject = null;
         }
         long ITester.GetSize()
         {
-            return ToolsGetSizeOfFile();
+            return ToolsGetSizeOfString();
         }
 
         void ITester.SetNumberOfElements(int NumberOfElements)

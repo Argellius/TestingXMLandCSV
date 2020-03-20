@@ -13,7 +13,7 @@ namespace bakalarska_prace.ArrayArrayInteger
 
     class XML_ArrayArrayIntegerSharpSerializer : Tools, ITester
     {
-        private System.Int32[][] ArrayArray_Integer;        
+        private System.Int32[][] ArrayArrayInteger;        
         private SharpSerializer XML_SharpSerializer;        
         private int NumberOfCollections;
         private int ElementsInCollection;
@@ -29,29 +29,29 @@ namespace bakalarska_prace.ArrayArrayInteger
         {
             if (ElementsInLastCollection > 0)
             {
-                ArrayArray_Integer = new Int32[this.NumberOfCollections + 1][];
+                ArrayArrayInteger = new Int32[this.NumberOfCollections + 1][];
 
                 for (int i = 0; i < NumberOfCollections; i++)
-                    ArrayArray_Integer[i] = new int[ElementsInCollection];
-                ArrayArray_Integer[NumberOfCollections] = new int[ElementsInLastCollection];
+                    ArrayArrayInteger[i] = new int[ElementsInCollection];
+                ArrayArrayInteger[NumberOfCollections] = new int[ElementsInLastCollection];
             }
             else
             {
-                ArrayArray_Integer = new Int32[this.NumberOfCollections][];
+                ArrayArrayInteger = new Int32[this.NumberOfCollections][];
 
                 for (int i = 0; i < NumberOfCollections; i++)
-                    ArrayArray_Integer[i] = new int[ElementsInCollection];
+                    ArrayArrayInteger[i] = new int[ElementsInCollection];
             }
 
             if (Write)
             {
                 for (int j = 0; j < NumberOfCollections; j++)
                     for (int i = 0; i < ElementsInCollection; i++)
-                        ArrayArray_Integer[j][i] = int.MaxValue;
+                        ArrayArrayInteger[j][i] = int.MaxValue;
                 if (ElementsInLastCollection > 0)
                 {
                     for (int j = 0; j < ElementsInLastCollection; j++)
-                        ArrayArray_Integer[NumberOfCollections][j] = int.MaxValue;
+                        ArrayArrayInteger[NumberOfCollections][j] = int.MaxValue;
                 }
 
             }
@@ -59,12 +59,12 @@ namespace bakalarska_prace.ArrayArrayInteger
         public void XML_SerializeArrayArrayIntegerSharpSerializer()
         {
            
-            XML_SharpSerializer.Serialize(ArrayArray_Integer, FileStr);
+            XML_SharpSerializer.Serialize(ArrayArrayInteger, FileStr);
         }
 
         public void XML_DeSerializeArrayArrayIntegerSharpSerializer()
         {
-            this.ArrayArray_Integer = (Int32[][])XML_SharpSerializer.Deserialize(FileStr);
+            this.ArrayArrayInteger = (Int32[][])XML_SharpSerializer.Deserialize(FileStr);
             
         }
 
@@ -88,6 +88,9 @@ namespace bakalarska_prace.ArrayArrayInteger
         void ITester.SetupReadEnd()
         {
             FileStr.Close();
+            ArrayArrayInteger = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
         }
         void ITester.TestWrite()
         {

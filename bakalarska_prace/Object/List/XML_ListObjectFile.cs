@@ -39,12 +39,12 @@ namespace bakalarska_prace.ListObject
         {
             Inicialize(true);
             XmlSerializer = new XmlSerializer(ListObject.GetType());
-            base.ToolsInicializeStream(this.GetType(), true);
+            base.ToolsInicializeFile(this.GetType(), true);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
+            base.ToolsInicializeFile(this.GetType(), false);
         }
         void ITester.SetupWriteEnd()
         {

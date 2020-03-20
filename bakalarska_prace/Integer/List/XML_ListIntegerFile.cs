@@ -42,12 +42,12 @@ namespace bakalarska_prace.ListInteger
         {
             Inicialize(true);
             XmlSerializer = new XmlSerializer(ListInteger.GetType());
-            base.ToolsInicializeStream(this.GetType(), true);
+            base.ToolsInicializeFile(this.GetType(), true);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
+            base.ToolsInicializeFile(this.GetType(), false);
         }
         void ITester.SetupWriteEnd()
         {
@@ -56,6 +56,9 @@ namespace bakalarska_prace.ListInteger
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndFile(false);
+            ListInteger = null;
+            XmlSerializer = null;
+
         }
         void ITester.TestWrite()
         {

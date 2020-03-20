@@ -275,12 +275,14 @@ namespace bakalarska_prace
                 (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(metroTextBox_NumberOfElements.Text));
             }
 
+
             tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
             tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
 
             for (int i = 0; i < tools_Vysledky.pocetTestu; i++)
                 foreach (TreeViewItem node in listBox_selected.Items)
                 {
+                    Console.WriteLine(node.Tag);
                     (node.Tag as ITester).SetupWriteStart();
                     TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
                     (node.Tag as ITester).SetupWriteEnd();
@@ -294,6 +296,7 @@ namespace bakalarska_prace
                     tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
                     test = new TimeSpan(0);
                 }
+
 
             this.VisibleComponentsForTesting(false);
             userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
@@ -312,6 +315,8 @@ namespace bakalarska_prace
             return sw.Elapsed;
 
         }
+
+
 
         private void treeView_Tests_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {

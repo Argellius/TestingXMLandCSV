@@ -55,12 +55,12 @@ namespace bakalarska_prace.ListListObject
         {
             Inicialize(true);
             XmlSerializer = new XmlSerializer(ListListObject.GetType());
-            base.ToolsInicializeStream(this.GetType(), true);
+            base.ToolsInicializeFile(this.GetType(), true);
         }
         void ITester.SetupReadStart()
         {
             Inicialize(false);
-            base.ToolsInicializeStream(this.GetType(), false);
+            base.ToolsInicializeFile(this.GetType(), false);
         }
         void ITester.SetupWriteEnd()
         {
