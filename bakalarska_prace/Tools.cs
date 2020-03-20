@@ -15,7 +15,7 @@ namespace bakalarska_prace
 
     abstract class Tools
     {
-        protected string StringData;
+        protected StringBuilder StringData;
 
         //protected string path = @"..\..\..\TestResults\";
         protected string path = @"D:\TestResults\";
@@ -129,30 +129,28 @@ namespace bakalarska_prace
 
 
         //String tools
-        protected void ToolsInicializeString(bool Write, string data = null)
+        protected void ToolsInicializeString(bool Write, StringBuilder data = null)
         {
             if (Write)
                 this.StringWriter = new StringWriter();
             else
-                this.StringReader = new StringReader(data);
+                this.StringReader = new StringReader(data.ToString());
         }
 
         protected void ToolsSetupEndString(bool Write)
         {
             if (Write)
             {
-                this.StringData = StringWriter.ToString();
+                this.StringData = StringWriter.GetStringBuilder();
                 StringBuilder.Clear();                
-                StringWriter.Close();
+                StringWriter.Close();                
                 StringWriter.Flush();
-                StringWriter.Dispose();
             }
             else
             {                
-                this.StringData = string.Empty;
+                this.StringData = null;
                 this.StringBuilder.Clear();
                 this.StringReader.Close();                
-                this.StringReader.Dispose();
             }
         }        
 
@@ -161,6 +159,7 @@ namespace bakalarska_prace
             var length = StringWriter.GetStringBuilder().Length;
             if (StringReader != null)
             {
+                this.StringData = null;
                 StringWriter = null;
                 StringReader = null;
                 StringBuilder.Clear();                

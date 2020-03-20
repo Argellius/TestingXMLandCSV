@@ -145,7 +145,6 @@ namespace bakalarska_prace.ArrayArrayObject
             base.ToolsSetupEndString(false);
             ArrayArrayObject = null;
 
-
         }
         void ITester.TestWrite()
         {

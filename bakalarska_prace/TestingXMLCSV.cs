@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -257,24 +258,20 @@ namespace bakalarska_prace
 
         private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)
         {
-
             foreach (TreeNode tn in treeNode.Nodes)
             {
                 if (tn.Checked != nodeChecked)
                     tn.Checked = nodeChecked;
             }
-
         }
 
 
         private void button_Start_Click(object sender, EventArgs e)
         {
-
             foreach (TreeViewItem node in listBox_selected.Items)
             {
                 (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(metroTextBox_NumberOfElements.Text));
             }
-
 
             tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
             tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
@@ -282,14 +279,14 @@ namespace bakalarska_prace
             for (int i = 0; i < tools_Vysledky.pocetTestu; i++)
                 foreach (TreeViewItem node in listBox_selected.Items)
                 {
-                    Console.WriteLine(node.Tag);
+                    File.WriteAllText("prubeh zapis" + ".csv", i.ToString() + ". "+ node.Tag.ToString());
                     (node.Tag as ITester).SetupWriteStart();
                     TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
                     (node.Tag as ITester).SetupWriteEnd();
                     tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
                     test = new TimeSpan(0);
 
-
+                    File.WriteAllText("prubeh zapis" + ".csv", i.ToString() + ". " + node.Tag.ToString());
                     (node.Tag as ITester).SetupReadStart();
                     test = OtestujZmer((node.Tag as ITester).TestRead);
                     (node.Tag as ITester).SetupReadEnd();
@@ -301,9 +298,6 @@ namespace bakalarska_prace
             this.VisibleComponentsForTesting(false);
             userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
             userControl_Result1.ShowResultsComponent();
-
-
-
         }
 
         private static TimeSpan OtestujZmer(Action method)
@@ -336,6 +330,10 @@ namespace bakalarska_prace
                     node.Checked = true;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {            
+          System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory);
 
+        }
     }
 }
