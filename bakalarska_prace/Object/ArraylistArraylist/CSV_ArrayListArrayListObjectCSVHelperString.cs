@@ -97,6 +97,9 @@ namespace bakalarska_prace.ArrayListArrayListObject
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ArrayListArrayListObject = null;
+            csvWriter = null;
+            csvReader = null;
         }
         void ITester.TestWrite()
         {

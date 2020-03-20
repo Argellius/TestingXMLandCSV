@@ -89,6 +89,9 @@ namespace bakalarska_prace.ArrayArrayObject
         void ITester.SetupReadEnd()
         {
             FileStr.Close();
+            ArrayArrayObject = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
         }
         void ITester.TestWrite()
         {

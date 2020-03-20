@@ -12,7 +12,7 @@ namespace bakalarska_prace.ArrayListArrayListObject
 {
     class XML_ArrayListArrayListObjectSharpSerializer : Tools, ITester
     {
-        private ArrayList ListListObject;
+        private ArrayList ArrayListArrayListObject;
         private int NumberOfCollections;
         private int ElementsInCollection;
         private int ElementsInLastCollection;
@@ -26,7 +26,7 @@ namespace bakalarska_prace.ArrayListArrayListObject
 
         private void Inicialize(bool Write)
         {
-            ListListObject = new ArrayList();
+            ArrayListArrayListObject = new ArrayList();
 
             if (Write)
             {
@@ -40,7 +40,7 @@ namespace bakalarska_prace.ArrayListArrayListObject
                     }
 
 
-                    ListListObject.Add(List_Object);
+                    ArrayListArrayListObject.Add(List_Object);
                 }
                 if (ElementsInLastCollection > 0)
                 {
@@ -50,19 +50,19 @@ namespace bakalarska_prace.ArrayListArrayListObject
                         var it = new EmployeeRecord(true);
                         List_Object.Add(it);
                     }
-                    ListListObject.Add(List_Object);
+                    ArrayListArrayListObject.Add(List_Object);
                 }
             }
         }
 
         public void XML_SerializeListListObjectSharpSerializer()
         {
-            XML_SharpSerializer.Serialize(ListListObject, FileStr);
+            XML_SharpSerializer.Serialize(ArrayListArrayListObject, FileStr);
         }
 
         public void XML_DeSerializeListListObjectSharpSerializer()
         {
-            ListListObject = XML_SharpSerializer.Deserialize(FileStr) as ArrayList;
+            ArrayListArrayListObject = XML_SharpSerializer.Deserialize(FileStr) as ArrayList;
         }
 
         void ITester.SetupWriteStart()
@@ -88,7 +88,9 @@ namespace bakalarska_prace.ArrayListArrayListObject
         void ITester.SetupReadEnd()
         {
             FileStr.Close();
-            FileStr.Dispose();
+            ArrayListArrayListObject = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
         }
         void ITester.TestWrite()
         {

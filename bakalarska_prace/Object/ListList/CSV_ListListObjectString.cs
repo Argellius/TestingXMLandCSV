@@ -134,6 +134,8 @@ namespace bakalarska_prace.ListListObject
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndString(false);
+            ListListObject = null;
+
         }
         void ITester.TestWrite()
         {

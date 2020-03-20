@@ -61,6 +61,9 @@ namespace bakalarska_prace.ListObject
         void ITester.SetupReadEnd()
         {
             FileStr.Close();
+            ListObject = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
         }
         void ITester.TestWrite()
         {

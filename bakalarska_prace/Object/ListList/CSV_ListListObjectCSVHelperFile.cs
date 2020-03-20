@@ -91,6 +91,9 @@ namespace bakalarska_prace.ListListObject
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndFile(false);
+            ListListObject = null;
+            csvWriter = null;
+            csvReader = null;
         }
         void ITester.TestWrite()
         {

@@ -55,6 +55,8 @@ namespace bakalarska_prace.ArrayListObject
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndFile(false);
+            ArrayListObject = null;
+            XmlSerializer = null;
         }
         void ITester.TestWrite()
         {

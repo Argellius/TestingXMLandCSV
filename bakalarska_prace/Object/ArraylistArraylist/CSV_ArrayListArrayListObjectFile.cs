@@ -140,6 +140,8 @@ namespace bakalarska_prace.ArrayListArrayListObject
         void ITester.SetupReadEnd()
         {
             base.ToolsSetupEndFile(false);
+            ArrayListArrayListObject = null;
+
         }
         void ITester.TestWrite()
         {

@@ -79,6 +79,9 @@ namespace bakalarska_prace.ListListObject
         {
             FileStr.Close();
             FileStr.Dispose();
+            ListListObject = null;
+            XML_SharpSerializer = null;
+            FileStr = null;
         }
         void ITester.TestWrite()
         {

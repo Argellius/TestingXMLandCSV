@@ -136,7 +136,7 @@
     <Compile Include="Integer\ListList\XML_ListListIntegerString.cs" />
     <Compile Include="ITester.cs" />
     <Compile Include="MyMathLib.cs" />
-    <Compile Include="Object\ArrayArray\CSV_ArrayArraylistObjectFile.cs" />
+    <Compile Include="Object\ArrayArray\CSV_ArrayArrayObjectFile.cs" />
     <Compile Include="Object\ArrayArray\CSV_ArrayArrayObjectCSVHelperString.cs" />
     <Compile Include="Object\ArrayArray\CSV_ArrayArrayObjectCSVHelperFile.cs" />
     <Compile Include="Object\ArrayArray\CSV_ArrayArrayObjectString.cs" />
