@@ -18,7 +18,7 @@ namespace bakalarska_prace
         protected StringBuilder StringData;
 
         //protected string path = @"..\..\..\TestResults\";
-        protected string path = @"D:\TestResults\";
+        protected string path = @"C:\TestResults\";
        
         //XMLSerializer
         protected XmlSerializer XmlSerializer;
@@ -43,6 +43,12 @@ namespace bakalarska_prace
         public Tools()
         {
             StringBuilder = new StringBuilder();
+
+            var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName(path));
+
+            if (!destinationDirectory.Exists)
+                destinationDirectory.Create();
+
         }
 
 
@@ -103,6 +109,9 @@ namespace bakalarska_prace
         }
         protected long ToolsGetSizeOfFile(Type obj)
         {
+            if (StringBuilder == null)
+                StringBuilder = new StringBuilder();
+
             string FileName = this.path + obj.Name;
             long lengthFile;
             if (File.Exists(FileName + ".csv"))
@@ -131,17 +140,18 @@ namespace bakalarska_prace
         //String tools
         protected void ToolsInicializeString(bool Write, StringBuilder data = null)
         {
+            if (StringBuilder == null)
+            StringBuilder = new StringBuilder();
             if (Write)
                 this.StringWriter = new StringWriter();
             else
-                this.StringReader = new StringReader(data.ToString());
+                this.StringReader = new StringReader(StringWriter.ToString());
         }
 
         protected void ToolsSetupEndString(bool Write)
         {
             if (Write)
-            {
-                this.StringData = StringWriter.GetStringBuilder();
+            {                
                 StringBuilder.Clear();                
                 StringWriter.Close();                
                 StringWriter.Flush();
@@ -162,7 +172,7 @@ namespace bakalarska_prace
                 this.StringData = null;
                 StringWriter = null;
                 StringReader = null;
-                StringBuilder.Clear();                
+                StringBuilder = null;            
             }
             return length;   
         }

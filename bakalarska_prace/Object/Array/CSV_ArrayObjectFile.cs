@@ -111,6 +111,7 @@ namespace bakalarska_prace.ArrayObject
         {
             base.ToolsSetupEndFile(false);
             ArrayObject = null;
+            ;
         }
         void ITester.TestWrite()
         {

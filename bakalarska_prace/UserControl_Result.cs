@@ -77,9 +77,9 @@ namespace bakalarska_prace
                 table_Statistika.Rows.Add(row);
             }
 
-            metroGrid_Result.DataSource = table_Statistika;
-            for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
-                metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+           // metroGrid_Result.DataSource = table_Statistika;
+           // for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
+           //     metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         //Init gridview
@@ -142,21 +142,30 @@ namespace bakalarska_prace
 
 
                 //Propojení tabulky s gridem
-                metroGrid_Result.DataSource = copyDt;
+                //metroGrid_Result.DataSource = copyDt;
             }
-            else
-                metroGrid_Result.DataSource = table_Mezivysledky;
+           // else
+           //     metroGrid_Result.DataSource = table_Mezivysledky;
 
 
             //Autosize šířky sloupců
-            for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
-                metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+           // for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
+           //     metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         }
 
         private void metroGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             metroGrid_Result.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+        }
+
+        public void ExportAll()
+        {
+            _vysledky.ExportToCSVFile(table_Mezivysledky);
+            _vysledky.ExportToCSVFile(table_Statistika);
+            _vysledky.ExportToExcelFile(table_Mezivysledky);
+            _vysledky.ExportToExcelFile(table_Statistika);
 
         }
 
@@ -168,6 +177,8 @@ namespace bakalarska_prace
                 _vysledky.ExportToCSVFile(table_Statistika);
             MessageBox.Show("Done");
         }
+
+        
 
         private void metroButton_ExportXML_Click(object sender, EventArgs e)
         {

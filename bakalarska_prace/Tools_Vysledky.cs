@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,14 @@ namespace bakalarska_prace
         public TimeSpan time { set; get; }
         public long size { set; get; }
 
+
+
         public Zaznam(string name, TimeSpan time, long size)
         {
             this.name = name;
             this.time = time;
             this.size = size;
+
         }
 
     }
@@ -30,11 +34,24 @@ namespace bakalarska_prace
         public int pocetPrvku { set; get; }
         public int pocetTestu { set; get; }
 
+        public string path { set; get; }
+
+        private NumberFormatInfo customNumFormat;
+
         public Tools_Vysledky()
         {
             LZaznamy = new List<Zaznam>();
             this.pocetPrvku = 0;
             this.pocetTestu = 0;
+            this.path = @"C:\TestResults\CelouTutoSlozkuMiPosli\";
+
+            var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName(path));
+
+            if (!destinationDirectory.Exists)
+                destinationDirectory.Create();
+            customNumFormat = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
+            customNumFormat.NumberGroupSeparator = ".";
+            customNumFormat.NumberDecimalSeparator = ",";
         }
 
 
@@ -61,11 +78,11 @@ namespace bakalarska_prace
 
             foreach (DataRow row in dt.Rows)
             {
-                IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                IEnumerable<string> fields = row.ItemArray.Select(field => field is decimal || field is int || field is double ?  string.Format(customNumFormat, "{0:N}", field.ToString()).Replace(",",".") : field.ToString());
                 sb.AppendLine(string.Join(",", fields));
             }
 
-            File.WriteAllText(DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + dt.TableName + this.pocetPrvku + ".csv", sb.ToString());
+            File.WriteAllText(this.path + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + dt.TableName + this.pocetPrvku + ".csv", sb.ToString(),Encoding.UTF8);
 
         }
 
@@ -77,7 +94,7 @@ namespace bakalarska_prace
                 wb.Worksheets.Add(dt, dt.TableName);
                 wb.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 wb.Style.Font.Bold = true;
-                wb.SaveAs(DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + dt.TableName + this.pocetPrvku + ".xlsx");
+                wb.SaveAs(path + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + dt.TableName + this.pocetPrvku + ".xlsx");
             }
         }
 

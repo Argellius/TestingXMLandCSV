@@ -40,8 +40,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.metroButton_checkAll = new MetroFramework.Controls.MetroButton();
             this.groupBox_testovani = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.userControl_Result1 = new bakalarska_prace.UserControl_Result();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox_testovani.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,10 +192,10 @@
             // 
             // groupBox_testovani
             // 
+            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
             this.groupBox_testovani.Controls.Add(this.metroButton_checkAll);
             this.groupBox_testovani.Controls.Add(this.label2);
             this.groupBox_testovani.Controls.Add(this.label1);
-            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
             this.groupBox_testovani.Controls.Add(this.listBox_selected);
             this.groupBox_testovani.Controls.Add(this.treeView_Tests);
             this.groupBox_testovani.Location = new System.Drawing.Point(47, 63);
@@ -204,6 +204,15 @@
             this.groupBox_testovani.TabIndex = 0;
             this.groupBox_testovani.TabStop = false;
             this.groupBox_testovani.Text = "Testování";
+            // 
+            // userControl_Result1
+            // 
+            this.userControl_Result1.AutoScroll = true;
+            this.userControl_Result1.BackColor = System.Drawing.Color.White;
+            this.userControl_Result1.Location = new System.Drawing.Point(6, 18);
+            this.userControl_Result1.Name = "userControl_Result1";
+            this.userControl_Result1.Size = new System.Drawing.Size(818, 499);
+            this.userControl_Result1.TabIndex = 10;
             // 
             // button1
             // 
@@ -214,15 +223,6 @@
             this.button1.Text = "Open folder";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // userControl_Result1
-            // 
-            this.userControl_Result1.AutoScroll = true;
-            this.userControl_Result1.BackColor = System.Drawing.Color.White;
-            this.userControl_Result1.Location = new System.Drawing.Point(6, 18);
-            this.userControl_Result1.Name = "userControl_Result1";
-            this.userControl_Result1.Size = new System.Drawing.Size(818, 499);
-            this.userControl_Result1.TabIndex = 10;
             // 
             // TestingXMLCSV
             // 

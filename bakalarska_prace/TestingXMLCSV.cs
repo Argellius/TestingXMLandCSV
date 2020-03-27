@@ -83,6 +83,8 @@ namespace bakalarska_prace
 
         private void TestingXMLCSV_Load(object sender, EventArgs e)
         {
+
+
             TreeView_AddItems(treeView_Tests, "Array", new List<ITester> {
                     new ArrayInteger.XML_ArrayIntegerString(),
                     new ArrayInteger.XML_ArrayIntegerFile(),
@@ -135,7 +137,18 @@ namespace bakalarska_prace
                     new ListListInteger.XML_ListListIntegerSharpSerializer(),
             });
 
-            //---
+            TreeView_AddItems(treeView_Tests, "ArrayListArrayList", new List<ITester>
+            {
+                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerString(),
+                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerFile(),
+                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerSharpSerializer(),
+                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerCSVHelperFile(),
+                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerCSVHelperString(),
+                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerString(),
+                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerFile(),
+            });
+
+
 
             TreeView_AddItems(treeView_Tests, "Array", new List<ITester> {
                     new ArrayObject.XML_ArrayObjectString(),
@@ -190,16 +203,7 @@ namespace bakalarska_prace
                     new ListListObject.XML_ListListObjectSharpSerializer(),
             });
 
-            TreeView_AddItems(treeView_Tests, "ArrayListArrayList", new List<ITester>
-            {
-                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerString(),
-                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerFile(),
-                new ArrayListArrayListInteger.XML_ArrayListArrayListIntegerSharpSerializer(),
-                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerCSVHelperFile(),
-                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerCSVHelperString(),
-                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerString(),
-                new ArrayListArrayListInteger.CSV_ArrayListArrayListIntegerFile(),
-            });
+
 
             TreeView_AddItems(treeView_Tests, "ArrayListArrayList", new List<ITester>
             {
@@ -210,21 +214,22 @@ namespace bakalarska_prace
                     new ArrayListArrayListObject.XML_ArrayListArrayListObjectString(),
                     new ArrayListArrayListObject.XML_ArrayListArrayListObjectFile(),
                     new ArrayListArrayListObject.XML_ArrayListArrayListObjectSharpSerializer(),
-            }) ;
+            });
 
 
             //uncheck root
             treeView_Tests.SelectedNode = null;
             treeView_Tests.Nodes[0].Checked = false;
+
         }
 
-        private async void treeView_Tests_AfterCheck_1(object sender, TreeViewEventArgs e)
+        private void treeView_Tests_AfterCheck_1(object sender, TreeViewEventArgs e)
         {
 
             //Uspání TreeView z důvodu nesprávnému fungování, když se zasebou rychle checkuje jeden uzel
-            e.Node.TreeView.Enabled = false;
-            await Task.Delay(200);
-            e.Node.TreeView.Enabled = true;
+            // e.Node.TreeView.Enabled = false;
+            //await Task.Delay(200);
+            //e.Node.TreeView.Enabled = true;
 
 
             if (e.Node.Nodes.Count > 0)
@@ -268,36 +273,76 @@ namespace bakalarska_prace
 
         private void button_Start_Click(object sender, EventArgs e)
         {
-            foreach (TreeViewItem node in listBox_selected.Items)
+
+
+            MessageBox.Show("Nastav prioritu procesu bakalarska_prace na realtime");
+            MessageBox.Show("Ne az to bude bezet, hnedka");
+
+            List<int> list = new List<int> { 100, 1000, 10000, 100000, 1000000, 10000000 };
+
+
+
+            foreach (var number in list)
             {
-                (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(metroTextBox_NumberOfElements.Text));
-            }
+                checkAllNode(number);
 
-            tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
-            tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
+                string zacatek = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+                tools_Vysledky = new Tools_Vysledky();
+                //tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
+                //tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
+                tools_Vysledky.pocetPrvku = number;
+                tools_Vysledky.pocetTestu = 50;
 
-            for (int i = 0; i < tools_Vysledky.pocetTestu; i++)
                 foreach (TreeViewItem node in listBox_selected.Items)
                 {
-                    File.WriteAllText("prubeh zapis" + ".csv", i.ToString() + ". "+ node.Tag.ToString());
-                    (node.Tag as ITester).SetupWriteStart();
-                    TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
-                    (node.Tag as ITester).SetupWriteEnd();
-                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
-                    test = new TimeSpan(0);
-
-                    File.WriteAllText("prubeh zapis" + ".csv", i.ToString() + ". " + node.Tag.ToString());
-                    (node.Tag as ITester).SetupReadStart();
-                    test = OtestujZmer((node.Tag as ITester).TestRead);
-                    (node.Tag as ITester).SetupReadEnd();
-                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
-                    test = new TimeSpan(0);
+                    (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(tools_Vysledky.pocetPrvku));
                 }
 
 
-            this.VisibleComponentsForTesting(false);
-            userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
-            userControl_Result1.ShowResultsComponent();
+                //tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
+                //tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
+
+                for (int i = 0; i < tools_Vysledky.pocetTestu; i++)
+                {
+
+                    foreach (TreeViewItem node in listBox_selected.Items)
+                    {
+                        File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + "." + "prubeh" + ".csv", i.ToString() + ". ZAPIS " + node.Tag.ToString());
+                        (node.Tag as ITester).SetupWriteStart();
+                        TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
+                        (node.Tag as ITester).SetupWriteEnd();
+                        tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
+                        test = new TimeSpan(0);
+
+                        File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + "." + "prubeh" + ".csv", i.ToString() + ". CTENI" + node.Tag.ToString());
+                        (node.Tag as ITester).SetupReadStart();
+                        test = OtestujZmer((node.Tag as ITester).TestRead);
+                        (node.Tag as ITester).SetupReadEnd();
+                        tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
+                        test = new TimeSpan(0);
+                    }
+                }
+
+                userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
+                userControl_Result1.InitGridView_ToolsVysledky_MeziVysledky(tools_Vysledky);
+                userControl_Result1.InitGridView_ToolsVysledky_Statistika(tools_Vysledky);
+                userControl_Result1.ExportAll();
+
+                string konec = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+
+                File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + ". TimeTest" + ".csv", "zacatek: " + zacatek + ";" + "Konec: " + konec, Encoding.UTF8);
+
+                uncheckAllNode();
+            }
+
+
+
+
+            //this.VisibleComponentsForTesting(false);
+            //userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
+            //userControl_Result1.ShowResultsComponent();
+
+            MessageBox.Show("DONE - posli slozku: " + tools_Vysledky.path);
         }
 
         private static TimeSpan OtestujZmer(Action method)
@@ -330,9 +375,31 @@ namespace bakalarska_prace
                     node.Checked = true;
         }
 
+        private void checkAllNode(int number)
+        {
+            if (number == 10000000)
+            {
+                foreach (TreeNode node in treeView_Tests.Nodes)
+                    foreach (TreeNode node2 in node.Nodes)
+                        if (node2.Checked != true && node2.Text.Contains("Integer"))
+                            node2.Checked = true;
+                return;
+            }
+
+            foreach (TreeNode node in treeView_Tests.Nodes)
+                if (node.Checked != true)
+                    node.Checked = true;
+        }
+
+        private void uncheckAllNode()
+        {
+            foreach (TreeNode node in treeView_Tests.Nodes)
+                if (node.Checked != false)
+                    node.Checked = false;
+        }
         private void button1_Click(object sender, EventArgs e)
-        {            
-          System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory);
+        {
+            System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory);
 
         }
     }
