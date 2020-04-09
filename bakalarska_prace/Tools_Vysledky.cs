@@ -43,7 +43,7 @@ namespace bakalarska_prace
             LZaznamy = new List<Zaznam>();
             this.pocetPrvku = 0;
             this.pocetTestu = 0;
-            this.path = @"C:\TestResults\CelouTutoSlozkuMiPosli\";
+            this.path = @"C:\TestResults\PosliMiSlozkuCelouTuto\";
 
             var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName(path));
 

@@ -39,60 +39,71 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.metroButton_checkAll = new MetroFramework.Controls.MetroButton();
-            this.groupBox_testovani = new System.Windows.Forms.GroupBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.konecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nastaveníToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nastaveníCestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.umístěníAplikaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userControl_Result1 = new bakalarska_prace.UserControl_Result();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox_testovani.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroButton_Start
             // 
+            resources.ApplyResources(this.metroButton_Start, "metroButton_Start");
             this.metroButton_Start.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.metroButton_Start.Highlight = true;
-            this.metroButton_Start.Location = new System.Drawing.Point(67, 644);
             this.metroButton_Start.Name = "metroButton_Start";
-            this.metroButton_Start.Size = new System.Drawing.Size(143, 23);
-            this.metroButton_Start.TabIndex = 8;
-            this.metroButton_Start.Text = "Spustit";
             this.metroButton_Start.UseSelectable = true;
             this.metroButton_Start.Click += new System.EventHandler(this.button_Start_Click);
             // 
             // metroLabel_numberElements
             // 
-            this.metroLabel_numberElements.AutoSize = true;
+            resources.ApplyResources(this.metroLabel_numberElements, "metroLabel_numberElements");
             this.metroLabel_numberElements.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel_numberElements.Location = new System.Drawing.Point(67, 587);
             this.metroLabel_numberElements.Name = "metroLabel_numberElements";
-            this.metroLabel_numberElements.Size = new System.Drawing.Size(91, 19);
-            this.metroLabel_numberElements.TabIndex = 9;
-            this.metroLabel_numberElements.Text = "Počet prvků";
             // 
             // metroLabel_repeat
             // 
-            this.metroLabel_repeat.AutoSize = true;
+            resources.ApplyResources(this.metroLabel_repeat, "metroLabel_repeat");
             this.metroLabel_repeat.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel_repeat.Location = new System.Drawing.Point(67, 614);
             this.metroLabel_repeat.Name = "metroLabel_repeat";
-            this.metroLabel_repeat.Size = new System.Drawing.Size(122, 19);
-            this.metroLabel_repeat.TabIndex = 10;
-            this.metroLabel_repeat.Text = "Počet opakování";
             // 
             // metroTextBox_NumberOfElements
             // 
+            resources.ApplyResources(this.metroTextBox_NumberOfElements, "metroTextBox_NumberOfElements");
             // 
             // 
             // 
-            this.metroTextBox_NumberOfElements.CustomButton.Image = null;
-            this.metroTextBox_NumberOfElements.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.metroTextBox_NumberOfElements.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription");
+            this.metroTextBox_NumberOfElements.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName");
+            this.metroTextBox_NumberOfElements.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor")));
+            this.metroTextBox_NumberOfElements.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize")));
+            this.metroTextBox_NumberOfElements.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode")));
+            this.metroTextBox_NumberOfElements.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage")));
+            this.metroTextBox_NumberOfElements.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout")));
+            this.metroTextBox_NumberOfElements.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock")));
+            this.metroTextBox_NumberOfElements.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle")));
+            this.metroTextBox_NumberOfElements.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font")));
+            this.metroTextBox_NumberOfElements.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.metroTextBox_NumberOfElements.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign")));
+            this.metroTextBox_NumberOfElements.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex")));
+            this.metroTextBox_NumberOfElements.CustomButton.ImageKey = resources.GetString("resource.ImageKey");
+            this.metroTextBox_NumberOfElements.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
+            this.metroTextBox_NumberOfElements.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
+            this.metroTextBox_NumberOfElements.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize")));
             this.metroTextBox_NumberOfElements.CustomButton.Name = "";
-            this.metroTextBox_NumberOfElements.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox_NumberOfElements.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft")));
+            this.metroTextBox_NumberOfElements.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.metroTextBox_NumberOfElements.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox_NumberOfElements.CustomButton.TabIndex = 1;
+            this.metroTextBox_NumberOfElements.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
+            this.metroTextBox_NumberOfElements.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign")));
+            this.metroTextBox_NumberOfElements.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation")));
             this.metroTextBox_NumberOfElements.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBox_NumberOfElements.CustomButton.UseSelectable = true;
-            this.metroTextBox_NumberOfElements.CustomButton.Visible = false;
+            this.metroTextBox_NumberOfElements.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
             this.metroTextBox_NumberOfElements.Lines = new string[0];
-            this.metroTextBox_NumberOfElements.Location = new System.Drawing.Point(213, 587);
             this.metroTextBox_NumberOfElements.MaxLength = 32767;
             this.metroTextBox_NumberOfElements.Name = "metroTextBox_NumberOfElements";
             this.metroTextBox_NumberOfElements.PasswordChar = '\0';
@@ -101,28 +112,44 @@
             this.metroTextBox_NumberOfElements.SelectionLength = 0;
             this.metroTextBox_NumberOfElements.SelectionStart = 0;
             this.metroTextBox_NumberOfElements.ShortcutsEnabled = true;
-            this.metroTextBox_NumberOfElements.Size = new System.Drawing.Size(100, 23);
-            this.metroTextBox_NumberOfElements.TabIndex = 11;
             this.metroTextBox_NumberOfElements.UseSelectable = true;
             this.metroTextBox_NumberOfElements.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_NumberOfElements.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroTextBox_repeat
             // 
+            resources.ApplyResources(this.metroTextBox_repeat, "metroTextBox_repeat");
             // 
             // 
             // 
-            this.metroTextBox_repeat.CustomButton.Image = null;
-            this.metroTextBox_repeat.CustomButton.Location = new System.Drawing.Point(78, 1);
+            this.metroTextBox_repeat.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription1");
+            this.metroTextBox_repeat.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName1");
+            this.metroTextBox_repeat.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor1")));
+            this.metroTextBox_repeat.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize1")));
+            this.metroTextBox_repeat.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode1")));
+            this.metroTextBox_repeat.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage1")));
+            this.metroTextBox_repeat.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout1")));
+            this.metroTextBox_repeat.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock1")));
+            this.metroTextBox_repeat.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle1")));
+            this.metroTextBox_repeat.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font1")));
+            this.metroTextBox_repeat.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.metroTextBox_repeat.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign1")));
+            this.metroTextBox_repeat.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex1")));
+            this.metroTextBox_repeat.CustomButton.ImageKey = resources.GetString("resource.ImageKey1");
+            this.metroTextBox_repeat.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
+            this.metroTextBox_repeat.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
+            this.metroTextBox_repeat.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize1")));
             this.metroTextBox_repeat.CustomButton.Name = "";
-            this.metroTextBox_repeat.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox_repeat.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft1")));
+            this.metroTextBox_repeat.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
             this.metroTextBox_repeat.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox_repeat.CustomButton.TabIndex = 1;
+            this.metroTextBox_repeat.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex1")));
+            this.metroTextBox_repeat.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign1")));
+            this.metroTextBox_repeat.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation1")));
             this.metroTextBox_repeat.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBox_repeat.CustomButton.UseSelectable = true;
-            this.metroTextBox_repeat.CustomButton.Visible = false;
+            this.metroTextBox_repeat.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible1")));
             this.metroTextBox_repeat.Lines = new string[0];
-            this.metroTextBox_repeat.Location = new System.Drawing.Point(213, 616);
             this.metroTextBox_repeat.MaxLength = 32767;
             this.metroTextBox_repeat.Name = "metroTextBox_repeat";
             this.metroTextBox_repeat.PasswordChar = '\0';
@@ -131,121 +158,115 @@
             this.metroTextBox_repeat.SelectionLength = 0;
             this.metroTextBox_repeat.SelectionStart = 0;
             this.metroTextBox_repeat.ShortcutsEnabled = true;
-            this.metroTextBox_repeat.Size = new System.Drawing.Size(100, 23);
-            this.metroTextBox_repeat.TabIndex = 12;
             this.metroTextBox_repeat.UseSelectable = true;
             this.metroTextBox_repeat.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_repeat.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // treeView_Tests
             // 
+            resources.ApplyResources(this.treeView_Tests, "treeView_Tests");
             this.treeView_Tests.CheckBoxes = true;
-            this.treeView_Tests.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView_Tests.HideSelection = false;
-            this.treeView_Tests.Location = new System.Drawing.Point(6, 47);
             this.treeView_Tests.Name = "treeView_Tests";
-            this.treeView_Tests.Size = new System.Drawing.Size(414, 465);
-            this.treeView_Tests.TabIndex = 2;
             this.treeView_Tests.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_Tests_AfterCheck_1);
             this.treeView_Tests.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_Tests_BeforeSelect);
             this.treeView_Tests.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_Tests_NodeMouseDoubleClick);
             // 
             // listBox_selected
             // 
-            this.listBox_selected.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            resources.ApplyResources(this.listBox_selected, "listBox_selected");
             this.listBox_selected.FormattingEnabled = true;
-            this.listBox_selected.ItemHeight = 17;
-            this.listBox_selected.Location = new System.Drawing.Point(456, 50);
             this.listBox_selected.Name = "listBox_selected";
-            this.listBox_selected.Size = new System.Drawing.Size(368, 463);
-            this.listBox_selected.TabIndex = 3;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(14, 25);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Testovací případy:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(453, 25);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Vybrané testovací případy:";
             // 
             // metroButton_checkAll
             // 
-            this.metroButton_checkAll.Location = new System.Drawing.Point(345, 18);
+            resources.ApplyResources(this.metroButton_checkAll, "metroButton_checkAll");
             this.metroButton_checkAll.Name = "metroButton_checkAll";
-            this.metroButton_checkAll.Size = new System.Drawing.Size(75, 23);
-            this.metroButton_checkAll.TabIndex = 11;
-            this.metroButton_checkAll.Text = "Check All";
             this.metroButton_checkAll.UseSelectable = true;
             this.metroButton_checkAll.Click += new System.EventHandler(this.metroButton_checkAll_Click);
             // 
-            // groupBox_testovani
+            // menuStrip1
             // 
-            this.groupBox_testovani.Controls.Add(this.userControl_Result1);
-            this.groupBox_testovani.Controls.Add(this.metroButton_checkAll);
-            this.groupBox_testovani.Controls.Add(this.label2);
-            this.groupBox_testovani.Controls.Add(this.label1);
-            this.groupBox_testovani.Controls.Add(this.listBox_selected);
-            this.groupBox_testovani.Controls.Add(this.treeView_Tests);
-            this.groupBox_testovani.Location = new System.Drawing.Point(47, 63);
-            this.groupBox_testovani.Name = "groupBox_testovani";
-            this.groupBox_testovani.Size = new System.Drawing.Size(830, 518);
-            this.groupBox_testovani.TabIndex = 0;
-            this.groupBox_testovani.TabStop = false;
-            this.groupBox_testovani.Text = "Testování";
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.nastaveníToolStripMenuItem});
+            this.menuStrip1.Name = "menuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.konecToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            // 
+            // konecToolStripMenuItem
+            // 
+            resources.ApplyResources(this.konecToolStripMenuItem, "konecToolStripMenuItem");
+            this.konecToolStripMenuItem.Name = "konecToolStripMenuItem";
+            this.konecToolStripMenuItem.Click += new System.EventHandler(this.konecToolStripMenuItem_Click);
+            // 
+            // nastaveníToolStripMenuItem
+            // 
+            resources.ApplyResources(this.nastaveníToolStripMenuItem, "nastaveníToolStripMenuItem");
+            this.nastaveníToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nastaveníCestToolStripMenuItem,
+            this.umístěníAplikaceToolStripMenuItem});
+            this.nastaveníToolStripMenuItem.Name = "nastaveníToolStripMenuItem";
+            // 
+            // nastaveníCestToolStripMenuItem
+            // 
+            resources.ApplyResources(this.nastaveníCestToolStripMenuItem, "nastaveníCestToolStripMenuItem");
+            this.nastaveníCestToolStripMenuItem.Name = "nastaveníCestToolStripMenuItem";
+            this.nastaveníCestToolStripMenuItem.Click += new System.EventHandler(this.nastaveníCestToolStripMenuItem_Click);
+            // 
+            // umístěníAplikaceToolStripMenuItem
+            // 
+            resources.ApplyResources(this.umístěníAplikaceToolStripMenuItem, "umístěníAplikaceToolStripMenuItem");
+            this.umístěníAplikaceToolStripMenuItem.Name = "umístěníAplikaceToolStripMenuItem";
+            this.umístěníAplikaceToolStripMenuItem.Click += new System.EventHandler(this.umístěníAplikaceToolStripMenuItem_Click);
             // 
             // userControl_Result1
             // 
-            this.userControl_Result1.AutoScroll = true;
+            resources.ApplyResources(this.userControl_Result1, "userControl_Result1");
             this.userControl_Result1.BackColor = System.Drawing.Color.White;
-            this.userControl_Result1.Location = new System.Drawing.Point(6, 18);
             this.userControl_Result1.Name = "userControl_Result1";
-            this.userControl_Result1.Size = new System.Drawing.Size(818, 499);
-            this.userControl_Result1.TabIndex = 10;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(759, 615);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Open folder";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TestingXMLCSV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(927, 683);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.metroButton_checkAll);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.metroTextBox_repeat);
+            this.Controls.Add(this.listBox_selected);
             this.Controls.Add(this.metroTextBox_NumberOfElements);
+            this.Controls.Add(this.treeView_Tests);
             this.Controls.Add(this.metroButton_Start);
-            this.Controls.Add(this.groupBox_testovani);
             this.Controls.Add(this.metroLabel_numberElements);
             this.Controls.Add(this.metroLabel_repeat);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.userControl_Result1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(927, 585);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "TestingXMLCSV";
             this.Style = MetroFramework.MetroColorStyle.Black;
-            this.Text = "Testing XML and CSV";
             this.Load += new System.EventHandler(this.TestingXMLCSV_Load);
-            this.groupBox_testovani.ResumeLayout(false);
-            this.groupBox_testovani.PerformLayout();
+            this.Resize += new System.EventHandler(this.TestingXMLCSV_Resize);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,11 +280,15 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox_repeat;
         private System.Windows.Forms.TreeView treeView_Tests;
         private System.Windows.Forms.ListBox listBox_selected;
-        private UserControl_Result userControl_Result1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroButton metroButton_checkAll;
-        private System.Windows.Forms.GroupBox groupBox_testovani;
-        private System.Windows.Forms.Button button1;
+        private UserControl_Result userControl_Result1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nastaveníToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem konecToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nastaveníCestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem umístěníAplikaceToolStripMenuItem;
     }
 }

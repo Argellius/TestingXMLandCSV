@@ -26,7 +26,7 @@ namespace bakalarska_prace
             metroGrid_Result.DefaultCellStyle.ForeColor = Color.Black;
             comboBox_Vyber.Items.Add("Mezivýsledky");
             comboBox_Vyber.Items.Add("Statistika");
-            
+
 
         }
 
@@ -54,12 +54,12 @@ namespace bakalarska_prace
             table_Statistika = new DataTable("Statistika");
 
             table_Statistika.Columns.Add("Název testu", typeof(string));
-            table_Statistika.Columns.Add("Průměrný čas", typeof(decimal));
-            table_Statistika.Columns.Add("Průměrná velikost", typeof(decimal));
-            table_Statistika.Columns.Add("Median", typeof(decimal));
-            table_Statistika.Columns.Add("Rozptyl", typeof(decimal));
-            table_Statistika.Columns.Add("Směrodatná odchylka", typeof(decimal));
-            table_Statistika.Columns.Add("Velikosti za 1 s", typeof(decimal));
+            table_Statistika.Columns.Add("Průměrný čas[ms]", typeof(decimal));
+            table_Statistika.Columns.Add("Počet znaků/bytů", typeof(decimal));
+            table_Statistika.Columns.Add("Median[ms]", typeof(decimal));
+            table_Statistika.Columns.Add("Rozptyl[ms^2]", typeof(decimal));
+            table_Statistika.Columns.Add("Směrodatná odchylka[ms]", typeof(decimal));
+            table_Statistika.Columns.Add("Počet za 1 s[znaky/byty]", typeof(decimal));
 
             foreach (var result in results)
             {
@@ -72,14 +72,14 @@ namespace bakalarska_prace
                 row[3] = MyMathLib.GetMedian(result.Properties.Select(r => r.time.TotalMilliseconds));
                 row[4] = MyMathLib.GetVariance(result.Properties.Select(r => r.time.TotalMilliseconds));
                 row[5] = MyMathLib.GetStandardDeviation(result.Properties.Select(r => r.time.TotalMilliseconds));
-                row[6] = MyMathLib.GetPomer1s(prumerCas, prumerSize) ;
+                row[6] = MyMathLib.GetPomer1s(prumerCas, prumerSize);
 
                 table_Statistika.Rows.Add(row);
             }
 
-           // metroGrid_Result.DataSource = table_Statistika;
-           // for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
-           //     metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            metroGrid_Result.DataSource = table_Statistika;
+            for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
+                metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         //Init gridview
@@ -102,10 +102,10 @@ namespace bakalarska_prace
             //Založení sloupců
             for (int i = 0; i < _Vysledky.pocetTestu; i++)
             {
-                DataColumn column = new DataColumn(String.Format("{0}.", i + 1));
+                DataColumn column = new DataColumn(String.Format("{0}.[ms]", i + 1));
                 column.DataType = typeof(Decimal);
                 table_Mezivysledky.Columns.Add(column);
-                DataColumn column2 = new DataColumn(String.Format("Size_{0}.", i + 1));
+                DataColumn column2 = new DataColumn(String.Format("{0}.Počet[znaku/bitu]", i + 1));
                 column2.DataType = typeof(int);
                 table_Mezivysledky.Columns.Add(column2);
             }
@@ -142,15 +142,15 @@ namespace bakalarska_prace
 
 
                 //Propojení tabulky s gridem
-                //metroGrid_Result.DataSource = copyDt;
+                metroGrid_Result.DataSource = copyDt;
             }
-           // else
-           //     metroGrid_Result.DataSource = table_Mezivysledky;
+            else
+                metroGrid_Result.DataSource = table_Mezivysledky;
 
 
             //Autosize šířky sloupců
-           // for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
-           //     metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            for (int i = 0; i < metroGrid_Result.Columns.Count; i++)
+                metroGrid_Result.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         }
 
@@ -178,7 +178,7 @@ namespace bakalarska_prace
             MessageBox.Show("Done");
         }
 
-        
+
 
         private void metroButton_ExportXML_Click(object sender, EventArgs e)
         {
@@ -204,7 +204,7 @@ namespace bakalarska_prace
 
         private void UserControl_Result_Resize(object sender, EventArgs e)
         {
-          
+
         }
 
         private void UserControl_Result_SizeChanged(object sender, EventArgs e)

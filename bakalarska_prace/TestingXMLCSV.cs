@@ -15,6 +15,12 @@ namespace bakalarska_prace
     public partial class TestingXMLCSV : MetroFramework.Forms.MetroForm
     {
         private Tools_Vysledky tools_Vysledky;
+
+        private Rectangle RecTreeView;
+        private Rectangle RecListBox;
+        bool load = false;
+
+        private Size formOriginalSize;
         public TestingXMLCSV()
         {
             InitializeComponent();
@@ -71,6 +77,9 @@ namespace bakalarska_prace
 
         private void VisibleComponentsForTesting(bool visible)
         {
+            if (visible == false)
+                this.Resizable = true;
+
             metroLabel_numberElements.Visible = visible;
             metroLabel_repeat.Visible = visible;
 
@@ -79,11 +88,40 @@ namespace bakalarska_prace
             metroTextBox_NumberOfElements.Visible = visible;
             metroTextBox_repeat.Visible = visible;
 
+            treeView_Tests.Visible = visible;
+            listBox_selected.Visible = visible;
+
+        }
+
+        private void resizeChildren()
+        {
+            resizeControl(RecTreeView, treeView_Tests);
+            resizeControl(RecListBox, listBox_selected);
+        }
+
+
+        private void resizeControl(Rectangle originalControlRect, Control control)
+        {
+
+            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
+            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
+
+            int newX = (int)(originalControlRect.X * xRatio);
+            int newY = (int)(originalControlRect.Y * yRatio);
+            int newWidth = (int)(originalControlRect.Width * xRatio);
+            int newHeight = (int)(originalControlRect.Height * yRatio);
+
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
         }
 
         private void TestingXMLCSV_Load(object sender, EventArgs e)
         {
 
+            load = true;
+            RecTreeView = new Rectangle(treeView_Tests.Location.X, treeView_Tests.Location.Y, treeView_Tests.Width, treeView_Tests.Height);
+            RecListBox = new Rectangle(listBox_selected.Location.X, listBox_selected.Location.Y, listBox_selected.Width, listBox_selected.Height);
+            formOriginalSize = this.Size;
 
             TreeView_AddItems(treeView_Tests, "Array", new List<ITester> {
                     new ArrayInteger.XML_ArrayIntegerString(),
@@ -223,13 +261,13 @@ namespace bakalarska_prace
 
         }
 
-        private void treeView_Tests_AfterCheck_1(object sender, TreeViewEventArgs e)
+        private async void treeView_Tests_AfterCheck_1(object sender, TreeViewEventArgs e)
         {
 
             //Uspání TreeView z důvodu nesprávnému fungování, když se zasebou rychle checkuje jeden uzel
-            // e.Node.TreeView.Enabled = false;
-            //await Task.Delay(200);
-            //e.Node.TreeView.Enabled = true;
+            e.Node.TreeView.Enabled = false;
+            await Task.Delay(200);
+            e.Node.TreeView.Enabled = true;
 
 
             if (e.Node.Nodes.Count > 0)
@@ -274,75 +312,49 @@ namespace bakalarska_prace
         private void button_Start_Click(object sender, EventArgs e)
         {
 
+            string zacatek = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+            tools_Vysledky = new Tools_Vysledky();
+            tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
+            tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
 
-            MessageBox.Show("Nastav prioritu procesu bakalarska_prace na realtime");
-            MessageBox.Show("Ne az to bude bezet, hnedka");
-
-            List<int> list = new List<int> { 100, 1000, 10000, 100000, 1000000, 10000000 };
-
-
-
-            foreach (var number in list)
+            foreach (TreeViewItem node in listBox_selected.Items)
             {
-                checkAllNode(number);
+                (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(tools_Vysledky.pocetPrvku));
+            }
 
-                string zacatek = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-                tools_Vysledky = new Tools_Vysledky();
-                //tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
-                //tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
-                tools_Vysledky.pocetPrvku = number;
-                tools_Vysledky.pocetTestu = 50;
+            for (int i = 0; i < tools_Vysledky.pocetTestu; i++)
+            {
 
                 foreach (TreeViewItem node in listBox_selected.Items)
                 {
-                    (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(tools_Vysledky.pocetPrvku));
+                    File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + "." + "prubeh" + ".csv", i.ToString() + ". ZAPIS " + node.Tag.ToString());
+                    (node.Tag as ITester).SetupWriteStart();
+                    TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
+                    (node.Tag as ITester).SetupWriteEnd();
+                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
+                    test = new TimeSpan(0);
+
+                    File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + "." + "prubeh" + ".csv", i.ToString() + ". CTENI" + node.Tag.ToString());
+                    (node.Tag as ITester).SetupReadStart();
+                    test = OtestujZmer((node.Tag as ITester).TestRead);
+                    (node.Tag as ITester).SetupReadEnd();
+                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
+                    test = new TimeSpan(0);
                 }
-
-
-                //tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
-                //tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
-
-                for (int i = 0; i < tools_Vysledky.pocetTestu; i++)
-                {
-
-                    foreach (TreeViewItem node in listBox_selected.Items)
-                    {
-                        File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + "." + "prubeh" + ".csv", i.ToString() + ". ZAPIS " + node.Tag.ToString());
-                        (node.Tag as ITester).SetupWriteStart();
-                        TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
-                        (node.Tag as ITester).SetupWriteEnd();
-                        tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
-                        test = new TimeSpan(0);
-
-                        File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + "." + "prubeh" + ".csv", i.ToString() + ". CTENI" + node.Tag.ToString());
-                        (node.Tag as ITester).SetupReadStart();
-                        test = OtestujZmer((node.Tag as ITester).TestRead);
-                        (node.Tag as ITester).SetupReadEnd();
-                        tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
-                        test = new TimeSpan(0);
-                    }
-                }
-
-                userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
-                userControl_Result1.InitGridView_ToolsVysledky_MeziVysledky(tools_Vysledky);
-                userControl_Result1.InitGridView_ToolsVysledky_Statistika(tools_Vysledky);
-                userControl_Result1.ExportAll();
-
-                string konec = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-
-                File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + ". TimeTest" + ".csv", "zacatek: " + zacatek + ";" + "Konec: " + konec, Encoding.UTF8);
-
-                uncheckAllNode();
             }
 
+            userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
+            userControl_Result1.InitGridView_ToolsVysledky_MeziVysledky(tools_Vysledky);
+            userControl_Result1.InitGridView_ToolsVysledky_Statistika(tools_Vysledky);
 
+            string konec = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
 
+            File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + ". TimeTest" + ".csv", "zacatek: " + zacatek + ";" + "Konec: " + konec, Encoding.UTF8);
 
-            //this.VisibleComponentsForTesting(false);
-            //userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
-            //userControl_Result1.ShowResultsComponent();
+            this.VisibleComponentsForTesting(false);
+            userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
+            userControl_Result1.ShowResultsComponent();
 
-            MessageBox.Show("DONE - posli slozku: " + tools_Vysledky.path);
         }
 
         private static TimeSpan OtestujZmer(Action method)
@@ -375,32 +387,28 @@ namespace bakalarska_prace
                     node.Checked = true;
         }
 
-        private void checkAllNode(int number)
+        private void umístěníAplikaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (number == 10000000)
-            {
-                foreach (TreeNode node in treeView_Tests.Nodes)
-                    foreach (TreeNode node2 in node.Nodes)
-                        if (node2.Checked != true && node2.Text.Contains("Integer"))
-                            node2.Checked = true;
-                return;
-            }
+            Process.Start(AppDomain.CurrentDomain.BaseDirectory);
 
-            foreach (TreeNode node in treeView_Tests.Nodes)
-                if (node.Checked != true)
-                    node.Checked = true;
         }
 
-        private void uncheckAllNode()
+        private void konecToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (TreeNode node in treeView_Tests.Nodes)
-                if (node.Checked != false)
-                    node.Checked = false;
+            Application.Exit();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory);
 
+        private void TestingXMLCSV_Resize(object sender, EventArgs e)
+        {
+            if (load)
+            resizeChildren();
+        }
+
+        private void nastaveníCestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var myForm = new Cesty();
+            myForm.Show();
+            
         }
     }
 }

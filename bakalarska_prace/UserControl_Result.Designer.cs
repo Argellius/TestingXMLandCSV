@@ -36,6 +36,7 @@
             this.metroButton_ExportExcel = new MetroFramework.Controls.MetroButton();
             this.comboBox_Vyber = new System.Windows.Forms.ComboBox();
             this.metroLabel__vyber = new MetroFramework.Controls.MetroLabel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid_Result)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,10 +67,11 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.metroGrid_Result.DefaultCellStyle = dataGridViewCellStyle2;
+            this.metroGrid_Result.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroGrid_Result.EnableHeadersVisualStyles = false;
             this.metroGrid_Result.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid_Result.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid_Result.Location = new System.Drawing.Point(0, 38);
+            this.metroGrid_Result.Location = new System.Drawing.Point(0, 0);
             this.metroGrid_Result.MultiSelect = false;
             this.metroGrid_Result.Name = "metroGrid_Result";
             this.metroGrid_Result.ReadOnly = true;
@@ -85,7 +87,7 @@
             this.metroGrid_Result.RowHeadersWidth = 51;
             this.metroGrid_Result.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid_Result.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid_Result.Size = new System.Drawing.Size(824, 382);
+            this.metroGrid_Result.Size = new System.Drawing.Size(824, 500);
             this.metroGrid_Result.TabIndex = 0;
             this.metroGrid_Result.VirtualMode = true;
             this.metroGrid_Result.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellContentClick);
@@ -131,11 +133,21 @@
             this.metroLabel__vyber.TabIndex = 10;
             this.metroLabel__vyber.Text = "Typ hodnot:";
             // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(713, 9);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(75, 23);
+            this.metroButton1.TabIndex = 11;
+            this.metroButton1.Text = "metroButton1";
+            this.metroButton1.UseSelectable = true;
+            // 
             // UserControl_Result
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroLabel__vyber);
             this.Controls.Add(this.comboBox_Vyber);
             this.Controls.Add(this.metroButton_ExportExcel);
@@ -159,5 +171,6 @@
         private MetroFramework.Controls.MetroButton metroButton_ExportExcel;
         private System.Windows.Forms.ComboBox comboBox_Vyber;
         private MetroFramework.Controls.MetroLabel metroLabel__vyber;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }
