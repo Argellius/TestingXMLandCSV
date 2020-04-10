@@ -104,5 +104,10 @@ namespace bakalarska_prace.ListListInteger
             this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
 
+        void ITester.SetPath(string path)
+        {
+            base.SetPath(path);
+        }
+
     }
 }

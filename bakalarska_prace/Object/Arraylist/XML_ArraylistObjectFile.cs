@@ -74,5 +74,9 @@ namespace bakalarska_prace.ArrayListObject
         {
             this.NumberOfElements = NumberOfElements;
         }
+        void ITester.SetPath(string path)
+        {
+            base.SetPath(path);
+        }
     }
 }

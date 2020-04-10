@@ -74,5 +74,9 @@ namespace bakalarska_prace.ListInteger
         {
             this.NumberOfElements = NumberOfElements;
         }
+        void ITester.SetPath(string path)
+        {
+            base.SetPath(path);
+        }
     }
 }

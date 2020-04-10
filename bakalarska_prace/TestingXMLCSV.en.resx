@@ -134,20 +134,48 @@
   <data name="listBox_selected.Size" type="System.Drawing.Size, System.Drawing">
     <value>371, 463</value>
   </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label_testovaciPripady.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_testovaciPripady.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 9.75pt, style=Bold</value>
+  </data>
+  <data name="label_testovaciPripady.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="label_testovaciPripady.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 89</value>
+  </data>
+  <data name="label_testovaciPripady.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 16</value>
+  </data>
+  <data name="label_testovaciPripady.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label_testovaciPripady.Text" xml:space="preserve">
+    <value>Testovací případy:</value>
+  </data>
+  <data name="label_vybraneTesty.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_vybraneTesty.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 9.75pt, style=Bold</value>
+  </data>
+  <data name="label_vybraneTesty.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="nastaveníCestToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="label_vybraneTesty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 16</value>
   </data>
-  <data name="umístěníAplikaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="label_vybraneTesty.Text" xml:space="preserve">
+    <value>Vybrané testovací případy:</value>
+  </data>
+  <data name="userControl_Result1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 87</value>
   </data>
   <data name="userControl_Result1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 499</value>
+    <value>859, 493</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -225,5 +253,8 @@
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>927, 679</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>WindowsDefaultLocation</value>
   </data>
 </root>

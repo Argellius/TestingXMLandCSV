@@ -122,9 +122,6 @@
     <value>Tile</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="metroTextBox_repeat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 616</value>
-  </data>
   <data name="konecToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 22</value>
   </data>
@@ -146,8 +143,11 @@
   <data name="&gt;&gt;metroTextBox_NumberOfElements.Name" xml:space="preserve">
     <value>metroTextBox_NumberOfElements</value>
   </data>
-  <data name="resource.ImageAlign1" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="&gt;&gt;label_testovaci_pripady.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;listBox_selected.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>10</value>
@@ -162,14 +162,11 @@
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="resource.BackgroundImage1" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="&gt;&gt;metroTextBox_NumberOfElements.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="treeView_Tests.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="metroLabel_numberElements.Text" xml:space="preserve">
-    <value>Počet prvků</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -180,11 +177,11 @@
   <data name="&gt;&gt;metroLabel_numberElements.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="metroLabel_repeat.Text" xml:space="preserve">
-    <value>Počet opakování</value>
-  </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>887, 24</value>
+  </data>
+  <data name="&gt;&gt;label_vybrane_testy.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -195,8 +192,17 @@
   <data name="&gt;&gt;metroButton_Start.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>927, 679</value>
+  </data>
+  <data name="label_testovaciPripady.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
   <data name="resource.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
+  </data>
+  <data name="label_vybrane_testy.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="treeView_Tests.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9.75pt</value>
@@ -234,11 +240,20 @@
   <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;label_testovaciPripady.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;userControl_Result1.Type" xml:space="preserve">
+    <value>bakalarska_prace.UserControl_Result, bakalarska_prace, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="metroLabel_repeat.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="userControl_Result1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="&gt;&gt;label_testovaciPripady.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -317,16 +332,22 @@
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
   </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;treeView_Tests.Type" xml:space="preserve">
     <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;metroTextBox_NumberOfElements.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;metroButton_checkAll.Name" xml:space="preserve">
+    <value>metroButton_checkAll</value>
   </data>
-  <data name="&gt;&gt;listBox_selected.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="metroTextBox_repeat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 616</value>
   </data>
   <data name="&gt;&gt;metroLabel_repeat.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_vybrane_testy.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="resource.ImageKey" xml:space="preserve">
@@ -350,8 +371,11 @@
   <data name="treeView_Tests.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 117</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="metroLabel_numberElements.Text" xml:space="preserve">
+    <value>Počet prvků</value>
+  </data>
+  <data name="label_testovaciPripady.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 89</value>
   </data>
   <data name="resource.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -368,6 +392,9 @@
   <data name="&gt;&gt;metroLabel_repeat.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
+  <data name="&gt;&gt;label_testovaci_pripady.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="metroLabel_numberElements.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
@@ -383,8 +410,14 @@
   <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
     <value>toolStripMenuItem1</value>
   </data>
+  <data name="resource.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Standard</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 89</value>
+  </data>
+  <data name="label_vybraneTesty.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="metroLabel_repeat.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -400,6 +433,15 @@
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>TestingXMLCSV</value>
+  </data>
+  <data name="&gt;&gt;label_vybraneTesty.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label_testovaci_pripady.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 89</value>
+  </data>
+  <data name="&gt;&gt;label_vybraneTesty.Name" xml:space="preserve">
+    <value>label_vybraneTesty</value>
   </data>
   <data name="&gt;&gt;metroButton_checkAll.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -424,6 +466,9 @@
   </data>
   <data name="&gt;&gt;treeView_Tests.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="&gt;&gt;label_testovaci_pripady.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;userControl_Result1.Name" xml:space="preserve">
     <value>userControl_Result1</value>
@@ -467,6 +512,9 @@
   <data name="resource.ImageIndex1" type="System.Int32, mscorlib">
     <value>-1</value>
   </data>
+  <data name="&gt;&gt;label_testovaciPripady.Name" xml:space="preserve">
+    <value>label_testovaciPripady</value>
+  </data>
   <data name="resource.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -476,8 +524,14 @@
   <data name="&gt;&gt;nastaveníToolStripMenuItem.Name" xml:space="preserve">
     <value>nastaveníToolStripMenuItem</value>
   </data>
-  <data name="resource.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Inherit</value>
+  <data name="&gt;&gt;label_vybrane_testy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_vybraneTesty.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="resource.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 60</value>
@@ -506,6 +560,9 @@
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="&gt;&gt;label_testovaci_pripady.Name" xml:space="preserve">
+    <value>label_testovaci_pripady</value>
+  </data>
   <data name="resource.FlatStyle1" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Standard</value>
   </data>
@@ -521,26 +578,29 @@
   <data name="userControl_Result1.Location" type="System.Drawing.Point, System.Drawing">
     <value>67, 89</value>
   </data>
+  <data name="&gt;&gt;nastaveníCestToolStripMenuItem.Name" xml:space="preserve">
+    <value>nastaveníCestToolStripMenuItem</value>
+  </data>
   <data name="listBox_selected.Font" type="System.Drawing.Font, System.Drawing">
     <value>Century Gothic, 9.75pt</value>
   </data>
   <data name="&gt;&gt;metroTextBox_repeat.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;metroLabel_numberElements.Name" xml:space="preserve">
-    <value>metroLabel_numberElements</value>
+  <data name="&gt;&gt;label_testovaciPripady.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;userControl_Result1.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label_vybrane_testy.Name" xml:space="preserve">
+    <value>label_vybrane_testy</value>
   </data>
   <data name="metroLabel_numberElements.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 19</value>
   </data>
   <data name="treeView_Tests.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="resource.ImageKey1" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -556,6 +616,9 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Vybrané testovací případy:</value>
+  </data>
+  <data name="resource.ImageAlign1" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="resource.Visible1" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -590,8 +653,11 @@
   <data name="resource.Size" type="System.Drawing.Size, System.Drawing">
     <value>21, 21</value>
   </data>
-  <data name="resource.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Standard</value>
+  <data name="label_testovaci_pripady.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label_vybraneTesty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="treeView_Tests.Size" type="System.Drawing.Size, System.Drawing">
     <value>414, 465</value>
@@ -617,11 +683,14 @@
   <data name="metroTextBox_repeat.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>519, 89</value>
+  </data>
   <data name="&gt;&gt;metroTextBox_NumberOfElements.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
-    <value>21, 21</value>
+  <data name="label_vybrane_testy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>519, 89</value>
   </data>
   <data name="menuStrip1.Text" xml:space="preserve">
     <value>menuStrip1</value>
@@ -635,17 +704,17 @@
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
   </data>
-  <data name="&gt;&gt;nastaveníCestToolStripMenuItem.Name" xml:space="preserve">
-    <value>nastaveníCestToolStripMenuItem</value>
+  <data name="resource.BackgroundImage1" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="&gt;&gt;listBox_selected.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Century Gothic, 9.75pt, style=Bold</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>519, 89</value>
+  <data name="&gt;&gt;metroLabel_numberElements.Name" xml:space="preserve">
+    <value>metroLabel_numberElements</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>927, 679</value>
+  <data name="metroLabel_repeat.Text" xml:space="preserve">
+    <value>Počet opakování</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Menu</value>
@@ -659,8 +728,8 @@
   <data name="metroButton_Start.Text" xml:space="preserve">
     <value>Spustit</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Century Gothic, 9.75pt, style=Bold</value>
+  <data name="label_vybraneTesty.Location" type="System.Drawing.Point, System.Drawing">
+    <value>519, 89</value>
   </data>
   <data name="resource.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -668,8 +737,8 @@
   <data name="nastaveníToolStripMenuItem.Text" xml:space="preserve">
     <value>Nastavení</value>
   </data>
-  <data name="&gt;&gt;userControl_Result1.Type" xml:space="preserve">
-    <value>bakalarska_prace.UserControl_Result, bakalarska_prace, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="resource.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
   <data name="resource.MaximumSize1" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -695,6 +764,9 @@
   <data name="resource.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowOnly</value>
   </data>
+  <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
+    <value>21, 21</value>
+  </data>
   <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
     <value>menuStrip1</value>
   </data>
@@ -704,8 +776,8 @@
   <data name="resource.Font1" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="&gt;&gt;metroButton_checkAll.Name" xml:space="preserve">
-    <value>metroButton_checkAll</value>
+  <data name="&gt;&gt;listBox_selected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="metroLabel_repeat.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 19</value>
@@ -713,8 +785,8 @@
   <data name="resource.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Tile</value>
+  <data name="resource.ImageKey1" xml:space="preserve">
+    <value />
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -733,5 +805,8 @@
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>43</value>
   </metadata>
 </root>

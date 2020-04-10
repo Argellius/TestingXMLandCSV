@@ -85,5 +85,9 @@ namespace bakalarska_prace.ArrayInteger
         {
             this.NumberOfElements = NumberOfElements;
         }
+        void ITester.SetPath(string path)
+        {
+            base.SetPath(path);
+        }
     }
 }

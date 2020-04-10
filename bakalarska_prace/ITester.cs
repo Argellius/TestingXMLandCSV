@@ -22,6 +22,7 @@ namespace bakalarska_prace
 
         void SetNumberOfElements(int NumberOfElements);
 
+        void SetPath(string path);
         long GetSize();      
     }
 }

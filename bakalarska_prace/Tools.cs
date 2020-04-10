@@ -43,12 +43,15 @@ namespace bakalarska_prace
         public Tools()
         {
             StringBuilder = new StringBuilder();
+        }
+
+        protected void SetPath (string path)
+        {
+            this.path = path;
 
             var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName(path));
-
             if (!destinationDirectory.Exists)
                 destinationDirectory.Create();
-
         }
 
 

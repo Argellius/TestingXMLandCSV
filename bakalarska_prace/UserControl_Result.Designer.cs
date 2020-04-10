@@ -36,8 +36,10 @@
             this.metroButton_ExportExcel = new MetroFramework.Controls.MetroButton();
             this.comboBox_Vyber = new System.Windows.Forms.ComboBox();
             this.metroLabel__vyber = new MetroFramework.Controls.MetroLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroButton_zpatky = new MetroFramework.Controls.MetroButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid_Result)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroGrid_Result
@@ -87,7 +89,7 @@
             this.metroGrid_Result.RowHeadersWidth = 51;
             this.metroGrid_Result.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid_Result.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid_Result.Size = new System.Drawing.Size(824, 500);
+            this.metroGrid_Result.Size = new System.Drawing.Size(821, 460);
             this.metroGrid_Result.TabIndex = 0;
             this.metroGrid_Result.VirtualMode = true;
             this.metroGrid_Result.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellContentClick);
@@ -95,9 +97,9 @@
             // 
             // metroButton_ExportCSV
             // 
-            this.metroButton_ExportCSV.Location = new System.Drawing.Point(87, 433);
+            this.metroButton_ExportCSV.Location = new System.Drawing.Point(355, 9);
             this.metroButton_ExportCSV.Name = "metroButton_ExportCSV";
-            this.metroButton_ExportCSV.Size = new System.Drawing.Size(188, 23);
+            this.metroButton_ExportCSV.Size = new System.Drawing.Size(137, 23);
             this.metroButton_ExportCSV.TabIndex = 1;
             this.metroButton_ExportCSV.Text = "Export do CSV formátu";
             this.metroButton_ExportCSV.UseSelectable = true;
@@ -105,9 +107,9 @@
             // 
             // metroButton_ExportExcel
             // 
-            this.metroButton_ExportExcel.Location = new System.Drawing.Point(521, 433);
+            this.metroButton_ExportExcel.Location = new System.Drawing.Point(518, 9);
             this.metroButton_ExportExcel.Name = "metroButton_ExportExcel";
-            this.metroButton_ExportExcel.Size = new System.Drawing.Size(188, 23);
+            this.metroButton_ExportExcel.Size = new System.Drawing.Size(127, 23);
             this.metroButton_ExportExcel.TabIndex = 2;
             this.metroButton_ExportExcel.Text = "Export do Excelu";
             this.metroButton_ExportExcel.UseSelectable = true;
@@ -133,32 +135,43 @@
             this.metroLabel__vyber.TabIndex = 10;
             this.metroLabel__vyber.Text = "Typ hodnot:";
             // 
-            // metroButton1
+            // metroButton_zpatky
             // 
-            this.metroButton1.Location = new System.Drawing.Point(713, 9);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(75, 23);
-            this.metroButton1.TabIndex = 11;
-            this.metroButton1.Text = "metroButton1";
-            this.metroButton1.UseSelectable = true;
+            this.metroButton_zpatky.Location = new System.Drawing.Point(734, 11);
+            this.metroButton_zpatky.Name = "metroButton_zpatky";
+            this.metroButton_zpatky.Size = new System.Drawing.Size(75, 23);
+            this.metroButton_zpatky.TabIndex = 11;
+            this.metroButton_zpatky.Text = "Zpátky";
+            this.metroButton_zpatky.UseSelectable = true;
+            this.metroButton_zpatky.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel1.Controls.Add(this.metroGrid_Result);
+            this.panel1.Location = new System.Drawing.Point(3, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(821, 460);
+            this.panel1.TabIndex = 12;
             // 
             // UserControl_Result
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.metroButton_zpatky);
             this.Controls.Add(this.metroLabel__vyber);
             this.Controls.Add(this.comboBox_Vyber);
             this.Controls.Add(this.metroButton_ExportExcel);
             this.Controls.Add(this.metroButton_ExportCSV);
-            this.Controls.Add(this.metroGrid_Result);
             this.Name = "UserControl_Result";
             this.Size = new System.Drawing.Size(824, 500);
             this.Load += new System.EventHandler(this.UserControl_Result_Load);
             this.SizeChanged += new System.EventHandler(this.UserControl_Result_SizeChanged);
             this.Resize += new System.EventHandler(this.UserControl_Result_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid_Result)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,6 +184,7 @@
         private MetroFramework.Controls.MetroButton metroButton_ExportExcel;
         private System.Windows.Forms.ComboBox comboBox_Vyber;
         private MetroFramework.Controls.MetroLabel metroLabel__vyber;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton metroButton_zpatky;
+        private System.Windows.Forms.Panel panel1;
     }
 }

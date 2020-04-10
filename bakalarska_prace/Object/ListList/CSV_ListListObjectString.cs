@@ -156,5 +156,9 @@ namespace bakalarska_prace.ListListObject
             this.ElementsInCollection = NumberOfElements / NumberOfCollections;
             this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
+        void ITester.SetPath(string path)
+        {
+            base.SetPath(path);
+        }
     }
 }

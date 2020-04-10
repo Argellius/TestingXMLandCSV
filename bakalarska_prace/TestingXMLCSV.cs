@@ -14,43 +14,27 @@ namespace bakalarska_prace
 {
     public partial class TestingXMLCSV : MetroFramework.Forms.MetroForm
     {
-        private Tools_Vysledky tools_Vysledky;
 
+        private Tools_Vysledky tools_Vysledky;
+        private string path_testy;
+        private Cesty CestyForm;
+
+        //zvětšení zmenšení
         private Rectangle RecTreeView;
         private Rectangle RecListBox;
+        private Rectangle RecUserControl;
+        private Size formOriginalSize;
         bool load = false;
 
-        private Size formOriginalSize;
+        
         public TestingXMLCSV()
         {
             InitializeComponent();
             tools_Vysledky = new Tools_Vysledky();
             userControl_Result1.SendToBack();
             userControl_Result1.Visible = false;
-
-
-
+            CestyForm = new Cesty();
         }
-
-        /*private void TreeView_AddItems(TreeView tree, string name_first_node, string name_second_node, List<ITester> tests)
-        {
-            TreeNode node2 = new TreeNode(name_second_node);
-            tests.ForEach(item =>
-            {
-                node2.Nodes.Add(new TreeNode() { Text = item.GetType().Name, Name = item.GetType().Name, Tag = item, });
-            });
-
-            foreach (TreeNode node in tree.Nodes)
-                if (node.Text == name_first_node)
-                {
-                    node.Nodes.Add(node2);
-                    return;
-                }
-            TreeNode node1 = new TreeNode(name_first_node);
-            node1.Nodes.Add(node2);
-            tree.Nodes.Add(node1);
-
-        }*/
         private void TreeView_AddItems(TreeView tree, string name_first_node, List<ITester> tests)
         {
             List<TreeNode> nodes = new List<TreeNode>();
@@ -75,15 +59,20 @@ namespace bakalarska_prace
 
         }
 
-        private void VisibleComponentsForTesting(bool visible)
+        public void VisibleComponentsForTesting(bool visible)
         {
             if (visible == false)
                 this.Resizable = true;
 
+            label_testovaciPripady.Visible = visible;
+            label_vybraneTesty.Visible = visible;
             metroLabel_numberElements.Visible = visible;
             metroLabel_repeat.Visible = visible;
 
             metroButton_Start.Visible = visible;
+            metroButton_checkAll.Visible = visible;
+
+
 
             metroTextBox_NumberOfElements.Visible = visible;
             metroTextBox_repeat.Visible = visible;
@@ -97,6 +86,7 @@ namespace bakalarska_prace
         {
             resizeControl(RecTreeView, treeView_Tests);
             resizeControl(RecListBox, listBox_selected);
+            resizeControl(RecUserControl, userControl_Result1);
         }
 
 
@@ -121,6 +111,7 @@ namespace bakalarska_prace
             load = true;
             RecTreeView = new Rectangle(treeView_Tests.Location.X, treeView_Tests.Location.Y, treeView_Tests.Width, treeView_Tests.Height);
             RecListBox = new Rectangle(listBox_selected.Location.X, listBox_selected.Location.Y, listBox_selected.Width, listBox_selected.Height);
+            RecUserControl= new Rectangle(userControl_Result1.Location.X, userControl_Result1.Location.Y, userControl_Result1.Width, userControl_Result1.Height);
             formOriginalSize = this.Size;
 
             TreeView_AddItems(treeView_Tests, "Array", new List<ITester> {
@@ -308,19 +299,35 @@ namespace bakalarska_prace
             }
         }
 
+        private void SetNumberofElementsListBox(ListBox listbox, int pocetPrvku)
+        {
+            foreach (TreeViewItem node in listbox.Items)
+            {
+                (node.Tag as ITester).SetNumberOfElements(pocetPrvku);
+            }
+        }
+
+        private void SetPathListBox(ListBox listbox, string path_tests)
+        {
+            foreach (TreeViewItem node in listbox.Items)
+            {
+                (node.Tag as ITester).SetPath(path_tests);
+            }
+        }
 
         private void button_Start_Click(object sender, EventArgs e)
         {
-
-            string zacatek = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
             tools_Vysledky = new Tools_Vysledky();
+
+            tools_Vysledky.SetPath(CestyForm.PathVysledkyName);
             tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
             tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
 
-            foreach (TreeViewItem node in listBox_selected.Items)
-            {
-                (node.Tag as ITester).SetNumberOfElements(Convert.ToInt32(tools_Vysledky.pocetPrvku));
-            }
+            SetNumberofElementsListBox(listBox_selected, tools_Vysledky.pocetPrvku);
+            SetPathListBox(listBox_selected, CestyForm.PathTestName);
+
+
+            string zacatek = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
 
             for (int i = 0; i < tools_Vysledky.pocetTestu; i++)
             {
@@ -343,7 +350,7 @@ namespace bakalarska_prace
                 }
             }
 
-            userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
+            userControl_Result1.SetToolsVysledky(tools_Vysledky);
             userControl_Result1.InitGridView_ToolsVysledky_MeziVysledky(tools_Vysledky);
             userControl_Result1.InitGridView_ToolsVysledky_Statistika(tools_Vysledky);
 
@@ -352,7 +359,8 @@ namespace bakalarska_prace
             File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + ". TimeTest" + ".csv", "zacatek: " + zacatek + ";" + "Konec: " + konec, Encoding.UTF8);
 
             this.VisibleComponentsForTesting(false);
-            userControl_Result1.Set_ToolsVysledky(tools_Vysledky);
+            userControl_Result1.SetToolsVysledky(tools_Vysledky);
+            userControl_Result1.SetParentForm(this);
             userControl_Result1.ShowResultsComponent();
 
         }
@@ -405,10 +413,8 @@ namespace bakalarska_prace
         }
 
         private void nastaveníCestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var myForm = new Cesty();
-            myForm.Show();
-            
+        {            
+            CestyForm.Show();            
         }
     }
 }

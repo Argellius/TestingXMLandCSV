@@ -15,9 +15,19 @@ namespace bakalarska_prace
         Tools_Vysledky _vysledky;
         DataTable table_Mezivysledky;
         DataTable table_Statistika;
+        private TestingXMLCSV ParentForm;
         public UserControl_Result()
         {
             InitializeComponent();
+        }
+
+        public UserControl_Result(TestingXMLCSV parentForm)
+        {
+            this.ParentForm = parentForm;
+            InitializeComponent();
+
+            panel1.HorizontalScroll.Enabled = false;
+
         }
 
         private void UserControl_Result_Load(object sender, EventArgs e)
@@ -30,9 +40,14 @@ namespace bakalarska_prace
 
         }
 
-        public void Set_ToolsVysledky(Tools_Vysledky vysledky)
+        public void SetToolsVysledky(Tools_Vysledky vysledky)
         {
             this._vysledky = vysledky;
+        }
+
+        public void SetParentForm(TestingXMLCSV form)
+        {
+            this.ParentForm = form;
         }
 
         public void ShowResultsComponent()
@@ -209,6 +224,12 @@ namespace bakalarska_prace
 
         private void UserControl_Result_SizeChanged(object sender, EventArgs e)
         {
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ParentForm.VisibleComponentsForTesting(true);
         }
     }
 }

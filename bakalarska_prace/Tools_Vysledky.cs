@@ -34,7 +34,7 @@ namespace bakalarska_prace
         public int pocetPrvku { set; get; }
         public int pocetTestu { set; get; }
 
-        public string path { set; get; }
+        public string path { private set; get; }
 
         private NumberFormatInfo customNumFormat;
 
@@ -43,18 +43,23 @@ namespace bakalarska_prace
             LZaznamy = new List<Zaznam>();
             this.pocetPrvku = 0;
             this.pocetTestu = 0;
-            this.path = @"C:\TestResults\PosliMiSlozkuCelouTuto\";
+            this.path = String.Empty;
 
-            var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName(path));
-
-            if (!destinationDirectory.Exists)
-                destinationDirectory.Create();
+            
             customNumFormat = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
             customNumFormat.NumberGroupSeparator = ".";
             customNumFormat.NumberDecimalSeparator = ",";
         }
 
+        public void SetPath(string path)
+        {
+            this.path = path;
 
+            var destinationDirectory = new DirectoryInfo(Path.GetDirectoryName(path));
+
+            if (!destinationDirectory.Exists)
+                destinationDirectory.Create();
+        }
 
         public void Add(string name, TimeSpan time, long size)
         {

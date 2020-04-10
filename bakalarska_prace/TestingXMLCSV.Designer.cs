@@ -36,8 +36,8 @@
             this.metroTextBox_repeat = new MetroFramework.Controls.MetroTextBox();
             this.treeView_Tests = new System.Windows.Forms.TreeView();
             this.listBox_selected = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_testovaciPripady = new System.Windows.Forms.Label();
+            this.label_vybraneTesty = new System.Windows.Forms.Label();
             this.metroButton_checkAll = new MetroFramework.Controls.MetroButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,15 +178,15 @@
             this.listBox_selected.FormattingEnabled = true;
             this.listBox_selected.Name = "listBox_selected";
             // 
-            // label1
+            // label_testovaciPripady
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.label_testovaciPripady, "label_testovaciPripady");
+            this.label_testovaciPripady.Name = "label_testovaciPripady";
             // 
-            // label2
+            // label_vybraneTesty
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.label_vybraneTesty, "label_vybraneTesty");
+            this.label_vybraneTesty.Name = "label_vybraneTesty";
             // 
             // metroButton_checkAll
             // 
@@ -198,10 +198,12 @@
             // menuStrip1
             // 
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.nastaveníToolStripMenuItem});
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // toolStripMenuItem1
             // 
@@ -248,8 +250,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.Controls.Add(this.metroButton_checkAll);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_vybraneTesty);
+            this.Controls.Add(this.label_testovaciPripady);
             this.Controls.Add(this.metroTextBox_repeat);
             this.Controls.Add(this.listBox_selected);
             this.Controls.Add(this.metroTextBox_NumberOfElements);
@@ -280,8 +282,8 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox_repeat;
         private System.Windows.Forms.TreeView treeView_Tests;
         private System.Windows.Forms.ListBox listBox_selected;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_testovaciPripady;
+        private System.Windows.Forms.Label label_vybraneTesty;
         private MetroFramework.Controls.MetroButton metroButton_checkAll;
         private UserControl_Result userControl_Result1;
         private System.Windows.Forms.MenuStrip menuStrip1;

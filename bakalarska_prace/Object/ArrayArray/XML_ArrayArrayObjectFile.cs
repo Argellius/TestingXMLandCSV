@@ -102,5 +102,10 @@ namespace bakalarska_prace.ArrayArrayObject
             this.ElementsInCollection = NumberOfElements / NumberOfCollections;
             this.ElementsInLastCollection = NumberOfElements % NumberOfCollections;
         }
+
+        void ITester.SetPath(string path)
+        {
+            base.SetPath(path);
+        }
     }
 }
