@@ -52,7 +52,6 @@ namespace bakalarska_prace.ArrayListObject
                 StringBuilder.Append(",");
                 StringBuilder.AppendLine((ArrayListObject[o] as EmployeeRecord).Indisposed.ToString());
             }
-
             StringWriter.Write(StringBuilder);
         }
 

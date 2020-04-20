@@ -70,11 +70,11 @@ namespace bakalarska_prace
 
             table_Statistika.Columns.Add("Název testu", typeof(string));
             table_Statistika.Columns.Add("Průměrný čas[ms]", typeof(decimal));
-            table_Statistika.Columns.Add("Počet znaků/bytů", typeof(decimal));
+            table_Statistika.Columns.Add("Počet znaků/bajtů", typeof(decimal));
             table_Statistika.Columns.Add("Median[ms]", typeof(decimal));
             table_Statistika.Columns.Add("Rozptyl[ms^2]", typeof(decimal));
             table_Statistika.Columns.Add("Směrodatná odchylka[ms]", typeof(decimal));
-            table_Statistika.Columns.Add("Počet za 1 s[znaky/byty]", typeof(decimal));
+            table_Statistika.Columns.Add("Počet za 1 s[znaky/bajtů]", typeof(decimal));
 
             foreach (var result in results)
             {
@@ -120,7 +120,7 @@ namespace bakalarska_prace
                 DataColumn column = new DataColumn(String.Format("{0}.[ms]", i + 1));
                 column.DataType = typeof(Decimal);
                 table_Mezivysledky.Columns.Add(column);
-                DataColumn column2 = new DataColumn(String.Format("{0}.Počet[znaku/bitu]", i + 1));
+                DataColumn column2 = new DataColumn(String.Format("{0}.Počet[znaky/bajty]", i + 1));
                 column2.DataType = typeof(int);
                 table_Mezivysledky.Columns.Add(column2);
             }

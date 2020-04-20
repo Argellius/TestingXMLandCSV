@@ -40,7 +40,9 @@ namespace bakalarska_prace.ArrayListInteger
         void ITester.SetupWriteStart()
         {
             Inicialize(true);
+
             XmlSerializer = new XmlSerializer(ArrayListInteger.GetType(), new Type[] { typeof(int) });
+
             base.ToolsInicializeFile(this.GetType(), true);
         }
         void ITester.SetupReadStart()

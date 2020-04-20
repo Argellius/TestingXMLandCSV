@@ -19,7 +19,7 @@ namespace bakalarska_prace
 
         //protected string path = @"..\..\..\TestResults\";
         protected string path = @"C:\TestResults\";
-       
+
         //XMLSerializer
         protected XmlSerializer XmlSerializer;
 
@@ -45,7 +45,7 @@ namespace bakalarska_prace
             StringBuilder = new StringBuilder();
         }
 
-        protected void SetPath (string path)
+        protected void SetPath(string path)
         {
             this.path = path;
 
@@ -58,7 +58,7 @@ namespace bakalarska_prace
         //File tools
         protected void ToolsInicializeFile(Type obj, bool Write)
         {
-            
+
             string ClassName = obj.Name;
             if (Write)
             {
@@ -119,7 +119,7 @@ namespace bakalarska_prace
             long lengthFile;
             if (File.Exists(FileName + ".csv"))
             {
-                lengthFile =  new FileInfo(FileName + ".csv").Length;
+                lengthFile = new FileInfo(FileName + ".csv").Length;
             }
             else if (File.Exists(FileName + ".xml"))
             {
@@ -127,7 +127,7 @@ namespace bakalarska_prace
             }
             else
                 return 0;
-
+            #region vyčištění
             if (StreamReader != null)
             {
                 StreamWriter = null;
@@ -136,7 +136,7 @@ namespace bakalarska_prace
             }
 
             return lengthFile;
-
+            #endregion
         }
 
 
@@ -144,7 +144,7 @@ namespace bakalarska_prace
         protected void ToolsInicializeString(bool Write, StringBuilder data = null)
         {
             if (StringBuilder == null)
-            StringBuilder = new StringBuilder();
+                StringBuilder = new StringBuilder();
             if (Write)
                 this.StringWriter = new StringWriter();
             else
@@ -154,182 +154,33 @@ namespace bakalarska_prace
         protected void ToolsSetupEndString(bool Write)
         {
             if (Write)
-            {                
-                StringBuilder.Clear();                
-                StringWriter.Close();                
+            {
+                StringBuilder.Clear();
+                StringWriter.Close();
                 StringWriter.Flush();
             }
             else
-            {                
+            {
                 this.StringData = null;
                 this.StringBuilder.Clear();
-                this.StringReader.Close();                
+                this.StringReader.Close();
             }
-        }        
+        }
 
         protected long ToolsGetSizeOfString()
         {
             var length = StringWriter.GetStringBuilder().Length;
+            #region flush
             if (StringReader != null)
             {
                 this.StringData = null;
                 StringWriter = null;
                 StringReader = null;
-                StringBuilder = null;            
+                StringBuilder = null;
             }
-            return length;   
-        }
-
-
-
-    }
-    /*
-    abstract class Tools
-    {
-        //protected string XML_Text;
-        //protected string CSV_Text;
-        protected string path = @"..\..\..\Testing_Files\";
-
-        protected RecordOfEmployee _Zamestnanci_With_Data;
-               
-
-        public Tools()
-        {
-            // Casove_Zaznamy_Testu = new List<double>();
-            _Zamestnanci_With_Data = new RecordOfEmployee(true);
-        }
-        /*
-        protected void Turn_Testing(ref double time)
-        {
-
-            watch.Start();
-            MyTestingHandler.Invoke();
-            watch.Stop();
-            time = watch.Elapsed.TotalMilliseconds;
-            watch.Reset();
-        }*/
-
-
-
-    /*  protected void Init_Collections_Objects(dynamic obj)
-      {
-          if (obj is List<RecordOfEmployee> || obj is ArrayList)
-          {
-              for (int i = 0; i < Pocet_Prvku; i++)
-                  obj.Add(_Zamestnanci_With_Data);
-          }
-          else if (obj is RecordOfEmployee[])
-          {
-
-              for (int i = 0; i < Pocet_Prvku; i++)
-                  obj[i] = _Zamestnanci_With_Data;
-          }
-          else if (obj is RecordOfEmployee[][])
-          {
-              for (int i = 0; i < Pocet_Prvku; i++)
-              {
-                  obj[i] = new RecordOfEmployee[Pocet_Prvku];
-              }
-
-              for (int i = 0; i < Pocet_Prvku; i++)
-              {
-                  for (int j = 0; j < Pocet_Prvku; j++)
-                  {
-                      obj[i][j] = _Zamestnanci_With_Data;
-                  }
-              }
-
-          }
-          else if (obj is List<List<RecordOfEmployee>>)
-          {
-              List<RecordOfEmployee> it = new List<RecordOfEmployee>();
-              for (int i = 0; i < Pocet_Prvku; i++)
-                  it.Add(_Zamestnanci_With_Data);
-
-
-              for (int i = 0; i < Pocet_Prvku; i++)
-                  obj.Add(it);
-
-          }
-
-
-
-      }*/
-
-    /* protected void Init_Collections_Integer(dynamic obj)
-     {
-         if (obj is System.Int32[])
-         {
-             for (int i = 0; i < Pocet_Prvku; i++)
-                 obj[i] = int.MaxValue;
-         }
-         else if (obj is System.Int32[][])
-         {
-             for (int i = 0; i < Pocet_Prvku; i++)
-             {
-                 obj[i] = new int[Pocet_Prvku];
-             }
-
-             for (int i = 0; i < Pocet_Prvku; i++)
-             {
-                 for (int j = 0; j < Pocet_Prvku; j++)
-                 {
-                     obj[i][j] = int.MaxValue;
-                 }
-             }
-         }
-         else if (obj is List<int> || obj is ArrayList)
-         {
-             for (int i = 0; i < Pocet_Prvku; i++)
-                 obj.Add(int.MaxValue);
-         }
-
-         else if (obj is List<List<int>>)
-         {
-             List<int> it = new List<int>();
-             for (int i = 0; i < Pocet_Prvku; i++)
-                 it.Add(int.MaxValue);
-
-
-             for (int i = 0; i < Pocet_Prvku; i++)
-                 obj.Add(it);
-
-         }
-
-
-     } */
-
-    /* public void Init_Dictionary(dynamic obj)
-     {
-         if (obj is MySerializableDictionary<int, List<int>>)
-         {
-             List<int> List_Int = new List<int>();
-             Init_Collections_Integer(List_Int);
-             for (int i = 0; i < Pocet_Prvku; i++)
-             {
-                 obj.Add(int.MaxValue, List_Int);
-             }
-         }
-
-         else if (obj is MySerializableDictionary<RecordOfEmployee, List<RecordOfEmployee>>)
-         {
-             List<RecordOfEmployee> List_Obj = new List<RecordOfEmployee>();
-             Init_Collections_Objects(List_Obj);
-             for (int i = 0; i < Pocet_Prvku; i++)
-             {
-                 obj.Add(_Zamestnanci_With_Data, List_Obj);
-             }
-        }
-     }
-
-    public abstract void Create_Test_String(ref string Nazev_Testu, ref double time);
-        public abstract void Read_Test_String(ref string Nazev_Testu, ref double time);
-
-        public abstract void Create_Test_Disk(ref string Nazev_Testu, ref double time);
-        public abstract void Read_Test_Disk(ref string Nazev_Testu, ref double time);
+            #endregion
+            return length;
+        }        
 
     }
-
-    */
 }
-
