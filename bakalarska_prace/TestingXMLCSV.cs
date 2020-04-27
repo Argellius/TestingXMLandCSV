@@ -317,14 +317,25 @@ namespace bakalarska_prace
 
         private void button_Start_Click(object sender, EventArgs e)
         {
+            bool isNumericElements = int.TryParse(metroTextBox_NumberOfElements.Text, out int Elements);
+            bool isNumericRepeat = int.TryParse(metroTextBox_repeat.Text, out int Repeat);
+
+            if (!isNumericElements || !isNumericRepeat)
+            {
+                MessageBox.Show("Chyba v počtu elementů nebo v počtu opakování");
+                return;
+            }
+            
+
+
             tools_Vysledky = new Tools_Vysledky();
 
-            tools_Vysledky.SetPath(CestyForm.PathVysledkyName);
-            tools_Vysledky.pocetPrvku = Convert.ToInt32(metroTextBox_NumberOfElements.Text);
-            tools_Vysledky.pocetTestu = Convert.ToInt32(metroTextBox_repeat.Text);
+            tools_Vysledky.SetPath(CestyForm.PathVysledkyName + @"\");
+            tools_Vysledky.pocetPrvku = Elements;
+            tools_Vysledky.pocetTestu = Repeat;
 
             SetNumberofElementsListBox(listBox_selected, tools_Vysledky.pocetPrvku);
-            SetPathListBox(listBox_selected, CestyForm.PathTestName);
+            SetPathListBox(listBox_selected, CestyForm.PathTestName + @"\");
 
 
             string zacatek = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
@@ -334,18 +345,18 @@ namespace bakalarska_prace
 
                 foreach (TreeViewItem node in listBox_selected.Items)
                 {
-                    File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + "." + "prubeh" + ".csv", i.ToString() + ". ZAPIS " + node.Tag.ToString());
                     (node.Tag as ITester).SetupWriteStart();
                     TimeSpan test = OtestujZmer((node.Tag as ITester).TestWrite);
                     (node.Tag as ITester).SetupWriteEnd();
-                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test, (node.Tag as ITester).GetSize());
+                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " WRITE", test,
+                        (node.Tag as ITester).GetSize());
                     test = new TimeSpan(0);
 
-                    File.WriteAllText(tools_Vysledky.path + tools_Vysledky.pocetPrvku + "." + "prubeh" + ".csv", i.ToString() + ". CTENI" + node.Tag.ToString());
                     (node.Tag as ITester).SetupReadStart();
                     test = OtestujZmer((node.Tag as ITester).TestRead);
                     (node.Tag as ITester).SetupReadEnd();
-                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test, (node.Tag as ITester).GetSize());
+                    tools_Vysledky.Add((node.Tag as ITester).GetType().Name + " READ", test,
+                        (node.Tag as ITester).GetSize());
                     test = new TimeSpan(0);
                 }
             }
@@ -372,7 +383,6 @@ namespace bakalarska_prace
             method();
             sw.Stop();
             return sw.Elapsed;
-
         }
 
 

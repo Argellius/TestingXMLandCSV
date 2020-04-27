@@ -55,5 +55,7 @@ namespace bakalarska_prace
             e.Cancel = true;
             this.Hide();
         }
+
+
     }
 }

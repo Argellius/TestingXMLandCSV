@@ -144,14 +144,8 @@
   <data name="label_testovaciPripady.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label_testovaciPripady.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 89</value>
-  </data>
   <data name="label_testovaciPripady.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 16</value>
-  </data>
-  <data name="label_testovaciPripady.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="label_testovaciPripady.Text" xml:space="preserve">
     <value>Testovací případy:</value>

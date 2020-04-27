@@ -264,6 +264,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "TestingXMLCSV";
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.None;
             this.Style = MetroFramework.MetroColorStyle.Black;
             this.Load += new System.EventHandler(this.TestingXMLCSV_Load);
             this.Resize += new System.EventHandler(this.TestingXMLCSV_Resize);

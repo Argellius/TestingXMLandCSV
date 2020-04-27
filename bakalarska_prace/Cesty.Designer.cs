@@ -35,6 +35,7 @@
             this.metroLabel_vysledky = new MetroFramework.Controls.MetroLabel();
             this.metroButton_vysledky = new MetroFramework.Controls.MetroButton();
             this.metroTextBox_vysledky = new MetroFramework.Controls.MetroTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // metroTextBox_testy
@@ -139,11 +140,21 @@
             this.metroTextBox_vysledky.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox_vysledky.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 164);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(239, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Změny se provedou až po spuštění nového testu";
+            // 
             // Cesty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 200);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.metroLabel_vysledky);
             this.Controls.Add(this.metroButton_vysledky);
             this.Controls.Add(this.metroTextBox_vysledky);
@@ -152,6 +163,7 @@
             this.Controls.Add(this.metroTextBox_testy);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Cesty";
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.None;
             this.Text = "Cesty";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Cesty_FormClosing);
             this.Load += new System.EventHandler(this.Cesty_Load);
@@ -168,5 +180,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel_vysledky;
         private MetroFramework.Controls.MetroButton metroButton_vysledky;
         private MetroFramework.Controls.MetroTextBox metroTextBox_vysledky;
+        private System.Windows.Forms.Label label1;
     }
 }

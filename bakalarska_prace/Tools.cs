@@ -127,18 +127,31 @@ namespace bakalarska_prace
             }
             else
                 return 0;
-            #region vyčištění
+            #region flush
             if (StreamReader != null)
             {
                 StreamWriter = null;
                 StreamReader = null;
                 StringBuilder.Clear();
             }
-
-            return lengthFile;
             #endregion
+            return lengthFile;
+            
         }
-
+        protected long ToolsGetSizeOfString()
+        {
+            var length = StringWriter.GetStringBuilder().Length;
+            #region flush
+            if (StringReader != null)
+            {
+                this.StringData = null;
+                StringWriter = null;
+                StringReader = null;
+                StringBuilder = null;
+            }
+            #endregion
+            return length;
+        }
 
         //String tools
         protected void ToolsInicializeString(bool Write, StringBuilder data = null)
@@ -167,20 +180,7 @@ namespace bakalarska_prace
             }
         }
 
-        protected long ToolsGetSizeOfString()
-        {
-            var length = StringWriter.GetStringBuilder().Length;
-            #region flush
-            if (StringReader != null)
-            {
-                this.StringData = null;
-                StringWriter = null;
-                StringReader = null;
-                StringBuilder = null;
-            }
-            #endregion
-            return length;
-        }        
+           
 
     }
 }
